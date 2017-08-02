@@ -24,7 +24,42 @@ const Header = () => {
     const cantidad5 = $('<input name="group2" type="radio" id="fumaQuincenal"/><label for="test1">Quincenal</label>');
     const cantidad6 = $('<input name="group2" type="radio" id="fumaMensual"/><label for="test1">Mensual</label>');
     const cantidad7 = $('<input name="group2" type="radio" id="fumaMenorMensual"/><label for="test1">Menos que una vez al mes</label>');
-    
+    const sueno = $('<div class="input-field col s12"></div>');
+    const sueno1 = $('<label for="fuma">Horas de sueño</label>');
+    const sueno2 = $('<input name="group3" type="radio" id="menorCinco"/><label for="test1">Menos de 5 horas</label>');
+    const sueno3 = $('<input name="group3" type="radio" id="cincoHoras"/><label for="test1">5 horas</label>');
+    const sueno4 = $('<input name="group3" type="radio" id="seisHoras"/><label for="test1">6 horas</label>');
+    const sueno5 = $('<input name="group3" type="radio" id="sieteHoras"/><label for="test1">7 horas</label>');
+    const sueno6 = $('<input name="group3" type="radio" id="ochoHoras"/><label for="test1">8 horas</label>');
+    const sueno7 = $('<input name="group3" type="radio" id="mayorOcho"/><label for="test1">Más de 8 horas</label>');
+    const activity = $('<div class="input-field col s12"></div>');
+    const activity1 = $('<label for="fuma">¿Actividad física al menos 10 miin diarios?</label>');
+    const activity2 = $('<input name="group4" type="radio" id="activityYes"/><label for="test1">Sí</label>');
+    const activity3 = $('<input name="group4" type="radio" id="ativityNo"/><label for="test1">No</label>');
+    const pactivity = $('<div class="input-field col s12"></div>');
+    const pactivity1 = $('<label for="fuma">¿Actividad física al menos 30 miin diarios?</label>');
+    const pactivity2 = $('<input name="group5" type="radio" id="pactivityYes"/><label for="test1">Sí</label>');
+    const pactivity3 = $('<input name="group5" type="radio" id="pativityNo"/><label for="test1">No</label>');
+    const drink = $('<div class="input-field col s12"></div>');
+    const drink1 = $('<label for="fuma">¿Toma?</label>');
+    const drink2 = $('<input name="group6" type="radio" id="drinkYes"/><label for="test1">Sí</label>');
+    const drink3 = $('<input name="group6" type="radio" id="drinkNo"/><label for="test1">No</label>');
+    const dcant = $('<div class="input-field col s12"></div>');
+    const dcant1 = $('<label for="fuma">¿Con qué frecuencia toma? </label>');
+    const dcant2 = $('<input name="group7" type="radio" id="drinkDiario"/><label for="test1">Diario</label>');
+    const dcant3 = $('<input name="group7" type="radio" id="drinkInterdiario"/><label for="test1">Interdiario</label>');
+    const dcant4 = $('<input name="group7" type="radio" id="drinkSemanal"/><label for="test1">Semanal</label>');
+    const dcant5 = $('<input name="group7" type="radio" id="drinkQuincenal"/><label for="test1">Quincenal</label>');
+    const dcant6 = $('<input name="group7" type="radio" id="drinkMensual"/><label for="test1">Mensual</label>');
+    const dcant7 = $('<input name="group7" type="radio" id="drinkMenorMensual"/><label for="test1">Menos que una vez al mes</label>');
+    const shots = $('<div class="input-field col s12"></div>');
+    const shots1 = $('<label for="shots">¿Cuántos vasos?</label>');
+    const shots2 = $('<input name="group8" type="radio" id="oneShot"/><label for="test1">1</label>');
+    const shots3 = $('<input name="group8" type="radio" id="twoShot"/><label for="test1">2</label>');
+    const shots4 = $('<input name="group8" type="radio" id="threeShot"/><label for="test1">3</label>');
+    const shots5 = $('<input name="group8" type="radio" id="fourShot"/><label for="test1">4</label>');
+    const shots6 = $('<input name="group8" type="radio" id="fiveShot"/><label for="test1">Más de 4</label>');
+ 
     header.append(title);
  
  peso.append(peso1);
@@ -49,12 +84,53 @@ const Header = () => {
  cantidad.append(cantidad5);
  cantidad.append(cantidad6);
  cantidad.append(cantidad7);
+ 
+ sueno.append(sueno1);
+ sueno.append(sueno2);
+ sueno.append(sueno3);
+ sueno.append(sueno4);
+ sueno.append(sueno5);
+ sueno.append(sueno6);
+ sueno.append(sueno7);
+ 
+ activity.append(activity1);
+ activity.append(activity2);
+ activity.append(activity3);
+ 
+ pactivity.append(pactivity1);
+ pactivity.append(pactivity2);
+ pactivity.append(pactivity3);
+ 
+ drink.append(drink1);
+ drink.append(drink2);
+ drink.append(drink3);
+ 
+ dcant.append(dcant1);
+ dcant.append(dcant2);
+ dcant.append(dcant3);
+ dcant.append(dcant4);
+ dcant.append(dcant5);
+ dcant.append(dcant6);
+ dcant.append(dcant7);
+ 
+ shots.append(shots1);
+ shots.append(shots2);
+ shots.append(shots3);
+ shots.append(shots4);
+ shots.append(shots5);
+ shots.append(shots6);
     
  header.append(peso);
  header.append(talla);
  header.append(meta);
  header.append(fuma);
  header.append(cantidad);
+ header.append(sueno);
+ header.append(activity);
+ header.append(pactivity);
+ header.append(drink);
+ header.append(dcant);
+ header.append(shots);
  
     return header;
 }
