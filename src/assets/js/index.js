@@ -22,7 +22,7 @@ $( _ => {
 
 	const root = $('.root');
 	render(root);
-
+	//Funcion para input calendario
 	$('.timepicker').pickadate({
 		selectMonths: true, // Creates a dropdown to control mon
 		selectYears: 15, // Creates a dropdown of 15 years to control year,
