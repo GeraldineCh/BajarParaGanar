@@ -1,4 +1,3 @@
-(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 const Header = () => {
     const header = $('<header><div class="container"></div></header>');
     const title = $('<h1 class="center-align">Estado participate</h1>');
@@ -51,21 +50,3 @@ const Header = () => {
  
     return header;
 }
-'use strict';
-
-const render = (root) => {
-    root.empty();
-    const wrapper = $('<div class="wrapper"></div>');
-    wrapper.append(Header());
-    root.append(wrapper);
-}
-
-const state = {
-    user: null,
-};
-
-$( _ => {
-    const root = $('#root');
-    render(root);
-});
-},{}]},{},[1])

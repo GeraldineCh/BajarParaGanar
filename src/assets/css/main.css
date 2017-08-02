@@ -1,0 +1,105 @@
+body,h1,h2,h3,h4,h5,h6,span,input,label,small{
+  font-family: 'Roboto' !important;
+}
+
+/*REUSABLES*/
+.yellow {
+  background-color: #fbd43b !important;
+}
+
+/*SCREEN 1*/
+.carousel{
+ overflow: hidden;
+ display: block;
+ margin-top: 100px !important;
+ height: 300px !important;
+}
+
+.img-carousel {
+ height: 200px !important;
+ width: 200px !important;
+}
+
+.title {
+ font-weight: bold;
+ color: black !important;
+ font-size: 23px;
+}
+
+.subtitle {
+ color: #8f8f8f !important;
+ font-size: 16px;
+}
+
+.register {
+ display: block;
+ margin-top: 100px;
+}
+
+#user-register {
+ font-weight: bold !important;
+ color: white !important;
+ width: 80% !important;
+ height: 37px !important;
+ line-height: 38px !important;
+}
+
+.turquoise {
+ color: turquoise;
+}
+
+/*SCREEN 2*/
+.icono-cabecera {
+ height: 100px;
+ margin: 50px 0px 20px 0px;
+}
+
+.icon-inline {
+ height: 35px;
+}
+
+.terms {
+ margin-top: -10px;
+}
+
+/*SCREEN 3*/
+.mypurple {
+ color: #49233b;
+ font-weight: bold;
+}
+
+.numero-usuario, .datos {
+ margin-top: 30px;
+}
+
+.mygray {
+ color: #8f8f8f;
+}
+
+.icon-inline-small {
+ height: 20px;
+ margin-bottom: -5px;
+}
+
+/*SCREEN 4*/
+.left {
+ float: left;
+ margin-bottom: -35px;
+ height: 25px;
+}
+
+.screen4 {
+ margin-top: -50px;
+}
+
+/*SCREEN 5*/
+.check {
+ margin-top: 50%;
+ height: 100px;
+}
+
+.purple2 {
+ color: #38052a;
+ font-weight: bolder;
+ font-size: 23px;
+}
