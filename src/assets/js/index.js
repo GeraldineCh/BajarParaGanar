@@ -3,7 +3,7 @@
 const render = (root) => {
   root.empty();
   const wrapper = $('<div class="wrapper"></div>');
-	
+
 	switch(state.screenView) {
     case null:
       wrapper.append(User(_ => render(root)));
@@ -22,5 +22,14 @@ $( _ => {
 
 	const root = $('.root');
 	render(root);
+
+	$('.timepicker').pickadate({
+		selectMonths: true, // Creates a dropdown to control mon
+		selectYears: 15, // Creates a dropdown of 15 years to control year,
+		today: 'Today',
+		clear: 'Clear',
+		close: 'Ok',
+		closeOnSelect: false // Close upon selecting a date,
+	});
 
 });
