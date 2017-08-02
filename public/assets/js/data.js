@@ -28,16 +28,6 @@ var config = {
 };
 firebase.initializeApp(config);
 
-/*
-function writeUserData(userId, name, email, imageUrl) {
-  firebase.database().ref('users/' + userId).set({
-    username: name,
-    email: email,
-    profile_picture : imageUrl
-  });
-}
-writeUserData("2", "Danna", "dana.com", "www.cdkf");
-*/
 var id = "04128345";
 
 var myCars = {
@@ -70,7 +60,18 @@ var myCars = {
 };
 firebase.database().ref('users/' + id).set(myCars);
 
-firebase.database().ref('/users/' +id).once('value').then(
-  function(snapshot)  {
-  console.log(snapshot.val());
-});
+var state = {
+  data : null,
+  page: 0
+};
+
+  firebase.database().ref('/users/' +id).once('value').then(
+    function(snapshot)  {
+      state.data = snapshot.val();
+      addConsole();
+    });
+
+function addConsole() {
+  console.log(state.data);
+}
+
