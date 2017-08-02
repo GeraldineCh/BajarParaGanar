@@ -20,6 +20,10 @@ const Header = () => {
     const cantidad1 = $('<label for="fuma">¿Con qué frecuencia fuma? </label>');
     const cantidad2 = $('<input name="group2" type="radio" id="fumaDiario"/><label for="test1">Diario</label>');
     const cantidad3 = $('<input name="group2" type="radio" id="fumaInterdiario"/><label for="test1">Interdiario</label>');
+    const cantidad4 = $('<input name="group2" type="radio" id="fumaSemanal"/><label for="test1">Semanal</label>');
+    const cantidad5 = $('<input name="group2" type="radio" id="fumaQuincenal"/><label for="test1">Quincenal</label>');
+    const cantidad6 = $('<input name="group2" type="radio" id="fumaMensual"/><label for="test1">Mensual</label>');
+    const cantidad7 = $('<input name="group2" type="radio" id="fumaMenorMensual"/><label for="test1">Menos que una vez al mes</label>');
     
     header.append(title);
  
@@ -41,6 +45,10 @@ const Header = () => {
  cantidad.append(cantidad1);
  cantidad.append(cantidad2);
  cantidad.append(cantidad3);
+ cantidad.append(cantidad4);
+ cantidad.append(cantidad5);
+ cantidad.append(cantidad6);
+ cantidad.append(cantidad7);
     
  header.append(peso);
  header.append(talla);
