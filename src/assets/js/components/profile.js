@@ -8,8 +8,8 @@ const Perfil = (update) => {
   const name = $('<h2 class="bl-text actualUser"><strong>'+state.user.NOMBRES+'</strong></h2>');
   const promesa = $('<br><div class="row"><h5 class="z-depth-1 col s12 m6 offset-m3" style="padding: 20px"><i>'+state.user.PROMESA+'</i><h5></div>');
   const rowPeso = $('<div class="perfi_peso"></div>');
-  const pesoActual = $('<h5>"'+state.user.INDICADOR_PROGRESO+'"<h5>');
-  const pesoMeta = $('<h5> "'+state.user.META_PESO+'"<h5>');
+  const pesoActual = $('<h5>Peso actual: <strong>'+state.user.INDICADOR_PROGRESO+'</strong></h5>');
+  const pesoMeta = $('<h5>Peso meta: <strong>'+state.user.META_PESO+'</strong></h5>');
   rowPeso.append(pesoActual,pesoMeta);
 
   const btnUpdate = $('<button data-target="modal1" class="btn modal-trigger">Actualizar Peso</button>');
