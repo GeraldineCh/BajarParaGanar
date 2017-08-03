@@ -2,7 +2,7 @@
 'use strict';
 
 const Welcome = (update) => {
-  const section = $('<section class="welcome__bg"></section>');
+  const section = $('<section class="welcome__bg"><img src="assets/img/logo-white.png" alt="" class="logo-welcome"></section>');
 	const container = $('<div id="welcome" class="container center"></div>');
 
 	const rowImage = $('<div class="logo"></div>');
@@ -20,7 +20,7 @@ const Welcome = (update) => {
 	section.append(container);
 
   btnSignUp.on('click',(e) => {
-    state.page = 1;
+    state.page = 4;
     update();
   });
   btnLogIn.on('click',(e) => {

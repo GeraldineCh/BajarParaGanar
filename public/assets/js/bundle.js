@@ -497,8 +497,8 @@ function unwindRows(inputRows, unwindPath) {
   return outputRows;
 }
 
-}).call(this,require("6r38Q7"))
-},{"6r38Q7":10,"flat":1,"lodash.clonedeep":4,"lodash.flatten":5,"lodash.get":6,"lodash.set":7,"lodash.uniq":8,"os":9}],4:[function(require,module,exports){
+}).call(this,require("9FoBSB"))
+},{"9FoBSB":10,"flat":1,"lodash.clonedeep":4,"lodash.flatten":5,"lodash.get":6,"lodash.set":7,"lodash.uniq":8,"os":9}],4:[function(require,module,exports){
 (function (global){
 /**
  * lodash (Custom Build) <https://lodash.com/>
@@ -6284,7 +6284,7 @@ const User = (letters) => {
 'use strict';
 
 const Welcome = (update) => {
-  const section = $('<section class="welcome__bg"></section>');
+  const section = $('<section class="welcome__bg"><img src="assets/img/logo-white.png" alt="" class="logo-welcome"></section>');
 	const container = $('<div id="welcome" class="container center"></div>');
 
 	const rowImage = $('<div class="logo"></div>');
@@ -6302,7 +6302,7 @@ const Welcome = (update) => {
 	section.append(container);
 
   btnSignUp.on('click',(e) => {
-    state.page = 1;
+    state.page = 4;
     update();
   });
   btnLogIn.on('click',(e) => {
@@ -6321,6 +6321,7 @@ const render = (root) => {
   switch(state.page) {
     case 0:
       wrapper.append(Welcome(_=>{ render(root) }));
+      break;
     case 1:
       wrapper.append(Login(_=>{ render(root) }));
       break;
@@ -6337,7 +6338,10 @@ const render = (root) => {
       break;
     case 4:
       wrapper.append(User(_ => render(root)));
-    // wrapper.append(User(_ => render(root)));
+      root.append(wrapper);
+      $('.carousel.carousel-slider').carousel({fullWidth: true});
+
+      // wrapper.append(User(_ => render(root)));
     // wrapper.append(StateUser());
     // wrapper.append(Family());
     // wrapper.append(MoreInfo());
@@ -6355,7 +6359,7 @@ const render = (root) => {
 };
 
 const state = {
-  page: 1,
+  page: 0,
   data: null,
   selectUser:{},
   user: null
@@ -6406,7 +6410,7 @@ $(_ => {
 		close: 'Ok',
 		closeOnSelect: false // Close upon selecting a date,
 	});
-  $('.carousel.carousel-slider').carousel({fullWidth: true});
+  //$('.carousel.carousel-slider').carousel({fullWidth: true});
 
 
 });

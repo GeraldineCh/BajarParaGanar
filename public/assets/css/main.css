@@ -7,18 +7,28 @@
 }
 
 .welcome__bg {
+  background-image: url(http://www.desarrollando-ideas.com/wp-content/uploads/sites/5/2016/06/iStock_51836670_XLARGE1-960x576.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: left;
+  background-size: cover;
   /*
-   background-image: url(http://www.desarrollando-ideas.com/wp-content/uploads/sites/5/2016/06/iStock_51836670_XLARGE1-960x576.jpg);
-   background-repeat: no-repeat;
-   background-attachment: fixed;
-   background-size: cover;
+
   */
 }
 
 .btn-welcome {
-  width: 200px;
+  margin: 20px 0;
+  font-size: 2rem;
+  width: 267px;
   opacity: 1;
   background-color: #56009C;
+}
+
+.logo-welcome {
+  width: 53%;
+  position: absolute;
+  top: 20px;
 }
 
 .blue-text {
