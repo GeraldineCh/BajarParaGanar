@@ -13,8 +13,8 @@ const User = (letters) => {
 	const mobile = $('<div class="carousel-item" href="8"><label for="js_input_mobile">Celular</label><input id="js_input_mobile" type="text"></div>');
 	const email = $('<div class="carousel-item" href="9"><label for="js_input_email">Email</label><input id="js_input_email" type="email" class="validate"></div>');
 	const footer = $('<div class="footer deep-orange accent-3 right-align" style="height: 10vh;">');
-	const btnPrev = $('<button class="right-align">></button>');
-	const btnNext = $('<button class="right-align"><</button>');
+	const btnPrev = $('<button class="right-align"><</button>');
+	const btnNext = $('<button class="right-align">></button>');
 
 	form.append(name);
 	form.append(lastName1);
