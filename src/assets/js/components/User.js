@@ -25,6 +25,17 @@ const User = (letters) => {
 	form.append(dni);
 	form.append(mobile);
 	form.append(email);
+	form.append(Weight);
+	form.append(Height);
+	form.append(Goal);//
+	form.append(Smoke);
+	form.append(Cantidad);
+	form.append(Sleep);
+	form.append(Activity);
+	form.append(Pactivity);
+	form.append(Drink);
+	form.append(Dcant);
+	form.append(Shots);
 	container.append(form);
 	footer.append(btnPrev);
 	footer.append(btnNext);
