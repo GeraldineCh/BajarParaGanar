@@ -497,8 +497,8 @@ function unwindRows(inputRows, unwindPath) {
   return outputRows;
 }
 
-}).call(this,require("FT5ORs"))
-},{"FT5ORs":10,"flat":1,"lodash.clonedeep":4,"lodash.flatten":5,"lodash.get":6,"lodash.set":7,"lodash.uniq":8,"os":9}],4:[function(require,module,exports){
+}).call(this,require("6r38Q7"))
+},{"6r38Q7":10,"flat":1,"lodash.clonedeep":4,"lodash.flatten":5,"lodash.get":6,"lodash.set":7,"lodash.uniq":8,"os":9}],4:[function(require,module,exports){
 (function (global){
 /**
  * lodash (Custom Build) <https://lodash.com/>
@@ -5572,7 +5572,6 @@ const getUserDni = (dni) => {
   });
 };
 
-
 const CargarData = () => {
   return new Promise((resolve,reject) => {
     resolve(getUsers());
@@ -5614,56 +5613,6 @@ const ValidateNumber = (e)=>{
     e.preventDefault();
   }
 }
-
-'use strict';
-const User = (letters) => {
-
-	const container = $('<form></form>');
-	const title = $('<h1>Datos del participante</h1>');
-	const name = $('<div><label for="js_input_name">Nombre</label><input id="js_input_name" type="text"></div>');
-	const lastName1 = $('<div><label for="js_input_lname_1">Apellido 1</label><input id="js_input_lname_1" type="text"></div>');
-	const lastName2 = $('<div><label for="js_input_lname_2">Apellido 2</label><input id="js_input_lname_2" type="text"></div>');
-	const genre = $('<div><select><option value="" disabled selected>Género</option><option value="1">Femenino</option><option value="2">Masculino</option><option value="3">Otro</option></select></div>');
-	const date = $('<input type="text" class="timepicker">'); // Input calendario
-	const consSms = $('<div><input type="checkbox" id="test5"/><label for="test5">Recibir sms</label></div>');
-	const dni = $('<div><label for="js_input_dni">DNI</label><input id="js_input_dni" type="text"></div>');
-	const mobile = $('<div><label for="js_input_mobile">Celular</label><input id="js_input_mobile" type="text"></div>');
-	const email = $('<div><label for="js_input_email">Email</label><input id="js_input_email" type="email" class="validate"></div>');
-
-	container.append(title);
-	container.append(name);
-	container.append(lastName1);
-	container.append(lastName2);
-	container.append(genre);
-	container.append(date);
-	container.append(consSms);
-	container.append(dni);
-	container.append(mobile);
-	container.append(email);
-	//name.prop("validation", "letters");
-	//console.log(name.prop("validation"));
-
-	function letters(input) {
-		input.last().on('keypress', (e) => {
-			let codigoTecla = e.keyCode;
-				if((codigoTecla >= 97 && codigoTecla <= 122) ||
-					 (codigoTecla >= 65 && codigoTecla <= 90) ||
-					 (codigoTecla == 32) || (codigoTecla == 39)) {
-
-					$('#error').text("");
-					return true
-				} else {
-					$('#error').text("error");
-					return false
-				}
-		});
-	}
-	letters(name);
-	letters(lastName1);
-	letters(lastName2);
-
-	return container;
-};
 
 const Family = () => {
     const container = $('<div class="container"></div>');
@@ -5756,7 +5705,7 @@ const Login = (update) => {
   const divDni = $('<div class="input-field col s6">');
   const divPassword = $('<div class="input-field col s6">');
 
-  const inputDni = $('<input placeholder="Ingrese Dni" id="loginDni" type="text" class="validate center-align">');
+  const inputDni = $('<input placeholder="Ingrese Dni" id="loginDni" type="text" class="validate center-align" value="0123456">');
   const inputPassword = $('<input placeholder="Ingrese Password" id="loginPassword" disabled type="password" class="validate center-align">');
 
   const labelDni = $('<h2 for="loginDni">DNI Number: </h2>');
@@ -5782,8 +5731,7 @@ const Login = (update) => {
   const ValidateUser = () =>{
     getUserDni(inputDni.val()).then((response) =>{
       state.user = response;
-      console.log(state.user);
-      if(response != null && inputPassword.val() == '123456'){
+      if(response != null && inputPassword.val() == '1'){
         state.page = 2;
         update();
       }else {
@@ -5920,13 +5868,14 @@ const MoreInfo = () => {
 
 const Perfil = (update) => {
   console.log(state.user.NRO_DOCUMENTO);
-  const section = $('<section class="perfil__bg">Perfil</section>');
-  const name = $('<h3>'+state.user.NOMBRES+'<h3>');
-  const promesa = $('<h5>"'+state.user.PROMESA+'"<h5>');
+  const section = $('<section class="perfil__bg"><img src="assets/img/logo-white.png" alt="" class="logo-white"></section>');
+  const header = $('<div class="deep-purple lighten-1 white-text perfil">Perfil</div>');
+  const name = $('<br><h3> Hola '+state.user.NOMBRES+'<h3>');
+  const promesa = $('<br><div class="row"><h5 class="z-depth-1 col s12 m6 offset-m3" style="padding: 20px"><i>'+state.user.PROMESA+'</i><h5></div>');
   const rowPeso = $('<div class="perfi_peso"></div>');
   const pesoActual = $('<h5>"'+state.user.INDICADOR_PROGRESO+'"<h5>');
-  const pesoMeta = $('<h5>"'+state.user.META_PESO+'"<h5>');
-  rowPeso.append(pesoActual,pesoMeta)
+  const pesoMeta = $('<h5> "'+state.user.META_PESO+'"<h5>');
+  rowPeso.append(pesoActual,pesoMeta);
 
   const btnUpdate = $('<button data-target="modal1" class="btn modal-trigger">Actualizar Peso</button>');
 // <button data-target="modal1" class="btn modal-trigger">Modal</button>
@@ -5939,6 +5888,7 @@ const Perfil = (update) => {
 	const btnSignUp = $('<button type="button" class="btn-welcome yellow waves-effect waves-light btn-large" name="button">Sign up</button>');
 	const btnLogIn = $('<button type="button" class="btn-welcome yellow waves-effect waves-light btn-large" name="button">Log in</button>');
   container.append(name,promesa,rowPeso,btnUpdate);
+  section.append(header);
   section.append(container);
 
   btnUpdate.on('click',(e) => {
@@ -6145,6 +6095,56 @@ const StateUser = () => {
     return principal;
 }
 'use strict';
+const User = (letters) => {
+
+	const container = $('<form></form>');
+	const title = $('<h1>Datos del participante</h1>');
+	const name = $('<div><label for="js_input_name">Nombre</label><input id="js_input_name" type="text"></div>');
+	const lastName1 = $('<div><label for="js_input_lname_1">Apellido 1</label><input id="js_input_lname_1" type="text"></div>');
+	const lastName2 = $('<div><label for="js_input_lname_2">Apellido 2</label><input id="js_input_lname_2" type="text"></div>');
+	const genre = $('<div><select><option value="" disabled selected>Género</option><option value="1">Femenino</option><option value="2">Masculino</option><option value="3">Otro</option></select></div>');
+	const date = $('<input type="text" class="timepicker">'); // Input calendario
+	const consSms = $('<div><input type="checkbox" id="test5"/><label for="test5">Recibir sms</label></div>');
+	const dni = $('<div><label for="js_input_dni">DNI</label><input id="js_input_dni" type="text"></div>');
+	const mobile = $('<div><label for="js_input_mobile">Celular</label><input id="js_input_mobile" type="text"></div>');
+	const email = $('<div><label for="js_input_email">Email</label><input id="js_input_email" type="email" class="validate"></div>');
+
+	container.append(title);
+	container.append(name);
+	container.append(lastName1);
+	container.append(lastName2);
+	container.append(genre);
+	container.append(date);
+	container.append(consSms);
+	container.append(dni);
+	container.append(mobile);
+	container.append(email);
+	//name.prop("validation", "letters");
+	//console.log(name.prop("validation"));
+
+	function letters(input) {
+		input.last().on('keypress', (e) => {
+			let codigoTecla = e.keyCode;
+				if((codigoTecla >= 97 && codigoTecla <= 122) ||
+					 (codigoTecla >= 65 && codigoTecla <= 90) ||
+					 (codigoTecla == 32) || (codigoTecla == 39)) {
+
+					$('#error').text("");
+					return true
+				} else {
+					$('#error').text("error");
+					return false
+				}
+		});
+	}
+	letters(name);
+	letters(lastName1);
+	letters(lastName2);
+
+	return container;
+};
+
+'use strict';
 
 const Welcome = (update) => {
   const section = $('<section class="welcome__bg"></section>');
@@ -6207,7 +6207,7 @@ const render = (root) => {
 };
 
 const state = {
-  page: 0,
+  page: 1,
   data: null,
   selectUser:{},
   user: null

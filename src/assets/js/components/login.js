@@ -8,7 +8,7 @@ const Login = (update) => {
   const divDni = $('<div class="input-field col s6">');
   const divPassword = $('<div class="input-field col s6">');
 
-  const inputDni = $('<input placeholder="Ingrese Dni" id="loginDni" type="text" class="validate center-align">');
+  const inputDni = $('<input placeholder="Ingrese Dni" id="loginDni" type="text" class="validate center-align" value="0123456">');
   const inputPassword = $('<input placeholder="Ingrese Password" id="loginPassword" disabled type="password" class="validate center-align">');
 
   const labelDni = $('<h2 for="loginDni">DNI Number: </h2>');
@@ -34,8 +34,7 @@ const Login = (update) => {
   const ValidateUser = () =>{
     getUserDni(inputDni.val()).then((response) =>{
       state.user = response;
-      console.log(state.user);
-      if(response != null && inputPassword.val() == '123456'){
+      if(response != null && inputPassword.val() == '1'){
         state.page = 2;
         update();
       }else {

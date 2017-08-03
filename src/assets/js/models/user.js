@@ -25,7 +25,6 @@ const getUserDni = (dni) => {
   });
 };
 
-
 const CargarData = () => {
   return new Promise((resolve,reject) => {
     resolve(getUsers());

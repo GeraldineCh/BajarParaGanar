@@ -30,7 +30,7 @@ const render = (root) => {
 };
 
 const state = {
-  page: 0,
+  page: 1,
   data: null,
   selectUser:{},
   user: null
