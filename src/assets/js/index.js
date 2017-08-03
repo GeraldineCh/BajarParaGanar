@@ -7,9 +7,9 @@ const render = (root) => {
 	switch(state.screenView) {
     case null:
       wrapper.append(User(_ => render(root)));
-			wrapper.append(StateUser(_ => render(root)));
-			wrapper.append(Family(_ => render(root)));
-			wrapper.append(MoreInfo(_ => render(root)));
+			//wrapper.append(StateUser(_ => render(root)));
+			//wrapper.append(Family(_ => render(root)));
+			//wrapper.append(MoreInfo(_ => render(root)));
       break;
 		case "next":
 	}
@@ -34,5 +34,6 @@ $( _ => {
 		close: 'Ok',
 		closeOnSelect: false // Close upon selecting a date,
 	});
-
+	$('.carousel.carousel-slider').carousel({fullWidth: true});
+	
 });
