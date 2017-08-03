@@ -1,38 +1,38 @@
 'use strict';
 
 const render = (root) => {
-  root.empty();
-  const wrapper = $('<div class="wrapper"></div>');
+    root.empty();
+    const wrapper = $('<div class="wrapper"></div>');
 
-	switch(state.screenView) {
+    switch (state.screenView) {
     case null:
-      wrapper.append(User(_ => render(root)));
-			wrapper.append(StateUser());
-			wrapper.append(Family());
-			wrapper.append(MoreInfo());
-      break;
-		case "next":
-	}
+        wrapper.append(User(_ => render(root)));
+        //wrapper.append(StateUser());
+        //wrapper.append(Family());
+        //wrapper.append(MoreInfo());
+        break;
+    case "next":
+    }
 
-  root.append(wrapper);
+    root.append(wrapper);
 }
 
 const state = {
-	screenView: null
+    screenView: null
 };
 
-$( _ => {
+$(_ => {
 
-	const root = $('.root');
-	render(root);
-	//Funcion para input calendario
-	$('.timepicker').pickadate({
-		selectMonths: true, // Creates a dropdown to control mon
-		selectYears: 15, // Creates a dropdown of 15 years to control year,
-		today: 'Today',
-		clear: 'Clear',
-		close: 'Ok',
-		closeOnSelect: false // Close upon selecting a date,
-	});
+    const root = $('.root');
+    render(root);
+    //Funcion para input calendario
+    $('.timepicker').pickadate({
+        selectMonths: true, // Creates a dropdown to control mon
+        selectYears: 15, // Creates a dropdown of 15 years to control year,
+        today: 'Today',
+        clear: 'Clear',
+        close: 'Ok',
+        closeOnSelect: false // Close upon selecting a date,
+    });
 
 });
