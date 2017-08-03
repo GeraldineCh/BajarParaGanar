@@ -109,8 +109,14 @@ const TeamName = () => {
 	const teamName = $('<div class="input-field col s12 carousel-item"></div>');
 	const teamName1 = $('<label for="teamName">Nombre del equipo con el que perderá peso: </label>');
 	const teamName2 = $('<input id="teamName" type="text" class="validate">');
+	const btnSave = $('<button>Guardar</button>');
 
 	teamName.append(teamName1);
 	teamName.append(teamName2);
+	teamName.append(btnSave);
+
+	btnSave.click(function (e) {
+		e.preventDefault();
+	});
 	return teamName;
 }
