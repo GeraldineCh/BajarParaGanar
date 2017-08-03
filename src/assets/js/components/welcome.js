@@ -2,7 +2,7 @@
 
 const Welcome = (update) => {
   const section = $('<section class="welcome__bg"></section>');
-	const container = $('<div id="welcome" class="container-fluid center"></div>');
+	const container = $('<div id="welcome" class="container center"></div>');
 
 	const rowImage = $('<div class="logo"></div>');
 	const rowBtn = $('<div class="welcome_btn contentButton row"></div>');

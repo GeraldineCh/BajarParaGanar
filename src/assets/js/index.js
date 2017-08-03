@@ -3,27 +3,41 @@
 const render = (root) => {
   root.empty();
   const wrapper = $('<div class="wrapper"></div>');
-
-  if(state.page == 0){
-    wrapper.append(Reporte(_=>{ render(root) }));
-  }else if(state.page == 1){
-    wrapper.append(Welcome(_=>{ render(root) }));
-  }else if (state.page == 2){
-    wrapper.append(ChoiceOption(_=>{ render(root) }));
+  switch(state.page) {
+    case 0:
+      // wrapper.append(Welcome(_=>{ render(root) }));
+      wrapper.append(Login(_=>{ render(root) }));
+    case 1:
+      wrapper.append(User(_ => render(root)));
+      // wrapper.append(StateUser());
+      // wrapper.append(Family());
+      // wrapper.append(MoreInfo());
+      break;
+    case 2:
+      wrapper.append(StateUser());
+      break;
+    case 3:
+      wrapper.append(Family());
+      break;
+    case 4:
+      wrapper.append(MoreInfo());
+      break;
+    case 5:
+      wrapper.append(Reporte(_=>{ render(root) }));
+      break;
+    case "next":
   }
   root.append(wrapper);
 };
 
 const state = {
-  page: 1,
+  page: 0,
   data: null,
   selectUser:{}
 };
 
-
 $(_ => {
   const root = $("#root");
-  render(root);
 
   CargarData().then((response)=>{
     state.data = response;
@@ -59,5 +73,15 @@ $(_ => {
       "PESO6" : "97",
       "INDICADOR_PROGRESO" : "120"
       };
-      newUser('123',nuevo);
+  newUser('123',nuevo);
+  render(root);
+  $('.timepicker').pickadate({
+		selectMonths: true, // Creates a dropdown to control mon
+		selectYears: 15, // Creates a dropdown of 15 years to control year,
+		today: 'Today',
+		clear: 'Clear',
+		close: 'Ok',
+		closeOnSelect: false // Close upon selecting a date,
+	});
+
 });
