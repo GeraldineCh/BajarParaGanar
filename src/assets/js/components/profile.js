@@ -35,10 +35,12 @@ const Perfil = (update) => {
       console.log($('#newPeso').val());
       if($('#newPeso').val() != ""){
         updatePeso(state.user.NRO_DOCUMENTO,$('#newPeso').val());
-        $('#newPeso').val('');
+       // $('#newPeso').val('');
+        state.page = 3;
+        update();
       }
     });
   });
 
   return section;
-}
+};
