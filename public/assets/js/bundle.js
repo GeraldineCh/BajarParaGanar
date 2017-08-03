@@ -5782,7 +5782,6 @@ const Login = (update) => {
   const ValidateUser = () =>{
     getUserDni(inputDni.val()).then((response) =>{
       state.user = response;
-      console.log(state.user);
       if(response != null && inputPassword.val() == '123456'){
         state.page = 2;
         update();
@@ -5951,7 +5950,9 @@ const Perfil = (update) => {
       console.log($('#newPeso').val());
       if($('#newPeso').val() != ""){
         updatePeso(state.user.NRO_DOCUMENTO,$('#newPeso').val());
-        $('#newPeso').val('');
+        state.page = 3;
+        update();
+        // $('#newPeso').val('');
       }
     });
   });
@@ -5978,6 +5979,48 @@ var fields2 = ['EMAIL','CELULAR', 'SMS_CONSENT'];
    container.append(btn1,btn2);
    return container;
  };
+
+'use strict';
+const ItemCarousel = (img,title,href) =>{
+  const item = $('<div class="carousel-item white black-text" href="#'+href+'"></div>');
+  const container = $('<div class="container"> </div>');
+  const imagen = $('<img src="'+img+'" width="200"class="img-responsive secction">');
+  const h2 = $('<h2>'+title+'</h2>');
+  container.append(imagen,h2);
+  item.append(container);
+  return item;
+};
+
+const Salir = (update) => {
+  console.log(state.user);
+  const progreso = parseInt(state.user.PESO) - parseInt(state.user.INDICADOR_PROGRESO);
+  const section = $('<section class="salir__bg"></section>');
+	const container = $('<div id="salir" class="container center"></div>');
+
+	const rowImage = $('<div class="logo"></div>');
+  const divFalta = $('<div class="col s6"></div>');
+  const falta = $('<h3>'+progreso+'Kg</h3>');
+  const p = $('<p><i>¡Persiste que podrás!</i></p>');
+  const titleInfo = $('<h3>Información Útil</h3>');
+
+const carrucel = $(`<div class="carousel carousel-slider center" data-indicators="true"></div>`);
+const item1 = ItemCarousel('https://lorempixel.com/250/250/nature/1','Paga a quien quieras desde donde quieras, sin efectivo','one');
+const item2 = ItemCarousel('https://lorempixel.com/250/250/nature/1','Elige a quién pagar desde tu lista de contactos','two');
+const item3 = ItemCarousel('https://lorempixel.com/250/250/nature/1','La transferencia es inmediata y gratuita de una cuenta a otra','three');
+
+carrucel.append(item1);
+carrucel.append(item2);
+carrucel.append(item3);
+
+	divFalta.append(falta,p);
+  container.append(carrucel);
+
+	container.append(divFalta);
+
+	section.append(container);
+
+  return section;
+}
 
 const StateUser = () => {
     const principal = $('<div class="container"></div>');
@@ -6190,7 +6233,12 @@ const render = (root) => {
       wrapper.append(Perfil(_=>{ render(root) }));
       break;
     case 3:
-      wrapper.append(Perfil(_=>{ render(root) }));
+      wrapper.append(Salir(_=>{ render(root) }));
+      root.append(wrapper);
+      $('.carousel').carousel('');
+      setInterval(function() {
+        $('.carousel').carousel('next');
+      }, 5000);
       break;
     case 4:
     // wrapper.append(User(_ => render(root)));
@@ -6204,10 +6252,14 @@ const render = (root) => {
     case "next":
   }
   root.append(wrapper);
+  // $('.carousel').carousel({fullWidth: true});
+  // setInterval(function() {
+  //   $('.carousel').carousel('next');
+  // }, 5000);
 };
 
 const state = {
-  page: 0,
+  page: 1,
   data: null,
   selectUser:{},
   user: null
@@ -6222,8 +6274,8 @@ $(_ => {
   });
 
   var nuevo = {
-      "NOMBRES": "Liliana",
-      "PATERNO": "Peña",
+      "NOMBRES": "Wendy",
+      "PATERNO": "Ramos",
       "MATERNO": "Gonzales",
       "SEXO": "femenino",
       "FECHA_NACIMIENTO": "22/10/1992",
@@ -6250,7 +6302,7 @@ $(_ => {
       "PESO6" : "97",
       "INDICADOR_PROGRESO" : "120"
       };
-  newUser('123',nuevo);
+  newUser('01234567',nuevo);
   render(root);
   $('.timepicker').pickadate({
 		selectMonths: true, // Creates a dropdown to control mon
@@ -6260,6 +6312,7 @@ $(_ => {
 		close: 'Ok',
 		closeOnSelect: false // Close upon selecting a date,
 	});
+
 
 });
 

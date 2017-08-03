@@ -34,7 +34,6 @@ const Login = (update) => {
   const ValidateUser = () =>{
     getUserDni(inputDni.val()).then((response) =>{
       state.user = response;
-      console.log(state.user);
       if(response != null && inputPassword.val() == '123456'){
         state.page = 2;
         update();

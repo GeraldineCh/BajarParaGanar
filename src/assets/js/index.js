@@ -13,7 +13,12 @@ const render = (root) => {
       wrapper.append(Perfil(_=>{ render(root) }));
       break;
     case 3:
-      wrapper.append(Perfil(_=>{ render(root) }));
+      wrapper.append(Salir(_=>{ render(root) }));
+      root.append(wrapper);
+      $('.carousel').carousel('');
+      setInterval(function() {
+        $('.carousel').carousel('next');
+      }, 5000);
       break;
     case 4:
     // wrapper.append(User(_ => render(root)));
@@ -27,10 +32,14 @@ const render = (root) => {
     case "next":
   }
   root.append(wrapper);
+  // $('.carousel').carousel({fullWidth: true});
+  // setInterval(function() {
+  //   $('.carousel').carousel('next');
+  // }, 5000);
 };
 
 const state = {
-  page: 0,
+  page: 1,
   data: null,
   selectUser:{},
   user: null
@@ -45,8 +54,8 @@ $(_ => {
   });
 
   var nuevo = {
-      "NOMBRES": "Liliana",
-      "PATERNO": "Peña",
+      "NOMBRES": "Wendy",
+      "PATERNO": "Ramos",
       "MATERNO": "Gonzales",
       "SEXO": "femenino",
       "FECHA_NACIMIENTO": "22/10/1992",
@@ -73,7 +82,7 @@ $(_ => {
       "PESO6" : "97",
       "INDICADOR_PROGRESO" : "120"
       };
-  newUser('123',nuevo);
+  newUser('01234567',nuevo);
   render(root);
   $('.timepicker').pickadate({
 		selectMonths: true, // Creates a dropdown to control mon
@@ -83,5 +92,6 @@ $(_ => {
 		close: 'Ok',
 		closeOnSelect: false // Close upon selecting a date,
 	});
+
 
 });
