@@ -31,7 +31,6 @@ const Login = (update) => {
         if (inputDni.val().length == 8) {
             inputPassword.removeAttr('disabled');
             inputPassword.focus();
-
         } else
             inputPassword.attr('disabled', 'false');
     };
@@ -39,14 +38,14 @@ const Login = (update) => {
     const ValidateUser = () => {
         getUserDni(inputDni.val()).then((response) => {
             state.user = response;
-            if (response != null && inputPassword.val() == '123456') {
-                state.page = 2;
-                update();
-            } else {
-                // container.append(error);
+            if (response != null && inputPassword.val() === '123456') {
+                register_btn.on('click', () => {
+                    state.page = 2;
+                    update();
+                });
             }
         });
-    }
+    };
 
     inputDni.on({
         keypress: ValidateNumber,

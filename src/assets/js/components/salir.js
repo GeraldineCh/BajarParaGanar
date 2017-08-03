@@ -11,7 +11,7 @@ const ItemCarousel = (img,title,href) =>{
 
 const Salir = (update) => {
   console.log(state.user);
-  const progreso = parseInt(state.user.PESO) - parseInt(state.user.INDICADOR_PROGRESO);
+  const progreso = parseInt(state.user.INDICADOR_PROGRESO) - parseInt(state.user.META_PESO);
   const section = $('<section class="salir__bg"><img src="assets/img/logo-white.png" alt="" class="logo-white"></section>');
   const header = $('<div class="deep-purple lighten-1 white-text perfil">Salir</div><br>');
 	const container = $('<div id="salir" class="container center"></div>');

@@ -4,8 +4,6 @@ const render = (root) => {
   root.empty();
   const wrapper = $('<div class="wrapper"></div>');
   switch(state.page) {
-    case 0:
-      wrapper.append(Welcome(_=>{ render(root) }));
     case 1:
       wrapper.append(Login(_=>{ render(root) }));
       break;
@@ -22,10 +20,6 @@ const render = (root) => {
       break;
     case 4:
       wrapper.append(User(_ => render(root)));
-    // wrapper.append(User(_ => render(root)));
-    // wrapper.append(StateUser());
-    // wrapper.append(Family());
-    // wrapper.append(MoreInfo());
       break;
     case 5:
       wrapper.append(Reporte(_=>{ render(root) }));
@@ -33,17 +27,14 @@ const render = (root) => {
     case "next":
   }
   root.append(wrapper);
-  // $('.carousel').carousel({fullWidth: true});
-  // setInterval(function() {
-  //   $('.carousel').carousel('next');
-  // }, 5000);
 };
 
 const state = {
   page: 1,
   data: null,
   selectUser:{},
-  user: null
+  user: null,
+    pesoActual: null
 };
 
 $(_ => {
@@ -51,21 +42,21 @@ $(_ => {
   CargarData().then((response)=>{
     state.data = response;
   });
-
+/*
   var nuevo = {
-      "NOMBRES": "Wendy",
+      "NOMBRES": "Pedro",
       "PATERNO": "Ramos",
       "MATERNO": "Gonzales",
-      "SEXO": "femenino",
+      "SEXO": "masculino",
       "FECHA_NACIMIENTO": "22/10/1992",
       "SMS_CONSENT": "OPTEN-IN",
       "NRO_DOCUMENTO": "04334343",
       "CELULAR": "5198475293",
-      "EMAIL": "DSJD@SD.com",
+      "EMAIL": "pedrito@email.com",
       "PESO": "130",
-      "EQUIPO_FUTBOL"  : "U",
-      "TALLA" : "120",
-      "PROMESA"  : "Quiero bajar por ...",
+      "EQUIPO_FUTBOL": "U",
+      "TALLA" : "170",
+      "PROMESA"  : "Quiero bajar porque quiero montar el Everest.",
       "TIENE_HIJOS" : "Yes",
       "NRO_HIJOS": "2",
       "ESTADO_CIVIL" : "Casado",
@@ -81,7 +72,7 @@ $(_ => {
       "PESO6" : "97",
       "INDICADOR_PROGRESO" : "120"
       };
-  newUser('01234567',nuevo);
+  newUser('01234567',nuevo);*/
   render(root);
   $('.timepicker').pickadate({
 		selectMonths: true, // Creates a dropdown to control mon
