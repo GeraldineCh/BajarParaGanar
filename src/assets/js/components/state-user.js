@@ -1,5 +1,5 @@
 const Weight = () => {
-  const weight = $('<div class="input-field carousel-item col s12"></div>');
+  const weight = $('<div class="carousel-item col s12"></div>');
   const weight1 = $('<label for="weightInit">Peso: </label>');
   const weight2 = $('<input id="weightInit" type="text" class="validate">');
   const weight3 = $('<span><br>*Mínimo 40kg, máx. 200kg.</span>');

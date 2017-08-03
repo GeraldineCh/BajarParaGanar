@@ -9,7 +9,7 @@ const User = (letters) => {
   const lastName2 = $('<div class="carousel-item" href="three"><label for="js_input_lname_2">Apellido Materno</label><input id="js_input_lname_2" type="text"></div>');
   const genre = $('<div class="carousel-item" href="four"><select style="display: block" id="genre"><option value="" disabled selected>Género</option><option value="F">Femenino</option><option value="M">Masculino</option><option value="Otro">Otro</option></select></div>');
   const date = $('<div class="carousel-item" href="five"><input type="text" class="timepicker" id="dateBirth"></div>'); // Input calendario
-  const consSms = $('<div class="carousel-item" href="six"><input name="sms" type="radio" id="smsYes" value="OPTEN-IN"/><label for="smsYes">Sí, deseo recibir consejos y mensajes que mejoren mi estilo de vida</label><input name="sms" type="radio" id="smsNo"/><label for="smsNo">No, no deseo participar.</label></div>');
+  const consSms = $('<div class="carousel-item" href="six"><input name="sms" type="radio" id="smsYes" value="OPTEN-IN" class="sms"/><label for="smsYes">Sí, deseo recibir consejos y mensajes que mejoren mi estilo de vida</label><input name="sms" type="radio" id="smsNo" class="sms" value="denied"/><label for="smsNo">No, no deseo participar.</label></div>');
   const dni = $('<div class="carousel-item" href="seven"><label for="js_input_dni">DNI</label><input id="js_input_dni" type="text"></div>');
   const mobile = $('<div class="carousel-item" href="8"><label for="js_input_mobile">Celular</label><input id="js_input_mobile" type="text"></div>');
   const email = $('<div class="carousel-item" href="9"><label for="js_input_email">Email</label><input id="js_input_email" type="email" class="validate"></div>');
@@ -93,7 +93,7 @@ const User = (letters) => {
     state.selectUser.NRO_DOCUMENTO = $('#js_input_dni').val();
     state.selectUser.SEXO = $('#genre').val();
     state.selectUser.FECHA_NACIMIENTO = $('#dateBirth').val();
-    state.selectUser.SMS_CONSENT = $('#smsYes').val();
+    state.selectUser.SMS_CONSENT = $('.sms').val();
     state.selectUser.EMAIL = $('#js_input_email').val();
     state.selectUser.CELULAR = $('#js_input_mobile').val();
 
@@ -103,7 +103,7 @@ const User = (letters) => {
 
     state.selectUser.CELULAR_PAREJA = $('#phoneWife').val();
     state.selectUser.ESTADO_CIVIL = $('#civilState').val();
-    state.selectUser.TIENE_HIJOS = $('input[type=radio]').val();
+    state.selectUser.TIENE_HIJOS = $('.hijos').val();
     state.selectUser.NOMBRE_PAREJA = $('#nameWife').val();
     state.selectUser.NRO_HIJOS = $('#numChildren').val();
 

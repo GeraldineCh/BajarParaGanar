@@ -497,8 +497,8 @@ function unwindRows(inputRows, unwindPath) {
   return outputRows;
 }
 
-}).call(this,require("9FoBSB"))
-},{"9FoBSB":10,"flat":1,"lodash.clonedeep":4,"lodash.flatten":5,"lodash.get":6,"lodash.set":7,"lodash.uniq":8,"os":9}],4:[function(require,module,exports){
+}).call(this,require("6r38Q7"))
+},{"6r38Q7":10,"flat":1,"lodash.clonedeep":4,"lodash.flatten":5,"lodash.get":6,"lodash.set":7,"lodash.uniq":8,"os":9}],4:[function(require,module,exports){
 (function (global){
 /**
  * lodash (Custom Build) <https://lodash.com/>
@@ -5661,8 +5661,8 @@ const Cell = () => {
 const Children = () => {
   const children = $('<div class="carousel-item"></div>');
   const children1 = $('<label>¿Tiene hijos?</label>');
-  const children2 = $('<input name="group6" type="radio" id="childrenSi"/><label for="childrenSi">Sí</label>');
-  const children3 = $('<input name="group6" type="radio" id="childrenNo"/><label for="childrenNo">No</label>');
+  const children2 = $('<input name="group6" class="hijos" type="radio" id="childrenSi"/><label for="childrenSi">Sí</label>');
+  const children3 = $('<input name="group6" class="hijos" type="radio" id="childrenNo"/><label for="childrenNo">No</label>');
 
   children.append(children1);
   children.append(children2);
@@ -5699,14 +5699,13 @@ const AgeChildren = () => {
   ageChildren.append(ageChildren2);
   return ageChildren;
 }
-
 'use strict';
 
 const Login = (update) => {
   const section = $('<section class="login__bg"></section>');
-	const container = $('<div id="login" class="container center"></div>');
+  const container = $('<div id="login" class="container center"></div>');
 
-	const rowImage = $('<div class="logo"></div>');
+  const rowImage = $('<div class="logo"></div>');
   const divDni = $('<div class="input-field col s6">');
   const divPassword = $('<div class="input-field col s6">');
 
@@ -5717,26 +5716,28 @@ const Login = (update) => {
   const labelPassword = $('<h4 for="loginPassword" class="blue-text">Password</h4>');
   const error = $('<span class="red-text">Error en usuario</span>');
 
-	divDni.append(labelDni,inputDni);
+  divDni.append(labelDni,inputDni);
   divPassword.append(labelPassword,inputPassword);
 
-	container.append(rowImage,divDni,divPassword);
+  container.append(rowImage,divDni,divPassword);
 
-	section.append(container);
+  section.append(container);
 
   const activarCheck = _ => {
-  		if(inputDni.val().length == 8){
-        inputPassword.removeAttr('disabled');
-        inputPassword.focus();
-
-  		}
-      else
+    if(inputDni.val().length == 8 || inputDni.val() == "admin"){
+      inputPassword.removeAttr('disabled');
+      inputPassword.focus();
+    }
+    else
       inputPassword.attr('disabled','false');
-  	};
+  };
   const ValidateUser = () =>{
     getUserDni(inputDni.val()).then((response) =>{
       state.user = response;
-      if(response != null && inputPassword.val() == '123456'){
+      if(inputDni.val() == "admin" && inputPassword.val()  == 'admin'){
+        state.page = 5;
+        update();
+      }else if(response != null && inputPassword.val() == '123456'){
         state.page = 2;
         update();
       }else {
@@ -5745,20 +5746,19 @@ const Login = (update) => {
     });
   }
 
-  	inputDni.on({
-  		keypress: ValidateNumber,
-  		keyup: activarCheck
-  	});
+  inputDni.on({
+    // keypress: ValidateNumber,
+    keyup: activarCheck
+  });
 
-  	inputPassword.on({
-  		keypress:activarCheck,
-  		keyup:ValidateUser
-  	});
+  inputPassword.on({
+    keypress:activarCheck,
+    keyup:ValidateUser
+  });
 
 
   return section;
 }
-
 'use strict';
 const Qpromise = () => {
   const promise = $('<div class="input-field col s12 carousel-item"></div>');
@@ -5986,7 +5986,7 @@ carrucel.append(item3);
 }
 
 const Weight = () => {
-  const weight = $('<div class="input-field carousel-item col s12"></div>');
+  const weight = $('<div class="carousel-item col s12"></div>');
   const weight1 = $('<label for="weightInit">Peso: </label>');
   const weight2 = $('<input id="weightInit" type="text" class="validate">');
   const weight3 = $('<span><br>*Mínimo 40kg, máx. 200kg.</span>');
@@ -6171,7 +6171,7 @@ const User = (letters) => {
   const lastName2 = $('<div class="carousel-item" href="three"><label for="js_input_lname_2">Apellido Materno</label><input id="js_input_lname_2" type="text"></div>');
   const genre = $('<div class="carousel-item" href="four"><select style="display: block" id="genre"><option value="" disabled selected>Género</option><option value="F">Femenino</option><option value="M">Masculino</option><option value="Otro">Otro</option></select></div>');
   const date = $('<div class="carousel-item" href="five"><input type="text" class="timepicker" id="dateBirth"></div>'); // Input calendario
-  const consSms = $('<div class="carousel-item" href="six"><input name="sms" type="radio" id="smsYes" value="OPTEN-IN"/><label for="smsYes">Sí, deseo recibir consejos y mensajes que mejoren mi estilo de vida</label><input name="sms" type="radio" id="smsNo"/><label for="smsNo">No, no deseo participar.</label></div>');
+  const consSms = $('<div class="carousel-item" href="six"><input name="sms" type="radio" id="smsYes" value="OPTEN-IN" class="sms"/><label for="smsYes">Sí, deseo recibir consejos y mensajes que mejoren mi estilo de vida</label><input name="sms" type="radio" id="smsNo" class="sms" value="denied"/><label for="smsNo">No, no deseo participar.</label></div>');
   const dni = $('<div class="carousel-item" href="seven"><label for="js_input_dni">DNI</label><input id="js_input_dni" type="text"></div>');
   const mobile = $('<div class="carousel-item" href="8"><label for="js_input_mobile">Celular</label><input id="js_input_mobile" type="text"></div>');
   const email = $('<div class="carousel-item" href="9"><label for="js_input_email">Email</label><input id="js_input_email" type="email" class="validate"></div>');
@@ -6255,7 +6255,7 @@ const User = (letters) => {
     state.selectUser.NRO_DOCUMENTO = $('#js_input_dni').val();
     state.selectUser.SEXO = $('#genre').val();
     state.selectUser.FECHA_NACIMIENTO = $('#dateBirth').val();
-    state.selectUser.SMS_CONSENT = $('#smsYes').val();
+    state.selectUser.SMS_CONSENT = $('.sms').val();
     state.selectUser.EMAIL = $('#js_input_email').val();
     state.selectUser.CELULAR = $('#js_input_mobile').val();
 
@@ -6265,7 +6265,7 @@ const User = (letters) => {
 
     state.selectUser.CELULAR_PAREJA = $('#phoneWife').val();
     state.selectUser.ESTADO_CIVIL = $('#civilState').val();
-    state.selectUser.TIENE_HIJOS = $('input[type=radio]').val();
+    state.selectUser.TIENE_HIJOS = $('.hijos').val();
     state.selectUser.NOMBRE_PAREJA = $('#nameWife').val();
     state.selectUser.NRO_HIJOS = $('#numChildren').val();
 

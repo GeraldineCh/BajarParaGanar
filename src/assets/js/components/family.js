@@ -43,8 +43,8 @@ const Cell = () => {
 const Children = () => {
   const children = $('<div class="carousel-item"></div>');
   const children1 = $('<label>¿Tiene hijos?</label>');
-  const children2 = $('<input name="group6" type="radio" id="childrenSi"/><label for="childrenSi">Sí</label>');
-  const children3 = $('<input name="group6" type="radio" id="childrenNo"/><label for="childrenNo">No</label>');
+  const children2 = $('<input name="group6" class="hijos" type="radio" id="childrenSi"/><label for="childrenSi">Sí</label>');
+  const children3 = $('<input name="group6" class="hijos" type="radio" id="childrenNo"/><label for="childrenNo">No</label>');
 
   children.append(children1);
   children.append(children2);

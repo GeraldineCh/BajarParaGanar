@@ -1,11 +1,10 @@
-
 'use strict';
 
 const Login = (update) => {
   const section = $('<section class="login__bg"></section>');
-	const container = $('<div id="login" class="container center"></div>');
+  const container = $('<div id="login" class="container center"></div>');
 
-	const rowImage = $('<div class="logo"></div>');
+  const rowImage = $('<div class="logo"></div>');
   const divDni = $('<div class="input-field col s6">');
   const divPassword = $('<div class="input-field col s6">');
 
@@ -16,26 +15,28 @@ const Login = (update) => {
   const labelPassword = $('<h4 for="loginPassword" class="blue-text">Password</h4>');
   const error = $('<span class="red-text">Error en usuario</span>');
 
-	divDni.append(labelDni,inputDni);
+  divDni.append(labelDni,inputDni);
   divPassword.append(labelPassword,inputPassword);
 
-	container.append(rowImage,divDni,divPassword);
+  container.append(rowImage,divDni,divPassword);
 
-	section.append(container);
+  section.append(container);
 
   const activarCheck = _ => {
-  		if(inputDni.val().length == 8){
-        inputPassword.removeAttr('disabled');
-        inputPassword.focus();
-
-  		}
-      else
+    if(inputDni.val().length == 8 || inputDni.val() == "admin"){
+      inputPassword.removeAttr('disabled');
+      inputPassword.focus();
+    }
+    else
       inputPassword.attr('disabled','false');
-  	};
+  };
   const ValidateUser = () =>{
     getUserDni(inputDni.val()).then((response) =>{
       state.user = response;
-      if(response != null && inputPassword.val() == '123456'){
+      if(inputDni.val() == "admin" && inputPassword.val()  == 'admin'){
+        state.page = 5;
+        update();
+      }else if(response != null && inputPassword.val() == '123456'){
         state.page = 2;
         update();
       }else {
@@ -44,15 +45,15 @@ const Login = (update) => {
     });
   }
 
-  	inputDni.on({
-  		keypress: ValidateNumber,
-  		keyup: activarCheck
-  	});
+  inputDni.on({
+    // keypress: ValidateNumber,
+    keyup: activarCheck
+  });
 
-  	inputPassword.on({
-  		keypress:activarCheck,
-  		keyup:ValidateUser
-  	});
+  inputPassword.on({
+    keypress:activarCheck,
+    keyup:ValidateUser
+  });
 
 
   return section;
