@@ -36,6 +36,13 @@ const User = (letters) => {
 	form.append(Drink);
 	form.append(Dcant);
 	form.append(Shots);
+	form.append(CivilState);
+	form.append(Wife);
+	form.append(Cell);
+	form.append(Children);
+	form.append(NumChildren);
+	form.append(NameChildren);
+	form.append(AgeChildren);
 	container.append(form);
 	footer.append(btnPrev);
 	footer.append(btnNext);
