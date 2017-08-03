@@ -6,6 +6,3 @@ main.css.map
 
 # Dependency directories
 node_modules/
-
-# Editor
-/.idea

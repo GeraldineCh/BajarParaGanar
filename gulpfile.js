@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 //agregando gulp-sass
@@ -24,6 +25,7 @@ var paths = {
   components: "js/components/**.js",
 
   utils: "js/utils/**.js",
+
   css: "css",
   fonts: "fonts/**",
   fontCss: "css/**",
@@ -85,6 +87,7 @@ gulp.task('sass', ()=> {
 });
 
 gulp.task('js', ()=>{
+  console.log(sources.components);
   gulp.src([sources.vendor, sources.models, sources.utils, sources.components, sources.rootJS])
     .pipe(concat("new.js"))//temporal no es necsario en un existente
     .pipe(browserify())
