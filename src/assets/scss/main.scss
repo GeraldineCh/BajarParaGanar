@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .flex-center{
   display: flex;
   flex-direction: column-reverse;
@@ -55,3 +56,27 @@
 .pad{
   padding: 20px;
 }
+=======
+/*
+    =======================
+    Reto Power
+    Developers: Wendy Reyes, Annia J. Flores, Flor Tello, Geraldine Chauca, Liliana Peña.
+    Version: Beta
+    =======================
+*/
+
+
+/* BASE - Base styles, variables, mixins, etc. */
+
+@import '0-base/_variables.scss';
+@import '0-base/_base.scss';
+
+/* MODULES - Individual site components */
+
+@import '1-modules/_buttons.scss';
+
+/* LAYOUTS - Page layout styles */
+
+@import '2-layouts/_login.scss';
+
+>>>>>>> 4e808470706b4175a7e347f914af679ae72b545b

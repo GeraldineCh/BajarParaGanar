@@ -1,11 +1,17 @@
-.flex-center, .welcome__bg, .login__bg, .carousel-item {
-  display: flex;
-  flex-direction: column-reverse;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+@charset "UTF-8";
+/*
+    =======================
+    Reto Power
+    Developers: Wendy Reyes, Annia J. Flores, Flor Tello, Geraldine Chauca, Liliana Peña.
+    Version: Beta
+    =======================
+*/
+/* BASE - Base styles, variables, mixins, etc. */
+.container {
+  width: 85%;
 }
 
+<<<<<<< HEAD
 .welcome__bg {
   background-image: url(http://www.desarrollando-ideas.com/wp-content/uploads/sites/5/2016/06/iStock_51836670_XLARGE1-960x576.jpg);
   background-repeat: no-repeat;
@@ -33,24 +39,125 @@
 
 .blue-text {
   color: #56009C;
+=======
+/* MODULES - Individual site components */
+.login__header--desktop button {
+  background-color: transparent;
+  color: #fff;
+  font-weight: bold;
+  border: 3px solid #fff;
+  padding: 8px 25px;
+  transition: 0.4s all;
 }
 
-.perfil {
+.login__header--desktop button:hover {
+  background-color: #fff;
+  color: #56009C;
+}
+
+/* LAYOUTS - Page layout styles */
+.login__header--desktop {
+  background-color: #56009C;
+  padding: 15px 0;
+>>>>>>> 4e808470706b4175a7e347f914af679ae72b545b
+}
+
+.login__header--desktop .container {
   display: flex;
-  padding-left: 20px;
-  height: 10vh;
+  justify-content: space-between;
   align-items: center;
-  justify-content: flex-end;
-  font-size: 24px;
-  padding-right: 30px;
 }
 
-.logo-white {
-  width: 200px;
+.login__header--desktop img {
+  height: 60px;
+}
+
+.login p {
+  font-size: 1.8em;
+  color: #333;
+}
+
+.login p:first-child {
+  margin-top: 110px;
+}
+
+.login p:last-child {
+  font-size: 0.9em;
+  margin-top: 12px;
+}
+
+.login__form--id, .login__form--key {
+  position: relative;
+  width: 300px;
+  margin: auto;
+}
+
+.login i {
+  font-size: 25px;
+  color: #FBEF33;
   position: absolute;
-  padding-left: 20px;
+  bottom: 35px;
+  left: 5px;
 }
 
-.pad {
-  padding: 20px;
+.login input {
+  border-bottom: 2px solid #0CBCAA !important;
+}
+
+.login input:focus {
+  border-bottom: 2px solid #0CBCAA !important;
+}
+
+.login__form--loginbtn {
+  background-color: #0CBCAA;
+  font-size: 20px;
+  color: #fff;
+  border: 0;
+  width: 300px;
+  padding: 12px 0;
+}
+
+.login__form--register {
+  margin-top: 10px;
+}
+
+@media (max-width: 550px) {
+  .login .container {
+    display: block;
+  }
+  .login img {
+    margin-top: 100px;
+    margin-bottom: 20px;
+  }
+  .login__form--id, .login__form--key {
+    position: relative;
+    width: 230px;
+    margin: auto;
+  }
+  .login i {
+    font-size: 18px;
+    color: #FBEF33;
+    position: absolute;
+    bottom: 35px;
+    left: 5px;
+  }
+  .login input {
+    font-size: 13px !important;
+    border-bottom: 2px solid #0CBCAA !important;
+  }
+  .login input:focus {
+    border-bottom: 2px solid #0CBCAA !important;
+  }
+  .login__form--loginbtn {
+    background-color: #0CBCAA;
+    font-size: 15px;
+    color: #fff;
+    border: 0;
+    width: 230px;
+    margin-top: 10px;
+    padding: 10px 0;
+  }
+  .login__form--register {
+    margin-top: 10px;
+  }
 }
