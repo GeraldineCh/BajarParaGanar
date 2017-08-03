@@ -1,49 +1,75 @@
-.flex-center{
-  display: flex;
-  flex-direction: column-reverse;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+/*
+    =======================
+    Reto Power
+    Developers: Wendy Reyes, Annia J. Flores, Flor Tello, Geraldine Chauca, Liliana Peña.
+    Version: Beta
+    =======================
+*/
+
+
+/* BASE - Base styles, variables, mixins, etc. */
+
+@import '0-base/_variables.scss';
+@import '0-base/_base.scss';
+
+/* MODULES - Individual site components */
+
+@import '1-modules/_buttons.scss';
+
+/* LAYOUTS - Page layout styles */
+
+@import '2-layouts/_login.scss';
+
+.flex-center {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
+
 .welcome__bg {
-  @extend .flex-center;
-  /*
+    @extend .flex-center;
+    /*
    background-image: url(http://www.desarrollando-ideas.com/wp-content/uploads/sites/5/2016/06/iStock_51836670_XLARGE1-960x576.jpg);
    background-repeat: no-repeat;
    background-attachment: fixed;
    background-size: cover;
   */
-  // opacity: .8;
+    // opacity: .8;
 }
-.login__bg,.carousel-item{
-  @extend .flex-center;
+
+.login__bg,
+.carousel-item {
+    @extend .flex-center;
 }
-.btn-welcome{
-  width: 200px;
-  opacity: 1;
- background-color: #56009C;
+
+.btn-welcome {
+    width: 200px;
+    opacity: 1;
+    background-color: #56009C;
 }
 
 .blue-text {
- color: #56009C;
+    color: #56009C;
 }
 
-.perfil{
-  display: flex;
-  padding-left: 20px;
-  height: 10vh;
-  align-items: center;
-  justify-content: flex-end;
-  font-size: 24px;
-  padding-right: 30px;
+.perfil {
+    display: flex;
+    padding-left: 20px;
+    height: 10vh;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 24px;
+    padding-right: 30px;
 }
 
-.logo-white{
-  width: 200px;
-  position: absolute;
-  padding-left: 20px;
+.logo-white {
+    width: 200px;
+    position: absolute;
+    padding-left: 20px;
 }
 
-.pad{
-  padding: 20px;
+.pad {
+    padding: 20px;
 }

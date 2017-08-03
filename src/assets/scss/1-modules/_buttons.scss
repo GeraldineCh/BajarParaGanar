@@ -1,0 +1,16 @@
+.login {
+    &__header--desktop {
+        button {
+            background-color: transparent;
+            color: #fff;
+            font-weight: bold;
+            border: 3px solid #fff;
+            padding: 8px 25px;
+            transition: 0.4s all;
+        }
+        button:hover {
+            background-color: #fff;
+            color: $palette-primary;
+        }
+    }
+}
