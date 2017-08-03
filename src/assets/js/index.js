@@ -5,6 +5,7 @@ const render = (root) => {
     const wrapper = $('<div class="wrapper"></div>');
     wrapper.append(StateUser());
     wrapper.append(Family());
+    wrapper.append(MoreInfo());
     root.append(wrapper);
 }
 
