@@ -1,17 +1,21 @@
 const StateUser = () => {
     const principal = $('<div class="container"></div>');
     const title = $('<h1 class="center-align">Estado participante</h1>');
+ 
     const weight = $('<div class="input-field col s12"></div>');
     const weight1 = $('<label for="weightInit">Peso: </label>');
     const weight2 = $('<input id="weightInit" type="text" class="validate">');
     const weight3 = $('<span><br>*Mínimo 40kg, máx. 200kg.</span>');
+ 
     const height = $('<div class="input-field col s12"></div>');
     const height1 = $('<label for="height">Talla: </label>');
     const height2 = $('<input id="height" type="text" class="validate">');
     const height3 = $('<span><br>*Mínimo 50cm, máx. 250cm</span>');
+ 
     const goal = $('<div class="input-field col s12"></div>');
     const goal1 = $('<label for="goal">Meta de peso: </label>');
     const goal2 = $('<input disabled id="goal" type="text" class="validate">');
+    
     const smoke = $('<div class="input-field col s12"></div>');
     const smoke1 = $('<label>¿Fuma?</label>');
     const smoke2 = $('<input name="group1" type="radio" id="smokeSi"/><label for="test1">Sí</label>');

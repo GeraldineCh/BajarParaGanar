@@ -1,18 +1,102 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+const Family = () => {
+    const container = $('<div class="container"></div>');
+    const title = $('<h1 class="center-align">Familia</h1>');
+    
+    container.append(title);
+ 
+ const civilState = $('<div class="input-field col s12"></div>');
+    const civilState1 = $('<label for="civilState">Estado civil </label>');
+    const civilState2 = $('<select id="civilState"></select>');
+    const civilState3 = $('<option value="" disabled selected>Seleccione</option>');
+    const civilState4 = $('<option value="1">Soltero</option>');
+    const civilState5 = $('<option value="2">Casado</option>');
+    const civilState6 = $('<option value="3">Conviviente</option>');
+    const civilState7 = $('<option value="4">Vuido</option>');
+    const civilState8 = $('<option value="5">Divorciado</option>'); 
+ 
+    const wife = $('<div class="input-field col s12"></div>');
+    const wife1 = $('<label for="wife">Nombre de esposa/conviviente/pareja: </label>');
+    const wife2 = $('<input id="wife" type="text" class="validate">');
+ 
+    const cell = $('<div class="input-field col s12"></div>');
+    const cell1 = $('<label for="wife">Celular de la pareja: </label>');
+    const cell2 = $('<input id="wife" type="text" class="validate">');
+ 
+ const children = $('<div class="input-field col s12"></div>');
+    const children1 = $('<label>¿Tiene hijos?</label>');
+    const children2 = $('<input name="group1" type="radio" id="childrenSi"/><label for="test1">Sí</label>');
+    const children3 = $('<input name="group1" type="radio" id="childrenNo"/><label for="test1">No</label>');
+ 
+ const numChildren = $('<div class="input-field col s12"></div>');
+    const numChildren1 = $('<label for="numChildren">Número de hijos: </label>');
+    const numChildren2 = $('<input id="numChildren" type="text" class="validate">');
+ 
+ const nameChildren = $('<div class="input-field col s12"></div>');
+    const nameChildren1 = $('<label for="nameChildren">Nombre de hijos: </label>');
+    const nameChildren2 = $('<input id="nameChildren" type="text" class="validate">');
+ 
+ const ageChildren = $('<div class="input-field col s12"></div>');
+    const ageChildren1 = $('<label for="ageChildren">Edad de los hijos: </label>');
+    const ageChildren2 = $('<input id="ageChildren" type="text" class="validate">');
+ 
+ civilState.append(civilState1);
+ civilState.append(civilState2);
+ civilState2.append(civilState3);
+ civilState2.append(civilState4);
+ civilState2.append(civilState5);
+ civilState2.append(civilState6);
+ civilState2.append(civilState7);
+ civilState2.append(civilState8);
+ 
+ wife.append(wife1);
+ wife.append(wife2);
+ 
+ cell.append(cell1);
+ cell.append(cell2);
+ 
+ children.append(children1);
+ children.append(children2);
+ children.append(children3);
+ 
+ numChildren.append(numChildren1);
+ numChildren.append(numChildren2);
+ 
+ nameChildren.append(nameChildren1);
+ nameChildren.append(nameChildren2);
+ 
+ ageChildren.append(ageChildren1);
+ ageChildren.append(ageChildren2);
+ 
+ container.append(civilState);
+ container.append(wife);
+ container.append(cell);
+ container.append(children);
+ container.append(numChildren);
+ container.append(nameChildren);
+ container.append(ageChildren);
+ 
+ 
+    return container;
+}
 const StateUser = () => {
     const principal = $('<div class="container"></div>');
     const title = $('<h1 class="center-align">Estado participante</h1>');
+ 
     const weight = $('<div class="input-field col s12"></div>');
     const weight1 = $('<label for="weightInit">Peso: </label>');
     const weight2 = $('<input id="weightInit" type="text" class="validate">');
     const weight3 = $('<span><br>*Mínimo 40kg, máx. 200kg.</span>');
+ 
     const height = $('<div class="input-field col s12"></div>');
     const height1 = $('<label for="height">Talla: </label>');
     const height2 = $('<input id="height" type="text" class="validate">');
     const height3 = $('<span><br>*Mínimo 50cm, máx. 250cm</span>');
+ 
     const goal = $('<div class="input-field col s12"></div>');
     const goal1 = $('<label for="goal">Meta de peso: </label>');
     const goal2 = $('<input disabled id="goal" type="text" class="validate">');
+    
     const smoke = $('<div class="input-field col s12"></div>');
     const smoke1 = $('<label>¿Fuma?</label>');
     const smoke2 = $('<input name="group1" type="radio" id="smokeSi"/><label for="test1">Sí</label>');
@@ -166,6 +250,7 @@ const render = (root) => {
     root.empty();
     const wrapper = $('<div class="wrapper"></div>');
     wrapper.append(StateUser());
+    wrapper.append(Family());
     root.append(wrapper);
 }
 
