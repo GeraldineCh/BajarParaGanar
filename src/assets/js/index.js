@@ -9,9 +9,6 @@ const render = (root) => {
       wrapper.append(Login(_=>{ render(root) }));
     case 1:
       wrapper.append(User(_ => render(root)));
-      wrapper.append(StateUser());
-      wrapper.append(Family());
-      wrapper.append(MoreInfo());
       break;
     case 2:
       wrapper.append(StateUser());
@@ -82,5 +79,6 @@ $(_ => {
 		close: 'Ok',
 		closeOnSelect: false // Close upon selecting a date,
 	});
-
+  $('.carousel.carousel-slider').carousel({fullWidth: true});
 });
+
