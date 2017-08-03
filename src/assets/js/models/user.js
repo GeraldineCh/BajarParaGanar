@@ -1,5 +1,3 @@
-// var json2csv = require('json2csv');
-// var fields = ['NOMBRES', 'SEXO', 'MATERNO', 'PATERNO', 'FECHA_NACIMIENTO', 'SMS', 'NRO_DOCUMENTO', 'CELULAR_SMS', 'EMAIL', 'pesos'];
 var config = {
   apiKey: "AIzaSyC0kgAEyPWZV-m-GRSyFNHAI9Odtg3OrEs",
   authDomain: "retopower-265a9.firebaseapp.com",
@@ -12,7 +10,7 @@ firebase.initializeApp(config);
 
 
 const getUsers = () => {
-    return firebase.database().ref('/users/04128345').once('value').then((snapshot) => {
+    return firebase.database().ref('/users').once('value').then((snapshot) => {
           return snapshot.val();
     });
 };
@@ -22,10 +20,14 @@ const CargarData = () => {
   });
 };
 
-const generarCsv = (json,fields2,btn,archivo) =>{
+const generarCsv = (json,encabezado,btn,archivo) =>{
   var date = new Date();
   var fecha = date.getFullYear()+"-"+date.getMonth()+"-"+date.getDay()+"_"+date.getHours()+":"+date.getMinutes();
-  json2csv({ data: json, fields: fields2}, function(err, csv) {
+  var json1 = [];
+  $.each(json, function (key, data) {
+    json1.push(data);
+})
+  json2csv({ data: json1, fields: encabezado}, function(err, csv) {
     if (err) console.log(err);
     var array = "data:text/csv;charset=utf-8,";
     array += csv.split(',').join(";");
@@ -35,6 +37,6 @@ const generarCsv = (json,fields2,btn,archivo) =>{
     btn.click();
   });
 }
-const setUser = (data,dni) => {
+const newUser = (dni,data) => {
   firebase.database().ref('users/' + dni).set(data);
 }

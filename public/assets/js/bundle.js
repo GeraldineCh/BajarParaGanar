@@ -5545,8 +5545,6 @@ process.chdir = function (dir) {
 };
 
 },{}],11:[function(require,module,exports){
-// var json2csv = require('json2csv');
-// var fields = ['NOMBRES', 'SEXO', 'MATERNO', 'PATERNO', 'FECHA_NACIMIENTO', 'SMS', 'NRO_DOCUMENTO', 'CELULAR_SMS', 'EMAIL', 'pesos'];
 var config = {
   apiKey: "AIzaSyC0kgAEyPWZV-m-GRSyFNHAI9Odtg3OrEs",
   authDomain: "retopower-265a9.firebaseapp.com",
@@ -5559,7 +5557,7 @@ firebase.initializeApp(config);
 
 
 const getUsers = () => {
-    return firebase.database().ref('/users/04128345').once('value').then((snapshot) => {
+    return firebase.database().ref('/users').once('value').then((snapshot) => {
           return snapshot.val();
     });
 };
@@ -5569,10 +5567,14 @@ const CargarData = () => {
   });
 };
 
-const generarCsv = (json,fields2,btn,archivo) =>{
+const generarCsv = (json,encabezado,btn,archivo) =>{
   var date = new Date();
   var fecha = date.getFullYear()+"-"+date.getMonth()+"-"+date.getDay()+"_"+date.getHours()+":"+date.getMinutes();
-  json2csv({ data: json, fields: fields2}, function(err, csv) {
+  var json1 = [];
+  $.each(json, function (key, data) {
+    json1.push(data);
+})
+  json2csv({ data: json1, fields: encabezado}, function(err, csv) {
     if (err) console.log(err);
     var array = "data:text/csv;charset=utf-8,";
     array += csv.split(',').join(";");
@@ -5582,7 +5584,7 @@ const generarCsv = (json,fields2,btn,archivo) =>{
     btn.click();
   });
 }
-const setUser = (data,dni) => {
+const newUser = (dni,data) => {
   firebase.database().ref('users/' + dni).set(data);
 }
 
@@ -5609,6 +5611,37 @@ var fields2 = ['EMAIL','CELULAR', 'SMS_CONSENT'];
 
 'use strict';
 
+const Welcome = (update) => {
+  const section = $('<section class="welcome__bg"></section>');
+	const container = $('<div id="welcome" class="container-fluid center"></div>');
+
+	const rowImage = $('<div class="logo"></div>');
+	const rowBtn = $('<div class="welcome_btn contentButton row"></div>');
+  const rowBtn1 = $('<div class="welcome_btn contentButton row"></div>');
+
+	const btnSignUp = $('<button type="button" class="btn-welcome yellow waves-effect waves-light btn-large" name="button">Sign up</button>');
+	const btnLogIn = $('<button type="button" class="btn-welcome yellow waves-effect waves-light btn-large" name="button">Log in</button>');
+
+	rowBtn.append(btnSignUp);
+  rowBtn1.append(btnLogIn);
+	container.append(rowImage,rowBtn,rowBtn1);
+
+	section.append(container);
+
+  btnSignUp.on('click',(e) => {
+    state.page = 1;
+    update();
+  });
+  btnLogIn.on('click',(e) => {
+    state.page = 1;
+    update();
+  });
+
+  return section;
+}
+
+'use strict';
+
 const render = (root) => {
   root.empty();
   const wrapper = $('<div class="wrapper"></div>');
@@ -5616,7 +5649,7 @@ const render = (root) => {
   if(state.page == 0){
     wrapper.append(Reporte(_=>{ render(root) }));
   }else if(state.page == 1){
-    wrapper.append(InicioSesion(_=>{ render(root) }));
+    wrapper.append(Welcome(_=>{ render(root) }));
   }else if (state.page == 2){
     wrapper.append(ChoiceOption(_=>{ render(root) }));
   }
@@ -5624,16 +5657,51 @@ const render = (root) => {
 };
 
 const state = {
-  page: 0,
+  page: 1,
   data: null,
   selectUser:{}
 };
 
 
 $(_ => {
-  // console.log(getUsers());
   const root = $("#root");
   render(root);
+
+  CargarData().then((response)=>{
+    state.data = response;
+    console.log(state.data['1'].NOMBRES);
+  });
+
+  var nuevo = {
+      "NOMBRES": "Liliana",
+      "PATERNO": "Peña",
+      "MATERNO": "Gonzales",
+      "SEXO": "femenino",
+      "FECHA_NACIMIENTO": "22/10/1992",
+      "SMS_CONSENT": "OPTEN-IN",
+      "NRO_DOCUMENTO": "04334343",
+      "CELULAR": "5198475293",
+      "EMAIL": "DSJD@SD.com",
+      "PESO": "130",
+      "EQUIPO_FUTBOL"  : "U",
+      "TALLA" : "120",
+      "PROMESA"  : "Quiero bajar por ...",
+      "TIENE_HIJOS" : "Yes",
+      "NRO_HIJOS": "2",
+      "ESTADO_CIVIL" : "Casado",
+      "NOMBRE_PAREJA" : "Pedro",
+      "CELULAR_PAREJA"  : "99834328",
+      "META_PESO"  : "75",
+      "NOMBRE_EQUIPO"  : "LEALTAD",
+      "PESO1": "100",
+      "PESO2" :"103",
+      "PESO3" : "104",
+      "PESO4" : "101",
+      "PESO5" : "98",
+      "PESO6" : "97",
+      "INDICADOR_PROGRESO" : "120"
+      };
+      newUser('123',nuevo);
 });
 
 },{"json2csv":3}]},{},[11])
