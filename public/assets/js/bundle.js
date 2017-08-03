@@ -497,8 +497,8 @@ function unwindRows(inputRows, unwindPath) {
   return outputRows;
 }
 
-}).call(this,require("9FoBSB"))
-},{"9FoBSB":10,"flat":1,"lodash.clonedeep":4,"lodash.flatten":5,"lodash.get":6,"lodash.set":7,"lodash.uniq":8,"os":9}],4:[function(require,module,exports){
+}).call(this,require("6r38Q7"))
+},{"6r38Q7":10,"flat":1,"lodash.clonedeep":4,"lodash.flatten":5,"lodash.get":6,"lodash.set":7,"lodash.uniq":8,"os":9}],4:[function(require,module,exports){
 (function (global){
 /**
  * lodash (Custom Build) <https://lodash.com/>
@@ -5616,9 +5616,29 @@ const ValidateNumber = (e)=>{
   }
 }
 
+const Cell = () => {
+  const cell = $('<div class="input-field col s12 "></div>');
+  const cell1 = $('<label for="wife">Celular de la pareja: </label>');
+  const cell2 = $('<input id="phoneWife" type="text" class="validate">');
+
+  cell.append(cell1);
+  cell.append(cell2);
+  return cell;
+}
+
+const Wife = () => {
+  const wife = $('<div class="col s12"></div>');
+  const wife1 = $('<label for="nameWife">Nombre de esposa/conviviente/pareja: </label>');
+  const wife2 = $('<input id="nameWife" type="text" class="validate">');
+
+  wife.append(wife1);
+  wife.append(wife2);
+  return wife;
+}
+
 const CivilState = () => {
   const civilState = $('<div class="carousel-item"></div>');
-  const civilState1 = $('<p>Estado civil </p>');
+  const civilState1 = $('<label for="">Estado civil </label>');
   const civilState2 = $('<select id="civilState" style="display: block"></select>');
   const civilState3 = $('<option value="" disabled selected>Seleccione</option>');
   const civilState4 = $('<option value="1">Soltero</option>');
@@ -5626,6 +5646,17 @@ const CivilState = () => {
   const civilState6 = $('<option value="3">Conviviente</option>');
   const civilState7 = $('<option value="4">Vuido</option>');
   const civilState8 = $('<option value="5">Divorciado</option>');
+
+  civilState2.on('change',(e) => {
+    e.preventDefault();
+    console.log(civilState2.val());
+    if(civilState2.val() == 2 || civilState2.val() == 3){
+      civilState.append(Wife());
+      civilState.append(Cell());
+    }else if(civilState2.val() == 1){
+      $('.carousel').carousel('next');
+    }
+  });
 
   civilState.append(civilState1);
   civilState.append(civilState2);
@@ -5636,52 +5667,37 @@ const CivilState = () => {
   civilState2.append(civilState7);
   civilState2.append(civilState8);
   return civilState;
+
 }
-
-const Wife = () => {
-  const wife = $('<div class="input-field col s12 carousel-item"></div>');
-  const wife1 = $('<label for="wife">Nombre de esposa/conviviente/pareja: </label>');
-  const wife2 = $('<input id="nameWife" type="text" class="validate">');
-
-  wife.append(wife1);
-  wife.append(wife2);
-  return wife;
-}
-
-const Cell = () => {
-  const cell = $('<div class="input-field col s12 carousel-item"></div>');
-  const cell1 = $('<label for="wife">Celular de la pareja: </label>');
-  const cell2 = $('<input id="phoneWife" type="text" class="validate">');
-
-  cell.append(cell1);
-  cell.append(cell2);
-  return cell;
-}
-
 const Children = () => {
   const children = $('<div class="carousel-item"></div>');
-  const children1 = $('<label>¿Tiene hijos?</label>');
-  const children2 = $('<input name="group6" class="hijos" type="radio" id="childrenSi"/><label for="childrenSi">Sí</label>');
-  const children3 = $('<input name="group6" class="hijos" type="radio" id="childrenNo"/><label for="childrenNo">No</label>');
+  const children1 = $('<p>¿Tiene hijos?</p>');
+  const div = $('<div></div>');
+  const children2 = $('<input name="group6" type="radio" id="childrenSi"><label for="childrenSi">Sí</label>');
+  const children3 = $('<input name="group6" type="radio" id="childrenNo"><label for="childrenNo">No</label>');
 
+  children2.on('click',(e) => {
+    e.preventDefault();
+    children.append(NumChildren());
+    children.append(NameChildren());
+    children.append(AgeChildren());
+
+  });
+  children3.on('click',(e) => {
+    $('.carousel').carousel('next');
+  });
+
+  div.append(children2);
+  div.append(children3);
   children.append(children1);
-  children.append(children2);
-  children.append(children3);
+  children.append(div);
+
   return children;
 }
 
-const NumChildren = () => {
-  const numChildren = $('<div class="input-field col s12 carousel-item"></div>');
-  const numChildren1 = $('<label for="numChildren">Número de hijos: </label>');
-  const numChildren2 = $('<input id="numChildren" type="text" class="validate">');
-
-  numChildren.append(numChildren1);
-  numChildren.append(numChildren2);
-  return numChildren;
-}
 
 const NameChildren = () => {
-  const nameChildren = $('<div class="input-field col s12 carousel-item"></div>');
+  const nameChildren = $('<div class="col s12"></div>');
   const nameChildren1 = $('<label for="nameChildren">Nombre de hijos: </label>');
   const nameChildren2 = $('<input id="nameChildren" type="text" class="validate">');
 
@@ -5691,7 +5707,7 @@ const NameChildren = () => {
 }
 
 const AgeChildren = () => {
-  const ageChildren = $('<div class="input-field col s12 carousel-item"></div>');
+  const ageChildren = $('<div class="col s12"></div>');
   const ageChildren1 = $('<label for="ageChildren">Edad de los hijos: </label>');
   const ageChildren2 = $('<input id="ageChildren" type="text" class="validate">');
 
@@ -5761,7 +5777,7 @@ const Login = (update) => {
 }
 'use strict';
 const Qpromise = () => {
-  const promise = $('<div class="input-field col s12 carousel-item"></div>');
+  const promise = $('<div class="col s12 carousel-item"></div>');
   const promise1 = $('<label for="promise">Promesa personal: </label>');
   const promise2 = $('<textarea id="promise" class="materialize-textarea" data-length="120"></textarea>');
 
@@ -5770,19 +5786,9 @@ const Qpromise = () => {
   return promise;
 }
 
-const InscriptionCode = () => {
-  const inscriptionCode = $('<div class="input-field col s12 carousel-item"></div>');
-  const inscriptionCode1 = $('<label for="inscriptionCode">Código de inscripción: </label>');
-  const inscriptionCode2 = $('<input id="inscriptionCode" type="text" class="validate">');
-
-  inscriptionCode.append(inscriptionCode1);
-  inscriptionCode.append(inscriptionCode2);
-  return inscriptionCode;
-}
-
 const FootballTeam = () => {
   const footballTeam = $('<div class="carousel-item"></div>');
-  const footballTeam1 = $('<p>Equipo de fútbol: </p>');
+  const footballTeam1 = $('<label>Equipo de fútbol: </label>');
   const footballTeam2 = $('<select id="footballTeam" style="display: block"></select>');
   const footballTeam3 = $('<option value="" disabled selected>Seleccione</option>');
   const footballTeam4 = $('<option value="1">Universitario de Deportes</option>');
@@ -5808,26 +5814,43 @@ const FootballTeam = () => {
 
 const Insurance = () => {
   const insurance = $('<div class="carousel-item"></div>');
-  const insurance1 = $('<p>¿Está asegurado?</p>');
+  const insurance1 = $('<label>¿ Usted cuenta con un seguro ?</label>');
   const insurance2 = $('<input name="group8" type="radio" id="insuranceSi"/><label for="insuranceSi">Sí</label>');
   const insurance3 = $('<input name="group8" type="radio" id="insuranceNo"/><label for="insuranceNo">No</label>');
 
   insurance.append(insurance1);
   insurance.append(insurance2);
   insurance.append(insurance3);
+
+  insurance2.on('change',(e) => {
+    e.preventDefault();
+    insurance.append(InsuranceType());
+  });
+  insurance3.on('change',(e) => {
+    $('.carousel').carousel('next');
+  });
+
   return insurance;
 }
 
 const InsuranceType = () => {
-  const insuranceType = $('<div class="carousel-item"></div>');
+  const insuranceType = $('<div class=""></div>');
   const insuranceType1 = $('<p>Tipo de seguro: </p>');
-  const insuranceType2 = $('<select id="insuranceType" style="display: block" multiple></select>');
+  const insuranceType2 = $('<select id="insuranceType" style="display: block"  ></select>');
   const insuranceType3 = $('<option value="" disabled selected>Seleccione</option>');
   const insuranceType4 = $('<option value="1">Salud</option>');
   const insuranceType5 = $('<option value="2">EPS</option>');
   const insuranceType6 = $('<option value="3">Vida</option>');
   const insuranceType7 = $('<option value="4">SCTR</option>');
   const insuranceType8 = $('<option value="5">Vehicular</option>');
+
+  insuranceType2.on('change',(e) => {
+    e.preventDefault();
+    insuranceType.empty();
+    if(insuranceType2.val() !== "" ){
+      insuranceType.append(InsuranceCia());
+    }
+  });
 
   insuranceType.append(insuranceType1);
   insuranceType.append(insuranceType2);
@@ -5841,8 +5864,8 @@ const InsuranceType = () => {
 }
 
 const InsuranceCia = () => {
-  const insuranceCia = $('<div class="carousel-item"></div>');
-  const insuranceCia1 = $('<p>Compañía con la cual está asegurado: </p>');
+  const insuranceCia = $('<div class=""></div>');
+  const insuranceCia1 = $('<label>Compañía con la cual está asegurado: </label>');
   const insuranceCia2 = $('<select id="insuranceCia" style="display: block"></select>');
   const insuranceCia3 = $('<option value="" disabled selected>Seleccione</option>');
   const insuranceCia4 = $('<option value="1">Rimac</option>');
@@ -5867,12 +5890,13 @@ const InsuranceCia = () => {
 }
 
 const TeamName = () => {
-  const teamName = $('<div class="input-field col s12 carousel-item"></div>');
+  const teamName = $('<div class="col s12 carousel-item"></div>');
   const teamName1 = $('<label for="teamName">Nombre del equipo con el que perderá peso: </label>');
   const teamName2 = $('<input id="teamName" type="text" class="validate">');
 
   teamName.append(teamName1);
   teamName.append(teamName2);
+
 
   return teamName;
 }
@@ -5987,7 +6011,7 @@ carrucel.append(item3);
 
 const Weight = () => {
   const weight = $('<div class="carousel-item col s12"></div>');
-  const weight1 = $('<label for="weightInit">Peso: </label>');
+  const weight1 = $('<label for="weightInit">10. ¿Cuánto pesas? </label>');
   const weight2 = $('<input id="weightInit" type="text" class="validate">');
   const weight3 = $('<span><br>*Mínimo 40kg, máx. 200kg.</span>');
 
@@ -5998,9 +6022,9 @@ const Weight = () => {
 };
 
 const Height = () => {
-  const height = $('<div class="input-field col s12 carousel-item"></div>');
-  const height1 = $('<label for="height">Talla: </label>');
-  const height2 = $('<input id="height" type="text" class="validate">');
+  const height = $('<div class="col s12 carousel-item"></div>');
+  const height1 = $('<label for="height">11. ¿Cuánto mides de altura? </label>');
+  const height2 = $('<input id="height" type="text">');
   const height3 = $('<span><br>*Mínimo 50cm, máx. 250cm</span>');
 
   height.append(height1);
@@ -6010,26 +6034,32 @@ const Height = () => {
 };
 
 const Goal = () => {
-  const goal = $('<div class="input-field col s12 carousel-item"></div>');
-  const goal1 = $('<label for="goal">Meta de peso: </label>');
-  const goal2 = $('<input disabled id="goal" type="text" class="validate">');
+  const goal = $('<div class="col s12 carousel-item"></div>');
+  const goal1 = $('<label for="goal">12. ¿Cuál es tu Meta de peso? </label>');
+  const goal2 = $('<input id="goal" type="text" class="validate">');
 
   goal.append(goal1);
   goal.append(goal2);
   return goal;
-}
+};
 
 const Smoke = () => {
   const smoke = $('<div class="carousel-item"></div>');
-  const smoke1 = $('<p>¿Fuma?</p>');
-  const smoke2 = $('<input name="group1" type="radio" id="smokeSi"><label for="smokeSi">Sí</label>');
-  const smoke3 = $('<input name="group1" type="radio" id="smokeNo"><label for="smokeNo">No</label>');
+  const smoke1 = $('<label> 13. ¿Usted fuma?</label>');
+  const smoke2 = $('<div><input name="group1" type="radio" id="smokeSi"><label for="smokeSi">Sí</label>' +
+    '<input name="group1" type="radio" id="smokeNo"><label for="smokeNo">No</label></div>');
+  smoke2.on('click',(e) => {
+    e.preventDefault();
+    smoke.append(Cantidad());
+  });
+  $('#smokeNo').on('click',(e) => {
+    $('.carousel').carousel('next');
+  });
 
   smoke.append(smoke1);
   smoke.append(smoke2);
-  smoke.append(smoke3);
   return smoke;
-}
+};
 
 const Cantidad = () => {
   const cantidad = $('<div class="carousel-item"></div>');
@@ -6057,7 +6087,7 @@ const Cantidad = () => {
 
 const Sleep = () => {
   const sleep = $('<div class="carousel-item"></div>');
-  const sleep1 = $('<label for="sleep">Horas de sueño </label>');
+  const sleep1 = $('<label for="sleep">14. ¿Cuántas horas de sueño tiene? </label>');
   const sleep2 = $('<select id="sleep" style="display: block"></select>');
   const sleep3 = $('<option value="" disabled selected>Seleccione</option>');
   const sleep4 = $('<option value="1">Menos de 5 horas</option>');
@@ -6081,67 +6111,28 @@ const Sleep = () => {
 
 const Activity = () => {
   const activity = $('<div class="carousel-item"></div>');
-  const activity1 = $('<p>¿Actividad física al menos 10 min diarios?</p>');
-  const activity2 = $('<input name="group4" type="radio" id="activityYes"/><label for="activityYes">Sí</label>');
-  const activity3 = $('<input name="group4" type="radio" id="activityNo"/><label for="activityNo">No</label>');
-
+  const activity1 = $('<label>¿Actividad física al menos 10 min diarios?</label>');
+  const activity2 = $('<div><input name="group4" type="radio" id="activityYes">' +
+    '<label for="activityYes">Sí</label><input name="group4" type="radio" id="activityNo">' +
+    '<label for="activityNo">No</label></div>');
   activity.append(activity1);
   activity.append(activity2);
-  activity.append(activity3);
   return activity;
 }
 
 const Pactivity = () => {
   const pactivity = $('<div class="carousel-item"></div>');
-  const pactivity1 = $('<p>¿Actividad física al menos 30 min 5 días a la semana?</p>');
-  const pactivity2 = $('<input name="group5" type="radio" id="pactivityYes"/><label for="pactivityYes">Sí</label>');
-  const pactivity3 = $('<input name="group5" type="radio" id="pativityNo"/><label for="pativityNo">No</label>');
+  const pactivity1 = $('<label>¿Actividad física al menos 30 min 5 días a la semana?</label>');
+  const pactivity2 = $('<div><input name="group5" type="radio" id="pactivityYes"/><label for="pactivityYes">Sí</label><input name="group5" type="radio" id="pativityNo"/><label for="pativityNo">No</label></div>');
 
   pactivity.append(pactivity1);
   pactivity.append(pactivity2);
-  pactivity.append(pactivity3);
   return pactivity;
 }
 
-const Drink = () => {
-  const drink = $('<div class="carousel-item"></div>');
-  const drink1 = $('<p>¿Toma?</label>');
-  const drink2 = $('<input name="group6" type="radio" id="drinkYes"/><label for="drinkYes">Sí</label>');
-  const drink3 = $('<input name="group6" type="radio" id="drinkNo"/><label for="drinkNo">No</label>');
-
-  drink.append(drink1);
-  drink.append(drink2);
-  drink.append(drink3);
-  return drink;
-}
-
-const Dcant = () => {
-  const dcant = $('<div class="carousel-item"></div>');
-  const dcant1 = $('<label for="dcant">¿Con qué frecuencia toma? </label>');
-  const dcant2 = $('<select id= "dcant" style="display: block"></select>');
-  const dcant3 = $('<option value="" disabled selected>Seleccione</option>');
-  const dcant4 = $('<option value="1">Diario</option>');
-  const dcant5 = $('<option value="2">Interdiario</option>');
-  const dcant6 = $('<option value="3">Semanal</option>');
-  const dcant7 = $('<option value="4">Quincenal</option>');
-  const dcant8 = $('<option value="5">Mensual</option>');
-  const dcant9 = $('<option value="6">Menos que una vez al mes</option>');
-
-  dcant.append(dcant1);
-  dcant.append(dcant2);
-  dcant2.append(dcant3);
-  dcant2.append(dcant4);
-  dcant2.append(dcant5);
-  dcant2.append(dcant6);
-  dcant2.append(dcant7);
-  dcant2.append(dcant8);
-  dcant2.append(dcant9);
-  return dcant;
-}
-
 const Shots = () => {
-  const shots = $('<div class="carousel-item"></div>');
-  const shots1 = $('<p>¿Cuántos vasos?</p>');
+  const shots = $('<div class=""></div>');
+  const shots1 = $('<label>¿Cuántos vasos?</label>');
   const shots2 = $('<select style="display: block"></select>');
   const shots3 = $('<option value="" disabled selected>Seleccione</option>');
   const shots4 = $('<option value="1">1</option>');
@@ -6160,58 +6151,103 @@ const Shots = () => {
   shots2.append(shots8);
   return shots;
 }
+
+const Dcant = () => {
+  const dcant = $('<div class=""></div>');
+  const dcant1 = $('<label for="dcant">¿Con qué frecuencia toma? </label>');
+  const dcant2 = $('<select id= "dcant" style="display: block"></select>');
+  const dcant3 = $('<option value="" disabled selected>Seleccione</option>');
+  const dcant4 = $('<option value="1">Diario</option>');
+  const dcant5 = $('<option value="2">Interdiario</option>');
+  const dcant6 = $('<option value="3">Semanal</option>');
+  const dcant7 = $('<option value="4">Quincenal</option>');
+  const dcant8 = $('<option value="5">Mensual</option>');
+  const dcant9 = $('<option value="6">Menos que una vez al mes</option>');
+
+  dcant2.on('change',(e) => {
+    e.preventDefault();
+    dcant.append(Shots());
+  });
+
+  dcant.append(dcant1);
+  dcant.append(dcant2);
+  dcant2.append(dcant3);
+  dcant2.append(dcant4);
+  dcant2.append(dcant5);
+  dcant2.append(dcant6);
+  dcant2.append(dcant7);
+  dcant2.append(dcant8);
+  dcant2.append(dcant9);
+  return dcant;
+}
+
+const Drink = () => {
+  const drink = $('<div class="carousel-item"></div>');
+  const drink1 = $('<label>15. ¿Usted Toma?</label>');
+  const drink2 = $('<input name="group6" type="radio" id="drinkYes"/><label for="drinkYes">Sí</label>');
+  const drink3 = $('<input name="group6" type="radio" id="drinkNo"/><label for="drinkNo">No</label>');
+  const div = $('<div></div>');
+  div.append(drink2);
+  div.append(drink3);
+
+  drink.append(drink1);
+  drink.append(div);
+
+  drink2.on('click',(e) => {
+    e.preventDefault();
+    drink.append(Dcant());
+  });
+  drink3.on('click',(e) => {
+    $('.carousel').carousel('next');
+  });
+  return drink;
+}
 'use strict';
 const User = (letters) => {
 
-  const container = $('<div></div>');
+  const container = $('<div><img src="assets/img/reto-power1.png" alt="" class="logo2" width="300px" ></div>');
   const form = $('<form class="carousel carousel-slider center" style="height: 90vh"><div class="carousel-fixed-item center "></div></form>');
-  const btnSave = $('<a class="btn waves-effect white grey-text darken-text-2" id="btnSave">GUARDAR</a>');
-  const name = $('<div class="carousel-item" href="one"><label for="js_input_name">Nombre</label><input id="js_input_name" type="text"></div>');
-  const lastName1 = $('<div class="carousel-item" href="two"><label for="js_input_lname_1">Apellido Paterno</label><input id="js_input_lname_1" type="text"></div>');
-  const lastName2 = $('<div class="carousel-item" href="three"><label for="js_input_lname_2">Apellido Materno</label><input id="js_input_lname_2" type="text"></div>');
-  const genre = $('<div class="carousel-item" href="four"><select style="display: block" id="genre"><option value="" disabled selected>Género</option><option value="F">Femenino</option><option value="M">Masculino</option><option value="Otro">Otro</option></select></div>');
-  const date = $('<div class="carousel-item" href="five"><input type="text" class="timepicker" id="dateBirth"></div>'); // Input calendario
-  const consSms = $('<div class="carousel-item" href="six"><input name="sms" type="radio" id="smsYes" value="OPTEN-IN" class="sms"/><label for="smsYes">Sí, deseo recibir consejos y mensajes que mejoren mi estilo de vida</label><input name="sms" type="radio" id="smsNo" class="sms" value="denied"/><label for="smsNo">No, no deseo participar.</label></div>');
-  const dni = $('<div class="carousel-item" href="seven"><label for="js_input_dni">DNI</label><input id="js_input_dni" type="text"></div>');
-  const mobile = $('<div class="carousel-item" href="8"><label for="js_input_mobile">Celular</label><input id="js_input_mobile" type="text"></div>');
-  const email = $('<div class="carousel-item" href="9"><label for="js_input_email">Email</label><input id="js_input_email" type="email" class="validate"></div>');
-  const footer = $('<div class="footer deep-orange accent-3 right-align" style="height: 10vh;">');
-  const btnPrev = $('<button class="right-align"><</button>');
-  const btnNext = $('<button class="right-align">></button>');
+  const btnSave = $('<a class="btn waves-effect white black-text darken-text-2" id="btnSave">GUARDAR</a>');
+  const name = $('<div class="carousel-item"><label for="js_input_name">2. ¿Cúal es tu nombre?</label><input id="js_input_name" type="text"></div>');
+  const lastName1 = $('<div class="carousel-item"><label for="js_input_lname_1">3. ¿Cuál es tu apellido paterno?</label><input id="js_input_lname_1" type="text"></div>');
+  const lastName2 = $('<div class="carousel-item"><label for="js_input_lname_2">4. ¿Cuál es tu apellido materno?</label><input id="js_input_lname_2" type="text"></div>');
+  const genre = $('<div class="carousel-item"><label for="genre">7. Género</label><select style="display: block" id="genre"><option value="" disabled selected>Seleccionar</option><option value="F">Femenino</option><option value="M">Masculino</option><option value="Otro">Otro</option></select></div>');
+  const date = $('<div class="carousel-item"><label for="dateBirth">8. ¿En qué fecha naciste?</label><input type="text" class="timepicker" id="dateBirth" placeholder="Ingresar fecha"></div>'); // Input calendario
+  const consSms = $('<div class="carousel-item"><label>9. ¿Deseas participar y recibir mensajes?</label>' +
+    '<div style="text-align: left"><input name="sms" type="radio" id="smsYes" value="OPTEN-IN"><label for="smsYes" class="radio-left">Sí, deseo recibir consejos y mensajes que mejoren mi estilo de vida</label></div>' +
+    '<div style="text-align: left"><input name="sms" type="radio" id="smsNo" class="sms" value="denied"><label for="smsNo" class="radio-left">No, no deseo participar.</label></div></div>');
+  const dni = $('<div class="carousel-item"><label for="js_input_dni">1. ¿Cuál es tu número de DNI?</label><input id="js_input_dni" type="text"></div>');
+  const mobile = $('<div class="carousel-item"><label for="js_input_mobile">5. ¿Cuál es tu número de celular?</label><input id="js_input_mobile" type="text"></div>');
+  const email = $('<div class="carousel-item"><label for="js_input_email">6. ¿Cuál es tu email?</label><input id="js_input_email" type="email"></div>');
+  const footer = $('<div class="footer1 right-align" style="height: 10vh; background-color: #0CBCAA">');
+  const btnPrev = $('<button class="btn btn waves-effect waves-light white black-text right-align" id="btnP"><</button>');
+  const btnNext = $('<button class="btn waves-effect waves-light white black-text right-align" id="btnN">></button>');
 
+  form.append(dni);
   form.append(name);
   form.append(lastName1);
   form.append(lastName2);
+  form.append(mobile);
+  form.append(email);
   form.append(genre);
   form.append(date);
   form.append(consSms);
-  form.append(dni);
-  form.append(mobile);
-  form.append(email);
   form.append(Weight);
   form.append(Height);
   form.append(Goal);
   form.append(Smoke);
-  form.append(Cantidad);
   form.append(Sleep);
   form.append(Activity);
   form.append(Pactivity);
-  form.append(Drink);
-  form.append(Dcant);
-  form.append(Shots);
-  form.append(CivilState);
-  form.append(Wife);
-  form.append(Cell);
+  const itemDrink = $('<div class="carousel-item">Información de consumo de agua</div>');
+  itemDrink.append(Drink());
+  form.append(Drink());
+
+  form.append(CivilState());
   form.append(Children);
-  form.append(NumChildren);
-  form.append(NameChildren);
-  form.append(AgeChildren);
   form.append(Qpromise);
-  form.append(InscriptionCode);
   form.append(FootballTeam);
   form.append(Insurance);
-  form.append(InsuranceType);
-  form.append(InsuranceCia);
   form.append(TeamName);
 
   container.append(form);
@@ -6371,36 +6407,6 @@ $(_ => {
     state.data = response;
   });
 
-  var nuevo = {
-      "NOMBRES": "Wendy",
-      "PATERNO": "Ramos",
-      "MATERNO": "Gonzales",
-      "SEXO": "femenino",
-      "FECHA_NACIMIENTO": "22/10/1992",
-      "SMS_CONSENT": "OPTEN-IN",
-      "NRO_DOCUMENTO": "04334343",
-      "CELULAR": "5198475293",
-      "EMAIL": "DSJD@SD.com",
-      "PESO": "130",
-      "EQUIPO_FUTBOL"  : "U",
-      "TALLA" : "120",
-      "PROMESA"  : "Quiero bajar por ...",
-      "TIENE_HIJOS" : "Yes",
-      "NRO_HIJOS": "2",
-      "ESTADO_CIVIL" : "Casado",
-      "NOMBRE_PAREJA" : "Pedro",
-      "CELULAR_PAREJA"  : "99834328",
-      "META_PESO"  : "75",
-      "NOMBRE_EQUIPO"  : "LEALTAD",
-      "PESO1": "100",
-      "PESO2" :"103",
-      "PESO3" : "104",
-      "PESO4" : "101",
-      "PESO5" : "98",
-      "PESO6" : "97",
-      "INDICADOR_PROGRESO" : "120"
-      };
-  newUser('01234567',nuevo);
   render(root);
   $('.timepicker').pickadate({
 		selectMonths: true, // Creates a dropdown to control mon

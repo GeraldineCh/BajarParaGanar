@@ -1,3 +1,7 @@
+body{
+  margin: 0;
+}
+
 .flex-center{
   display: flex;
   flex-direction: column-reverse;
@@ -57,23 +61,61 @@
 }
 
 .carousel-item{
-  margin-top: 25vh;
   width: 200px;
+  height: 80vh;
 }
 
-.carousel-item > input[type="text"]{
+.carousel-item > input[type="text"], .carousel-item > select, .carousel-item > input[type="email"], .carousel-item > textarea {
   width: 60vh;
-  border-bottom: 2px solid #ff3d00 ;
 }
 
-.carousel-item > input[type="text"]:active{
-  width: 60vh;
-  border-bottom: 2px solid #9f2800;
+.carousel-item > input[type="text"], .carousel-item > input[type="email"] {
+  border-bottom: 2px solid #0CBCAA ;
+}
+
+ .carousel-item > select{
+    margin: auto;
+    border: 1px solid #0CBCAA;
+    color:  #0CBCAA;
+}
+
+.no-margin{
+  margin: 0;
 }
 
 .carousel-item > label{
+  margin-top: 30vh;
   display: block;
-  padding-bottom: 60px;
+  padding-bottom: 30px;
   font-size: 30px;
-  color: #ff3d00;
+  color: #0CBCAA;
+}
+
+#btnSave{
+  position: fixed;
+  bottom: 15px;
+  left: 4%;
+  color: black;
+}
+
+#btnN, #btnP{
+  font-size: 25px;
+  margin: 15px;
+}
+
+.sms{
+  display: block;
+}
+
+.radio-left{
+  left: 59vh;
+}
+
+.logo2{
+  width: 300px;
+  position: absolute;
+}
+
+.footer1{
+  bottom: 0;
 }

@@ -1,6 +1,6 @@
 'use strict';
 const Qpromise = () => {
-  const promise = $('<div class="input-field col s12 carousel-item"></div>');
+  const promise = $('<div class="col s12 carousel-item"></div>');
   const promise1 = $('<label for="promise">Promesa personal: </label>');
   const promise2 = $('<textarea id="promise" class="materialize-textarea" data-length="120"></textarea>');
 
@@ -9,19 +9,9 @@ const Qpromise = () => {
   return promise;
 }
 
-const InscriptionCode = () => {
-  const inscriptionCode = $('<div class="input-field col s12 carousel-item"></div>');
-  const inscriptionCode1 = $('<label for="inscriptionCode">Código de inscripción: </label>');
-  const inscriptionCode2 = $('<input id="inscriptionCode" type="text" class="validate">');
-
-  inscriptionCode.append(inscriptionCode1);
-  inscriptionCode.append(inscriptionCode2);
-  return inscriptionCode;
-}
-
 const FootballTeam = () => {
   const footballTeam = $('<div class="carousel-item"></div>');
-  const footballTeam1 = $('<p>Equipo de fútbol: </p>');
+  const footballTeam1 = $('<label>Equipo de fútbol: </label>');
   const footballTeam2 = $('<select id="footballTeam" style="display: block"></select>');
   const footballTeam3 = $('<option value="" disabled selected>Seleccione</option>');
   const footballTeam4 = $('<option value="1">Universitario de Deportes</option>');
@@ -47,26 +37,43 @@ const FootballTeam = () => {
 
 const Insurance = () => {
   const insurance = $('<div class="carousel-item"></div>');
-  const insurance1 = $('<p>¿Está asegurado?</p>');
+  const insurance1 = $('<label>¿ Usted cuenta con un seguro ?</label>');
   const insurance2 = $('<input name="group8" type="radio" id="insuranceSi"/><label for="insuranceSi">Sí</label>');
   const insurance3 = $('<input name="group8" type="radio" id="insuranceNo"/><label for="insuranceNo">No</label>');
 
   insurance.append(insurance1);
   insurance.append(insurance2);
   insurance.append(insurance3);
+
+  insurance2.on('change',(e) => {
+    e.preventDefault();
+    insurance.append(InsuranceType());
+  });
+  insurance3.on('change',(e) => {
+    $('.carousel').carousel('next');
+  });
+
   return insurance;
 }
 
 const InsuranceType = () => {
-  const insuranceType = $('<div class="carousel-item"></div>');
+  const insuranceType = $('<div class=""></div>');
   const insuranceType1 = $('<p>Tipo de seguro: </p>');
-  const insuranceType2 = $('<select id="insuranceType" style="display: block" multiple></select>');
+  const insuranceType2 = $('<select id="insuranceType" style="display: block"  ></select>');
   const insuranceType3 = $('<option value="" disabled selected>Seleccione</option>');
   const insuranceType4 = $('<option value="1">Salud</option>');
   const insuranceType5 = $('<option value="2">EPS</option>');
   const insuranceType6 = $('<option value="3">Vida</option>');
   const insuranceType7 = $('<option value="4">SCTR</option>');
   const insuranceType8 = $('<option value="5">Vehicular</option>');
+
+  insuranceType2.on('change',(e) => {
+    e.preventDefault();
+    insuranceType.empty();
+    if(insuranceType2.val() !== "" ){
+      insuranceType.append(InsuranceCia());
+    }
+  });
 
   insuranceType.append(insuranceType1);
   insuranceType.append(insuranceType2);
@@ -80,8 +87,8 @@ const InsuranceType = () => {
 }
 
 const InsuranceCia = () => {
-  const insuranceCia = $('<div class="carousel-item"></div>');
-  const insuranceCia1 = $('<p>Compañía con la cual está asegurado: </p>');
+  const insuranceCia = $('<div class=""></div>');
+  const insuranceCia1 = $('<label>Compañía con la cual está asegurado: </label>');
   const insuranceCia2 = $('<select id="insuranceCia" style="display: block"></select>');
   const insuranceCia3 = $('<option value="" disabled selected>Seleccione</option>');
   const insuranceCia4 = $('<option value="1">Rimac</option>');
@@ -106,12 +113,13 @@ const InsuranceCia = () => {
 }
 
 const TeamName = () => {
-  const teamName = $('<div class="input-field col s12 carousel-item"></div>');
+  const teamName = $('<div class="col s12 carousel-item"></div>');
   const teamName1 = $('<label for="teamName">Nombre del equipo con el que perderá peso: </label>');
   const teamName2 = $('<input id="teamName" type="text" class="validate">');
 
   teamName.append(teamName1);
   teamName.append(teamName2);
+
 
   return teamName;
 }
