@@ -53,5 +53,5 @@ const newUser = (dni,data) => {
   firebase.database().ref('users/' + dni).set(data);
 }
 const updatePeso = (dni,peso) => {
-  firebase.database().ref('users/' + dni +"/PESOS/"+"peso").set(peso);
+  firebase.database().ref('users/' + dni +"/PESOS/"+peso).set(peso);
 }

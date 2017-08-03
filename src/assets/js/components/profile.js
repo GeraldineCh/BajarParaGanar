@@ -25,12 +25,16 @@ const Perfil = (update) => {
 
   btnUpdate.on('click',(e) => {
     e.preventDefault();
-  // console.log(moda);
-  // moda.modal('open');
     $('#modal1').modal();
+    $('#newPeso').on({
+      keypress: ValidateNumber,
+    });
     $('#btnListo').on('click',(e)=>{
       console.log($('#newPeso').val());
-      updatePeso(state.user.NRO_DOCUMENTO,$('#newPeso').val());
+      if($('#newPeso').val() != ""){
+        updatePeso(state.user.NRO_DOCUMENTO,$('#newPeso').val());
+        $('#newPeso').val('');
+      }
     });
   });
 

@@ -13,13 +13,13 @@ const render = (root) => {
       wrapper.append(Perfil(_=>{ render(root) }));
       break;
     case 3:
+      wrapper.append(Perfil(_=>{ render(root) }));
+      break;
+    case 4:
     // wrapper.append(User(_ => render(root)));
     // wrapper.append(StateUser());
     // wrapper.append(Family());
     // wrapper.append(MoreInfo());
-      break;
-    case 4:
-      wrapper.append(MoreInfo());
       break;
     case 5:
       wrapper.append(Reporte(_=>{ render(root) }));

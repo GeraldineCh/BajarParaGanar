@@ -497,8 +497,8 @@ function unwindRows(inputRows, unwindPath) {
   return outputRows;
 }
 
-}).call(this,require("r7L21G"))
-},{"flat":1,"lodash.clonedeep":4,"lodash.flatten":5,"lodash.get":6,"lodash.set":7,"lodash.uniq":8,"os":9,"r7L21G":10}],4:[function(require,module,exports){
+}).call(this,require("FT5ORs"))
+},{"FT5ORs":10,"flat":1,"lodash.clonedeep":4,"lodash.flatten":5,"lodash.get":6,"lodash.set":7,"lodash.uniq":8,"os":9}],4:[function(require,module,exports){
 (function (global){
 /**
  * lodash (Custom Build) <https://lodash.com/>
@@ -5600,7 +5600,7 @@ const newUser = (dni,data) => {
   firebase.database().ref('users/' + dni).set(data);
 }
 const updatePeso = (dni,peso) => {
-  firebase.database().ref('users/' + dni +"/PESOS/"+"peso").set(peso);
+  firebase.database().ref('users/' + dni +"/PESOS/"+peso).set(peso);
 }
 
 
@@ -5943,12 +5943,16 @@ const Perfil = (update) => {
 
   btnUpdate.on('click',(e) => {
     e.preventDefault();
-  // console.log(moda);
-  // moda.modal('open');
     $('#modal1').modal();
+    $('#newPeso').on({
+      keypress: ValidateNumber,
+    });
     $('#btnListo').on('click',(e)=>{
       console.log($('#newPeso').val());
-      updatePeso(state.user.NRO_DOCUMENTO,$('#newPeso').val());
+      if($('#newPeso').val() != ""){
+        updatePeso(state.user.NRO_DOCUMENTO,$('#newPeso').val());
+        $('#newPeso').val('');
+      }
     });
   });
 
@@ -6186,13 +6190,13 @@ const render = (root) => {
       wrapper.append(Perfil(_=>{ render(root) }));
       break;
     case 3:
+      wrapper.append(Perfil(_=>{ render(root) }));
+      break;
+    case 4:
     // wrapper.append(User(_ => render(root)));
     // wrapper.append(StateUser());
     // wrapper.append(Family());
     // wrapper.append(MoreInfo());
-      break;
-    case 4:
-      wrapper.append(MoreInfo());
       break;
     case 5:
       wrapper.append(Reporte(_=>{ render(root) }));
