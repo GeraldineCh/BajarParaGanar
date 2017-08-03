@@ -11,7 +11,7 @@ const ItemCarousel = (img,title,href) =>{
 
 const Salir = (update) => {
   console.log(state.user);
-  const progreso = parseInt(state.user.PESO) - parseInt(state.user.INDICADOR_PROGRESO);
+  const progreso = parseInt(state.pesoActual) - parseInt(state.user.META_PESO);
   const section = $('<section class="salir__bg"><img src="assets/img/logo-white.png" alt="" class="logo-white"></section>');
   const header = $('<div class="deep-purple lighten-1 white-text perfil">Salir</div><br>');
 	const container = $('<div id="salir" class="container center"></div>');
@@ -19,6 +19,7 @@ const Salir = (update) => {
 	const rowImage = $('<div class="logo"></div>');
   const divFalta = $('<div class="col s6"></div>');
   const falta = $('<h3>'+progreso+'Kg</h3>');
+	console.log(progreso);
   const p = $('<p><i>¡Persiste que podrás!</i></p>');
   const titleInfo = $('<h3>Información Útil</h3>');
 

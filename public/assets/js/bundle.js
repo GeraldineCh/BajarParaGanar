@@ -497,8 +497,8 @@ function unwindRows(inputRows, unwindPath) {
   return outputRows;
 }
 
-}).call(this,require("9FoBSB"))
-},{"9FoBSB":10,"flat":1,"lodash.clonedeep":4,"lodash.flatten":5,"lodash.get":6,"lodash.set":7,"lodash.uniq":8,"os":9}],4:[function(require,module,exports){
+}).call(this,require("6r38Q7"))
+},{"6r38Q7":10,"flat":1,"lodash.clonedeep":4,"lodash.flatten":5,"lodash.get":6,"lodash.set":7,"lodash.uniq":8,"os":9}],4:[function(require,module,exports){
 (function (global){
 /**
  * lodash (Custom Build) <https://lodash.com/>
@@ -5885,13 +5885,12 @@ const Perfil = (update) => {
   const name = $('<br><h3> Hola '+state.user.NOMBRES+'<h3>');
   const promesa = $('<br><div class="row"><h5 class="z-depth-1 col s12 m6 offset-m3" style="padding: 20px"><i>'+state.user.PROMESA+'</i><h5></div>');
   const rowPeso = $('<div class="perfi_peso"></div>');
-  const pesoActual = $('<h5>"'+state.user.INDICADOR_PROGRESO+'"<h5>');
-  const pesoMeta = $('<h5> "'+state.user.META_PESO+'"<h5>');
+  const pesoActual = $('<h5>De '+state.pesoActual[state.pesoActual.length -1]+'Kg<h5>');
+  const pesoMeta = $('<h5>a '+state.user.META_PESO+'Kg<h5>');
   rowPeso.append(pesoActual,pesoMeta);
 
   const btnUpdate = $('<button data-target="modal1" class="btn modal-trigger">Actualizar Peso</button>');
 // <button data-target="modal1" class="btn modal-trigger">Modal</button>
-
   const container = $('<div id="welcome" class="container center"></div>');
 
   const rowBtn = $('<div class="welcome_btn contentButton row"></div>');
@@ -5902,7 +5901,7 @@ const Perfil = (update) => {
   container.append(name,promesa,rowPeso,btnUpdate);
   section.append(header);
   section.append(container);
-
+	console.log(state.user.META_PESO);
   btnUpdate.on('click',(e) => {
     e.preventDefault();
     $('#modal1').modal();
@@ -5914,6 +5913,7 @@ const Perfil = (update) => {
       if($('#newPeso').val() != ""){
         updatePeso(state.user.NRO_DOCUMENTO,$('#newPeso').val());
        // $('#newPeso').val('');
+			 	state.pesoActual.push($('#newPeso').val());
         state.page = 3;
         update();
       }
@@ -5922,6 +5922,7 @@ const Perfil = (update) => {
 
   return section;
 };
+
 'use strict';
 var json2csv = require('json2csv');
 var fields = ['NOMBRES', 'PATERNO', 'MATERNO', 'SEXO', 'SMS_CONSENT', 'NRO_DOCUMENTO', 'CELULAR', 'EMAIL', 'PESO', 'EQUIPO_FUTBOL','TALLA','PROMESA','TIENE_HIJOS', 'NRO_HIJOS','ESTADO_CIVIL','NOMBRE_PAREJA', 'CELULAR_PAREJA','META_PESO','INDICADOR_PROGRESO','NOMBRE_EQUIPO'];
@@ -5954,7 +5955,7 @@ const ItemCarousel = (img,title,href) =>{
 
 const Salir = (update) => {
   console.log(state.user);
-  const progreso = parseInt(state.user.PESO) - parseInt(state.user.INDICADOR_PROGRESO);
+  const progreso = parseInt(state.pesoActual) - parseInt(state.user.META_PESO);
   const section = $('<section class="salir__bg"><img src="assets/img/logo-white.png" alt="" class="logo-white"></section>');
   const header = $('<div class="deep-purple lighten-1 white-text perfil">Salir</div><br>');
 	const container = $('<div id="salir" class="container center"></div>');
@@ -5962,6 +5963,7 @@ const Salir = (update) => {
 	const rowImage = $('<div class="logo"></div>');
   const divFalta = $('<div class="col s6"></div>');
   const falta = $('<h3>'+progreso+'Kg</h3>');
+	console.log(progreso);
   const p = $('<p><i>¡Persiste que podrás!</i></p>');
   const titleInfo = $('<h3>Información Útil</h3>');
 
@@ -6362,7 +6364,8 @@ const state = {
   page: 0,
   data: null,
   selectUser:{},
-  user: null
+  user: null,
+	pesoActual: [100]
 };
 
 $(_ => {
@@ -6414,6 +6417,5 @@ $(_ => {
 
 
 });
-
 
 },{"json2csv":3}]},{},[11])

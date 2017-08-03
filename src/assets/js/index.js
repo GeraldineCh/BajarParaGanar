@@ -47,7 +47,8 @@ const state = {
   page: 0,
   data: null,
   selectUser:{},
-  user: null
+  user: null,
+	pesoActual: [100]
 };
 
 $(_ => {
@@ -99,4 +100,3 @@ $(_ => {
 
 
 });
-
