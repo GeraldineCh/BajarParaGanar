@@ -497,8 +497,8 @@ function unwindRows(inputRows, unwindPath) {
   return outputRows;
 }
 
-}).call(this,require("FT5ORs"))
-},{"FT5ORs":10,"flat":1,"lodash.clonedeep":4,"lodash.flatten":5,"lodash.get":6,"lodash.set":7,"lodash.uniq":8,"os":9}],4:[function(require,module,exports){
+}).call(this,require("6r38Q7"))
+},{"6r38Q7":10,"flat":1,"lodash.clonedeep":4,"lodash.flatten":5,"lodash.get":6,"lodash.set":7,"lodash.uniq":8,"os":9}],4:[function(require,module,exports){
 (function (global){
 /**
  * lodash (Custom Build) <https://lodash.com/>
@@ -5615,56 +5615,6 @@ const ValidateNumber = (e)=>{
   }
 }
 
-'use strict';
-const User = (letters) => {
-
-	const container = $('<form></form>');
-	const title = $('<h1>Datos del participante</h1>');
-	const name = $('<div><label for="js_input_name">Nombre</label><input id="js_input_name" type="text"></div>');
-	const lastName1 = $('<div><label for="js_input_lname_1">Apellido 1</label><input id="js_input_lname_1" type="text"></div>');
-	const lastName2 = $('<div><label for="js_input_lname_2">Apellido 2</label><input id="js_input_lname_2" type="text"></div>');
-	const genre = $('<div><select><option value="" disabled selected>Género</option><option value="1">Femenino</option><option value="2">Masculino</option><option value="3">Otro</option></select></div>');
-	const date = $('<input type="text" class="timepicker">'); // Input calendario
-	const consSms = $('<div><input type="checkbox" id="test5"/><label for="test5">Recibir sms</label></div>');
-	const dni = $('<div><label for="js_input_dni">DNI</label><input id="js_input_dni" type="text"></div>');
-	const mobile = $('<div><label for="js_input_mobile">Celular</label><input id="js_input_mobile" type="text"></div>');
-	const email = $('<div><label for="js_input_email">Email</label><input id="js_input_email" type="email" class="validate"></div>');
-
-	container.append(title);
-	container.append(name);
-	container.append(lastName1);
-	container.append(lastName2);
-	container.append(genre);
-	container.append(date);
-	container.append(consSms);
-	container.append(dni);
-	container.append(mobile);
-	container.append(email);
-	//name.prop("validation", "letters");
-	//console.log(name.prop("validation"));
-
-	function letters(input) {
-		input.last().on('keypress', (e) => {
-			let codigoTecla = e.keyCode;
-				if((codigoTecla >= 97 && codigoTecla <= 122) ||
-					 (codigoTecla >= 65 && codigoTecla <= 90) ||
-					 (codigoTecla == 32) || (codigoTecla == 39)) {
-
-					$('#error').text("");
-					return true
-				} else {
-					$('#error').text("error");
-					return false
-				}
-		});
-	}
-	letters(name);
-	letters(lastName1);
-	letters(lastName2);
-
-	return container;
-};
-
 const Family = () => {
     const container = $('<div class="container"></div>');
     const title = $('<h1 class="center-align">Familia</h1>');
@@ -5759,8 +5709,8 @@ const Login = (update) => {
   const inputDni = $('<input placeholder="Ingrese Dni" id="loginDni" type="text" class="validate center-align">');
   const inputPassword = $('<input placeholder="Ingrese Password" id="loginPassword" disabled type="password" class="validate center-align">');
 
-  const labelDni = $('<h2 for="loginDni">DNI Number: </h2>');
-  const labelPassword = $('<h2 for="loginPassword">Password :</h2>');
+  const labelDni = $('<h4 for="loginDni" class="blue-text">DNI Number</h4>');
+  const labelPassword = $('<h4 for="loginPassword" class="blue-text">Password</h4>');
   const error = $('<span class="red-text">Error en usuario</span>');
 
 	divDni.append(labelDni,inputDni);
@@ -6004,9 +5954,9 @@ const Salir = (update) => {
   const titleInfo = $('<h3>Información Útil</h3>');
 
 const carrucel = $(`<div class="carousel carousel-slider center" data-indicators="true"></div>`);
-const item1 = ItemCarousel('https://lorempixel.com/250/250/nature/1','Paga a quien quieras desde donde quieras, sin efectivo','one');
-const item2 = ItemCarousel('https://lorempixel.com/250/250/nature/1','Elige a quién pagar desde tu lista de contactos','two');
-const item3 = ItemCarousel('https://lorempixel.com/250/250/nature/1','La transferencia es inmediata y gratuita de una cuenta a otra','three');
+const item1 = ItemCarousel('http://cdn2.foodviva.com/static-content/food-images/juice-recipes/carrot-apple-ginger-juice-recipe/carrot-apple-ginger-juice-recipe-250.jpg','Toma jugos en lugar de gaseosas','one');
+const item2 = ItemCarousel('http://images.media-allrecipes.com/userphotos/250x250/00/82/88/828805.jpg','Las ensaladas no solo te aportan agua, también nutrientes','two');
+const item3 = ItemCarousel('https://s3-media2.fl.yelpcdn.com/bphoto/mTJBGiaJtqz16vX3o8XFyQ/ls.jpg','Siempre realizar actividad física es fundamental para una vida sana','three');
 
 carrucel.append(item1);
 carrucel.append(item2);
@@ -6188,6 +6138,56 @@ const StateUser = () => {
     return principal;
 }
 'use strict';
+const User = (letters) => {
+
+	const container = $('<form></form>');
+	const title = $('<h1>Datos del participante</h1>');
+	const name = $('<div><label for="js_input_name">Nombre</label><input id="js_input_name" type="text"></div>');
+	const lastName1 = $('<div><label for="js_input_lname_1">Apellido 1</label><input id="js_input_lname_1" type="text"></div>');
+	const lastName2 = $('<div><label for="js_input_lname_2">Apellido 2</label><input id="js_input_lname_2" type="text"></div>');
+	const genre = $('<div><select><option value="" disabled selected>Género</option><option value="1">Femenino</option><option value="2">Masculino</option><option value="3">Otro</option></select></div>');
+	const date = $('<input type="text" class="timepicker">'); // Input calendario
+	const consSms = $('<div><input type="checkbox" id="test5"/><label for="test5">Recibir sms</label></div>');
+	const dni = $('<div><label for="js_input_dni">DNI</label><input id="js_input_dni" type="text"></div>');
+	const mobile = $('<div><label for="js_input_mobile">Celular</label><input id="js_input_mobile" type="text"></div>');
+	const email = $('<div><label for="js_input_email">Email</label><input id="js_input_email" type="email" class="validate"></div>');
+
+	container.append(title);
+	container.append(name);
+	container.append(lastName1);
+	container.append(lastName2);
+	container.append(genre);
+	container.append(date);
+	container.append(consSms);
+	container.append(dni);
+	container.append(mobile);
+	container.append(email);
+	//name.prop("validation", "letters");
+	//console.log(name.prop("validation"));
+
+	function letters(input) {
+		input.last().on('keypress', (e) => {
+			let codigoTecla = e.keyCode;
+				if((codigoTecla >= 97 && codigoTecla <= 122) ||
+					 (codigoTecla >= 65 && codigoTecla <= 90) ||
+					 (codigoTecla == 32) || (codigoTecla == 39)) {
+
+					$('#error').text("");
+					return true
+				} else {
+					$('#error').text("error");
+					return false
+				}
+		});
+	}
+	letters(name);
+	letters(lastName1);
+	letters(lastName2);
+
+	return container;
+};
+
+'use strict';
 
 const Welcome = (update) => {
   const section = $('<section class="welcome__bg"></section>');
@@ -6196,9 +6196,10 @@ const Welcome = (update) => {
 	const rowImage = $('<div class="logo"></div>');
 	const rowBtn = $('<div class="welcome_btn contentButton row"></div>');
   const rowBtn1 = $('<div class="welcome_btn contentButton row"></div>');
+  const rowSep = $('<div class="row"></div>');
 
-	const btnSignUp = $('<button type="button" class="btn-welcome yellow waves-effect waves-light btn-large" name="button">Sign up</button>');
-	const btnLogIn = $('<button type="button" class="btn-welcome yellow waves-effect waves-light btn-large" name="button">Log in</button>');
+	const btnSignUp = $('<button type="button" class="btn-welcome waves-effect waves-light btn-large" name="button">Regístrate</button>');
+	const btnLogIn = $('<button type="button" class="btn-welcome waves-effect waves-light btn-large" name="button">Inicia sesión</button>');
 
 	rowBtn.append(btnSignUp);
   rowBtn1.append(btnLogIn);
@@ -6259,7 +6260,7 @@ const render = (root) => {
 };
 
 const state = {
-  page: 1,
+  page: 0,
   data: null,
   selectUser:{},
   user: null

@@ -22,9 +22,9 @@ const Salir = (update) => {
   const titleInfo = $('<h3>Información Útil</h3>');
 
 const carrucel = $(`<div class="carousel carousel-slider center" data-indicators="true"></div>`);
-const item1 = ItemCarousel('https://lorempixel.com/250/250/nature/1','Paga a quien quieras desde donde quieras, sin efectivo','one');
-const item2 = ItemCarousel('https://lorempixel.com/250/250/nature/1','Elige a quién pagar desde tu lista de contactos','two');
-const item3 = ItemCarousel('https://lorempixel.com/250/250/nature/1','La transferencia es inmediata y gratuita de una cuenta a otra','three');
+const item1 = ItemCarousel('http://cdn2.foodviva.com/static-content/food-images/juice-recipes/carrot-apple-ginger-juice-recipe/carrot-apple-ginger-juice-recipe-250.jpg','Toma jugos en lugar de gaseosas','one');
+const item2 = ItemCarousel('http://images.media-allrecipes.com/userphotos/250x250/00/82/88/828805.jpg','Las ensaladas no solo te aportan agua, también nutrientes','two');
+const item3 = ItemCarousel('https://s3-media2.fl.yelpcdn.com/bphoto/mTJBGiaJtqz16vX3o8XFyQ/ls.jpg','Siempre realizar actividad física es fundamental para una vida sana','three');
 
 carrucel.append(item1);
 carrucel.append(item2);
