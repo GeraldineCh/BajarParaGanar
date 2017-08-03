@@ -11,8 +11,8 @@ const Login = (update) => {
   const inputDni = $('<input placeholder="Ingrese Dni" id="loginDni" type="text" class="validate center-align">');
   const inputPassword = $('<input placeholder="Ingrese Password" id="loginPassword" disabled type="password" class="validate center-align">');
 
-  const labelDni = $('<h2 for="loginDni">DNI Number: </h2>');
-  const labelPassword = $('<h2 for="loginPassword">Password :</h2>');
+  const labelDni = $('<h4 for="loginDni" class="blue-text">DNI Number</h4>');
+  const labelPassword = $('<h4 for="loginPassword" class="blue-text">Password</h4>');
   const error = $('<span class="red-text">Error en usuario</span>');
 
 	divDni.append(labelDni,inputDni);

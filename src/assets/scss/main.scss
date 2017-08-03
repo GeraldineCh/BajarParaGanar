@@ -18,7 +18,13 @@
 .login__bg{
   @extend .flex-center;
 }
+
 .btn-welcome{
   width: 200px;
   opacity: 1;
+ background-color: #56009C;
+}
+
+.blue-text {
+ color: #56009C;
 }

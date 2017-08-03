@@ -9,8 +9,8 @@ const Welcome = (update) => {
   const rowBtn1 = $('<div class="welcome_btn contentButton row"></div>');
   const rowSep = $('<div class="row"></div>');
 
-	const btnSignUp = $('<button type="button" class="btn-welcome yellow waves-effect waves-light btn-large" name="button">Regístrate</button>');
-	const btnLogIn = $('<button type="button" class="btn-welcome yellow waves-effect waves-light btn-large" name="button">Inicia sesión</button>');
+	const btnSignUp = $('<button type="button" class="btn-welcome waves-effect waves-light btn-large" name="button">Regístrate</button>');
+	const btnLogIn = $('<button type="button" class="btn-welcome waves-effect waves-light btn-large" name="button">Inicia sesión</button>');
 
 	rowBtn.append(btnSignUp);
   rowBtn1.append(btnLogIn);
