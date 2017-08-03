@@ -9,13 +9,13 @@ const render = (root) => {
       wrapper.append(User(_ => render(root)));
       break;
 		case "next":
-
 	}
+
   root.append(wrapper);
 }
 
 const state = {
-	screenView: null,
+	screenView: null
 };
 
 $( _ => {
