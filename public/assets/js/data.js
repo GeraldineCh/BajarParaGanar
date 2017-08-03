@@ -43,25 +43,25 @@ var myCars = {
   "CELULAR": "5198475293",
   "EMAIL": "DSJD@SD.com",
   "PESO": "130",
-  "APORTA_EQUIPO_FUTBOL"  : "U",
+  "EQUIPO_FUTBOL"  : "U",
   "TALLA" : "120",
-  "APORTA_PROMESA"  : "Quiero bajar por ...",
+  "PROMESA"  : "Quiero bajar por ...",
   "TIENE_HIJOS" : "Yes",
   "NRO_HIJOS": "2",
-  "ESTADO CIVIL" : "Casado",
+  "ESTADO_CIVIL" : "Casado",
   "NOMBRE_PAREJA" : "Pedro",
   "CELULAR_PAREJA"  : "99834328",
-  "APORTA_META_PESO"  : "75",
-  "APORTA_NOMBRE_EQUIPO"  : "LEALTAD",
+  "META_PESO"  : "75",
+  "NOMBRE_EQUIPO"  : "LEALTAD",
   "PESO1": "100",
   "PESO2" :"103",
   "PESO3" : "104",
   "PESO4" : "101",
   "PESO5" : "98",
-  "PESO6" : "ss"
-
+  "PESO6" : "97",
+  "INDICADOR_PROGRESO" : "120"
 };
-firebase.database().ref('users/' + id + "/peso8/").set(nuevo);
+firebase.database().ref('users/' + id).set(myCars);
 
 var state = {
   data : null,
