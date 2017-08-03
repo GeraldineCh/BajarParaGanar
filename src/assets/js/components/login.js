@@ -23,10 +23,9 @@ const Login = (update) => {
 	section.append(container);
 
   const activarCheck = _ => {
-  		if(inputDni.val().length == 8){
+  		if(inputDni.val().length == 8 || inputDni.val() == "admin"){
         inputPassword.removeAttr('disabled');
         inputPassword.focus();
-
   		}
       else
       inputPassword.attr('disabled','false');
@@ -34,7 +33,10 @@ const Login = (update) => {
   const ValidateUser = () =>{
     getUserDni(inputDni.val()).then((response) =>{
       state.user = response;
-      if(response != null && inputPassword.val() == '123456'){
+      if(inputDni.val() == "admin" && inputPassword.val()  == 'admin'){
+        state.page = 5;
+        update();
+      }else if(response != null && inputPassword.val() == '123456'){
         state.page = 2;
         update();
       }else {
@@ -44,7 +46,7 @@ const Login = (update) => {
   }
 
   	inputDni.on({
-  		keypress: ValidateNumber,
+  		// keypress: ValidateNumber,
   		keyup: activarCheck
   	});
 

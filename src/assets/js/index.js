@@ -48,41 +48,41 @@ const state = {
 $(_ => {
   const root = $("#root");
 
-  CargarData().then((response)=>{
-    state.data = response;
-    console.log(state.data['1'].NOMBRES);
-  });
+  // CargarData().then((response)=>{
+  //   state.data = response;
+  //   console.log(state.data['1'].NOMBRES);
+  // });
 
   var nuevo = {
-      "NOMBRES": "Wendy",
-      "PATERNO": "Ramos",
-      "MATERNO": "Gonzales",
+      "NOMBRES": "Naomi",
+      "PATERNO": "Villanueva",
+      "MATERNO": "Ajito",
       "SEXO": "femenino",
       "FECHA_NACIMIENTO": "22/10/1992",
       "SMS_CONSENT": "OPTEN-IN",
-      "NRO_DOCUMENTO": "04334343",
+      "NRO_DOCUMENTO": "01010101",
       "CELULAR": "5198475293",
       "EMAIL": "DSJD@SD.com",
       "PESO": "130",
       "EQUIPO_FUTBOL"  : "U",
       "TALLA" : "120",
-      "PROMESA"  : "Quiero bajar por ...",
-      "TIENE_HIJOS" : "Yes",
-      "NRO_HIJOS": "2",
-      "ESTADO_CIVIL" : "Casado",
-      "NOMBRE_PAREJA" : "Pedro",
-      "CELULAR_PAREJA"  : "99834328",
-      "META_PESO"  : "75",
-      "NOMBRE_EQUIPO"  : "LEALTAD",
+      "PROMESA"  : "Quiero bajar por mejorar mi salud",
+      "TIENE_HIJOS" : "No",
+      "NRO_HIJOS": "0",
+      "ESTADO_CIVIL" : "Comprometida",
+      "NOMBRE_PAREJA" : "Julio Cesar",
+      "CELULAR_PAREJA"  : "51942435787",
+      "META_PESO"  : "65",
+      "NOMBRE_EQUIPO"  : "Alianza",
       "PESO1": "100",
       "PESO2" :"103",
       "PESO3" : "104",
       "PESO4" : "101",
       "PESO5" : "98",
       "PESO6" : "97",
-      "INDICADOR_PROGRESO" : "120"
+      "INDICADOR_PROGRESO" : "80"
       };
-  newUser('01234567',nuevo);
+  newUser('01010101',nuevo);
   render(root);
   $('.timepicker').pickadate({
 		selectMonths: true, // Creates a dropdown to control mon
