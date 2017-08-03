@@ -30,8 +30,10 @@ firebase.initializeApp(config);
 
 var id = "04128345";
 
+var nuevo = document.getElementById("name").value;
+
 var myCars = {
-  "NOMBRES": "Nely",
+  "NOMBRES": "Luana",
   "PATERNO": "Perez",
   "MATERNO": "Gonzales",
   "SEXO": "femenino",
@@ -56,9 +58,10 @@ var myCars = {
   "PESO3" : "104",
   "PESO4" : "101",
   "PESO5" : "98",
-  "PESO6" : "95"
+  "PESO6" : "ss"
+
 };
-firebase.database().ref('users/' + id).set(myCars);
+firebase.database().ref('users/' + id + "/peso8/").set(nuevo);
 
 var state = {
   data : null,
