@@ -78,6 +78,7 @@ const StateUser = () => {
     const shots6 = $('<option value="3">3</option>');
     const shots7 = $('<option value="4">4</option>');
     const shots8 = $('<option value="5">Más de 4</option>');
+    const next = $('<button>Siguiente</button>');
  
     principal.append(title);
  
@@ -160,6 +161,14 @@ const StateUser = () => {
  principal.append(drink);
  principal.append(dcant);
  principal.append(shots);
- 
+ principal.append(next);
+
+ next.click(function (e) {
+   e.preventDefault();
+   state.selectUser.PESO = $('#weightInit').val();
+   state.selectUser.TALLA = $('#height').val();
+   state.selectUser.META_PESO = $('#goal').val();
+ });
+
     return principal;
 }

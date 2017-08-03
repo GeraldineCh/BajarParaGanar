@@ -9,9 +9,9 @@ const render = (root) => {
       wrapper.append(Login(_=>{ render(root) }));
     case 1:
       wrapper.append(User(_ => render(root)));
-      // wrapper.append(StateUser());
-      // wrapper.append(Family());
-      // wrapper.append(MoreInfo());
+      wrapper.append(StateUser());
+      wrapper.append(Family());
+      wrapper.append(MoreInfo());
       break;
     case 2:
       wrapper.append(StateUser());
@@ -19,6 +19,7 @@ const render = (root) => {
     case 3:
       wrapper.append(Family());
       break;
+
     case 4:
       wrapper.append(MoreInfo());
       break;
@@ -31,17 +32,15 @@ const render = (root) => {
 };
 
 const state = {
-  page: 0,
+  page: 1,
   data: null,
   selectUser:{}
 };
 
 $(_ => {
   const root = $("#root");
-
   CargarData().then((response)=>{
     state.data = response;
-    console.log(state.data['1'].NOMBRES);
   });
 
   var nuevo = {

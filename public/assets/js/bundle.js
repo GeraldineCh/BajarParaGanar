@@ -497,8 +497,8 @@ function unwindRows(inputRows, unwindPath) {
   return outputRows;
 }
 
-}).call(this,require("r7L21G"))
-},{"flat":1,"lodash.clonedeep":4,"lodash.flatten":5,"lodash.get":6,"lodash.set":7,"lodash.uniq":8,"os":9,"r7L21G":10}],4:[function(require,module,exports){
+}).call(this,require("6r38Q7"))
+},{"6r38Q7":10,"flat":1,"lodash.clonedeep":4,"lodash.flatten":5,"lodash.get":6,"lodash.set":7,"lodash.uniq":8,"os":9}],4:[function(require,module,exports){
 (function (global){
 /**
  * lodash (Custom Build) <https://lodash.com/>
@@ -5557,7 +5557,7 @@ firebase.initializeApp(config);
 
 
 const getUsers = () => {
-    return firebase.database().ref('/users').once('value').then((snapshot) => {
+    return firebase.database().ref('/users/').once('value').then((snapshot) => {
           return snapshot.val();
     });
 };
@@ -5584,61 +5584,12 @@ const generarCsv = (json,encabezado,btn,archivo) =>{
     btn.click();
   });
 }
-const newUser = (dni,data) => {
-  firebase.database().ref('users/' + dni).set(data);
-}
 
-
-
-'use strict';
-const User = (letters) => {
-
-	const container = $('<form></form>');
-	const title = $('<h1>Datos del participante</h1>');
-	const name = $('<div><label for="js_input_name">Nombre</label><input id="js_input_name" type="text"></div>');
-	const lastName1 = $('<div><label for="js_input_lname_1">Apellido 1</label><input id="js_input_lname_1" type="text"></div>');
-	const lastName2 = $('<div><label for="js_input_lname_2">Apellido 2</label><input id="js_input_lname_2" type="text"></div>');
-	const genre = $('<div><select><option value="" disabled selected>Género</option><option value="1">Femenino</option><option value="2">Masculino</option><option value="3">Otro</option></select></div>');
-	const date = $('<input type="text" class="timepicker">'); // Input calendario
-	const consSms = $('<div><input type="checkbox" id="test5"/><label for="test5">Recibir sms</label></div>');
-	const dni = $('<div><label for="js_input_dni">DNI</label><input id="js_input_dni" type="text"></div>');
-	const mobile = $('<div><label for="js_input_mobile">Celular</label><input id="js_input_mobile" type="text"></div>');
-	const email = $('<div><label for="js_input_email">Email</label><input id="js_input_email" type="email" class="validate"></div>');
-
-	container.append(title);
-	container.append(name);
-	container.append(lastName1);
-	container.append(lastName2);
-	container.append(genre);
-	container.append(date);
-	container.append(consSms);
-	container.append(dni);
-	container.append(mobile);
-	container.append(email);
-	//name.prop("validation", "letters");
-	//console.log(name.prop("validation"));
-
-	function letters(input) {
-		input.last().on('keypress', (e) => {
-			let codigoTecla = e.keyCode;
-				if((codigoTecla >= 97 && codigoTecla <= 122) ||
-					 (codigoTecla >= 65 && codigoTecla <= 90) ||
-					 (codigoTecla == 32) || (codigoTecla == 39)) {
-
-					$('#error').text("");
-					return true
-				} else {
-					$('#error').text("error");
-					return false
-				}
-		});
-	}
-	letters(name);
-	letters(lastName1);
-	letters(lastName2);
-
-	return container;
+const newUser = (dni,dato) => {
+  firebase.database().ref('users/' + dni).set(dato);
 };
+
+
 
 const Family = () => {
     const container = $('<div class="container"></div>');
@@ -5647,27 +5598,22 @@ const Family = () => {
     container.append(title);
  
  const civilState = $('<div class="input-field col s12"></div>');
-    const civilState1 = $('<label for="civilState">Estado civil </label>');
-    const civilState2 = $('<select id="civilState"></select>');
-    const civilState3 = $('<option value="" disabled selected>Seleccione</option>');
-    const civilState4 = $('<option value="1">Soltero</option>');
-    const civilState5 = $('<option value="2">Casado</option>');
-    const civilState6 = $('<option value="3">Conviviente</option>');
-    const civilState7 = $('<option value="4">Vuido</option>');
-    const civilState8 = $('<option value="5">Divorciado</option>'); 
- 
+    const civilState1 = $('<select id="civilState" style="display: block">Estado Civil<option value="" disabled selected>Seleccione</option>' +
+      '<option value="Soltero">Soltero</option><option value="Casado">Casado</option><option value="Conviviente">Conviviente</option>' +
+      '<option value="Viudo">Viudo</option><option value="Divorciado">Divorciado</option></select>');
+
     const wife = $('<div class="input-field col s12"></div>');
     const wife1 = $('<label for="wife">Nombre de esposa/conviviente/pareja: </label>');
-    const wife2 = $('<input id="wife" type="text" class="validate">');
+    const wife2 = $('<input id="nameCouple" type="text" class="validate">');
  
     const cell = $('<div class="input-field col s12"></div>');
     const cell1 = $('<label for="wife">Celular de la pareja: </label>');
-    const cell2 = $('<input id="wife" type="text" class="validate">');
+    const cell2 = $('<input id="phoneCouple" type="text" class="validate">');
  
  const children = $('<div class="input-field col s12"></div>');
     const children1 = $('<label>¿Tiene hijos?</label>');
-    const children2 = $('<input name="group1" type="radio" id="childrenSi"/><label for="test1">Sí</label>');
-    const children3 = $('<input name="group1" type="radio" id="childrenNo"/><label for="test1">No</label>');
+    const children2 = $('<input name="group1" type="radio" id="childrenSi" value="si"/><label for="test1">Sí</label>');
+    const children3 = $('<input name="group1" type="radio" id="childrenNo" value="no"/><label for="test1">No</label>');
  
  const numChildren = $('<div class="input-field col s12"></div>');
     const numChildren1 = $('<label for="numChildren">Número de hijos: </label>');
@@ -5680,15 +5626,9 @@ const Family = () => {
  const ageChildren = $('<div class="input-field col s12"></div>');
     const ageChildren1 = $('<label for="ageChildren">Edad de los hijos: </label>');
     const ageChildren2 = $('<input id="ageChildren" type="text" class="validate">');
+  const next = $('<button>Siguiente</button>');
  
  civilState.append(civilState1);
- civilState.append(civilState2);
- civilState2.append(civilState3);
- civilState2.append(civilState4);
- civilState2.append(civilState5);
- civilState2.append(civilState6);
- civilState2.append(civilState7);
- civilState2.append(civilState8);
  
  wife.append(wife1);
  wife.append(wife2);
@@ -5716,10 +5656,19 @@ const Family = () => {
  container.append(numChildren);
  container.append(nameChildren);
  container.append(ageChildren);
+ container.append(next);
  
- 
+  next.click(function (e) {
+    e.preventDefault();
+    state.selectUser.CELULAR_PAREJA = cell2.val();
+    state.selectUser.ESTADO_CIVIL = civilState1.val();
+    state.selectUser.TIENE_HIJOS = $('input[type=radio]').val();
+    state.selectUser.NOMBRE_PAREJA = wife2.val();
+    state.selectUser.NRO_HIJOS = numChildren2.val();
+  });
+
     return container;
-}
+};
 
 'use strict';
 
@@ -5812,6 +5761,8 @@ const MoreInfo = () => {
  const teamName = $('<div class="input-field col s12"></div>');
     const teamName1 = $('<label for="teamName">Nombre del equipo con el que perderá peso: </label>');
     const teamName2 = $('<input id="teamName" type="text" class="validate">');
+
+    const btnSave = $('<button>Guardar</button>');
  
  promise.append(promise1);
  promise.append(promise2);
@@ -5857,16 +5808,26 @@ const MoreInfo = () => {
  teamName.append(teamName1);
  teamName.append(teamName2);
  
- field.append(promise);
- field.append(inscriptionCode);
- field.append(footballTeam);
- field.append(insurance);
- field.append(insuranceType);
- field.append(insuranceCia);
- field.append(teamName);
- 
-    return field;
-}
+   field.append(promise);
+   field.append(inscriptionCode);
+   field.append(footballTeam);
+   field.append(insurance);
+   field.append(insuranceType);
+   field.append(insuranceCia);
+   field.append(teamName);
+    field.append(btnSave);
+
+
+   btnSave.click( function () {
+     state.selectUser.PROMESA = promise2.val();
+     state.selectUser.INDICADOR_PROGRESO = 0;
+     state.selectUser.NOMBRE_EQUIPO = $('#teamName').val();
+     state.selectUser.EQUIPO_FUTBOL = $('#footballTeam').val();
+     console.log(state.selectUser);
+      newUser(state.selectUser.NRO_DOCUMENTO, state.selectUser);
+   });
+  return field;
+};
 'use strict';
 var json2csv = require('json2csv');
 var fields = ['NOMBRES', 'PATERNO', 'MATERNO', 'SEXO', 'SMS_CONSENT', 'NRO_DOCUMENTO', 'CELULAR', 'EMAIL', 'PESO', 'EQUIPO_FUTBOL','TALLA','PROMESA','TIENE_HIJOS', 'NRO_HIJOS','ESTADO_CIVIL','NOMBRE_PAREJA', 'CELULAR_PAREJA','META_PESO','INDICADOR_PROGRESO','NOMBRE_EQUIPO'];
@@ -5967,6 +5928,7 @@ const StateUser = () => {
     const shots6 = $('<option value="3">3</option>');
     const shots7 = $('<option value="4">4</option>');
     const shots8 = $('<option value="5">Más de 4</option>');
+    const next = $('<button>Siguiente</button>');
  
     principal.append(title);
  
@@ -6049,9 +6011,82 @@ const StateUser = () => {
  principal.append(drink);
  principal.append(dcant);
  principal.append(shots);
- 
+ principal.append(next);
+
+ next.click(function (e) {
+   e.preventDefault();
+   state.selectUser.PESO = $('#weightInit').val();
+   state.selectUser.TALLA = $('#height').val();
+   state.selectUser.META_PESO = $('#goal').val();
+ });
+
     return principal;
 }
+'use strict';
+const User = (letters) => {
+
+	const container = $('<form></form>');
+	const title = $('<h1>Datos del participante</h1>');
+	const name = $('<input id="js_input_name" type="text" placeholder="Nombre">');
+	const lastName1 = $('<input id="js_input_lname_1" type="text" placeholder="Apellido Paterno">');
+	const lastName2 = $('<input id="js_input_lname_2" type="text" placeholder="Apellido Materno">');
+	const genre = $('<select id="genre" style="display: block">Género<option value="F">Femenino</option><option value="M">Masculino</option><option value="Otro">Otro</option></select>');
+	const date = $('<input type="text" class="timepicker">'); // Input calendario
+	const consSms = $('<input type="checkbox" id="sms"><label for="sms">Recibir sms</label>');
+	const dni = $('<input id="js_input_dni" type="text" placeholder="Dni">');
+	const mobile = $('<input id="js_input_mobile" type="text" placeholder="Celular">');
+	const email = $('<input id="js_input_email" type="email" class="validate" placeholder="Email">');
+	const next = $('<button>Siguiente</button>');
+
+	container.append(title);
+	container.append(name);
+	container.append(lastName1);
+	container.append(lastName2);
+	container.append(genre);
+	container.append(date);
+	container.append(consSms);
+	container.append(dni);
+	container.append(mobile);
+	container.append(email);
+	container.append(next);
+	//name.prop("validation", "letters");
+	//console.log(name.prop("validation"));
+
+	function letters(input) {
+		input.last().on('keypress', (e) => {
+			let codigoTecla = e.keyCode;
+				if((codigoTecla >= 97 && codigoTecla <= 122) ||
+					 (codigoTecla >= 65 && codigoTecla <= 90) ||
+					 (codigoTecla == 32) || (codigoTecla == 39)) {
+
+					$('#error').text("");
+					return true
+				} else {
+					$('#error').text("error");
+					return false
+				}
+		});
+	}
+	letters(name);
+	letters(lastName1);
+	letters(lastName2);
+
+	next.click(function (e) {
+			e.preventDefault();
+   state.selectUser.NOMBRES = name.val();
+   state.selectUser.PATERNO = lastName1.val();
+   state.selectUser.MATERNO = lastName2.val();
+   state.selectUser.NRO_DOCUMENTO = dni.val();
+   state.selectUser.SEXO = genre.val();
+   state.selectUser.FECHA_NACIMIENTO = date.val();
+   state.selectUser.SMS_CONSENT = consSms.val();
+   state.selectUser.EMAIL = email.val();
+   state.selectUser.CELULAR = mobile.val();
+ });
+
+	return container;
+};
+
 'use strict';
 
 const Welcome = (update) => {
@@ -6094,9 +6129,9 @@ const render = (root) => {
       wrapper.append(Login(_=>{ render(root) }));
     case 1:
       wrapper.append(User(_ => render(root)));
-      // wrapper.append(StateUser());
-      // wrapper.append(Family());
-      // wrapper.append(MoreInfo());
+      wrapper.append(StateUser());
+      wrapper.append(Family());
+      wrapper.append(MoreInfo());
       break;
     case 2:
       wrapper.append(StateUser());
@@ -6104,6 +6139,7 @@ const render = (root) => {
     case 3:
       wrapper.append(Family());
       break;
+
     case 4:
       wrapper.append(MoreInfo());
       break;
@@ -6116,17 +6152,15 @@ const render = (root) => {
 };
 
 const state = {
-  page: 0,
+  page: 1,
   data: null,
   selectUser:{}
 };
 
 $(_ => {
   const root = $("#root");
-
   CargarData().then((response)=>{
     state.data = response;
-    console.log(state.data['1'].NOMBRES);
   });
 
   var nuevo = {

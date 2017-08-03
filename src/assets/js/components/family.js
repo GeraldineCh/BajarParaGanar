@@ -5,27 +5,22 @@ const Family = () => {
     container.append(title);
  
  const civilState = $('<div class="input-field col s12"></div>');
-    const civilState1 = $('<label for="civilState">Estado civil </label>');
-    const civilState2 = $('<select id="civilState"></select>');
-    const civilState3 = $('<option value="" disabled selected>Seleccione</option>');
-    const civilState4 = $('<option value="1">Soltero</option>');
-    const civilState5 = $('<option value="2">Casado</option>');
-    const civilState6 = $('<option value="3">Conviviente</option>');
-    const civilState7 = $('<option value="4">Vuido</option>');
-    const civilState8 = $('<option value="5">Divorciado</option>'); 
- 
+    const civilState1 = $('<select id="civilState" style="display: block">Estado Civil<option value="" disabled selected>Seleccione</option>' +
+      '<option value="Soltero">Soltero</option><option value="Casado">Casado</option><option value="Conviviente">Conviviente</option>' +
+      '<option value="Viudo">Viudo</option><option value="Divorciado">Divorciado</option></select>');
+
     const wife = $('<div class="input-field col s12"></div>');
     const wife1 = $('<label for="wife">Nombre de esposa/conviviente/pareja: </label>');
-    const wife2 = $('<input id="wife" type="text" class="validate">');
+    const wife2 = $('<input id="nameCouple" type="text" class="validate">');
  
     const cell = $('<div class="input-field col s12"></div>');
     const cell1 = $('<label for="wife">Celular de la pareja: </label>');
-    const cell2 = $('<input id="wife" type="text" class="validate">');
+    const cell2 = $('<input id="phoneCouple" type="text" class="validate">');
  
  const children = $('<div class="input-field col s12"></div>');
     const children1 = $('<label>¿Tiene hijos?</label>');
-    const children2 = $('<input name="group1" type="radio" id="childrenSi"/><label for="test1">Sí</label>');
-    const children3 = $('<input name="group1" type="radio" id="childrenNo"/><label for="test1">No</label>');
+    const children2 = $('<input name="group1" type="radio" id="childrenSi" value="si"/><label for="test1">Sí</label>');
+    const children3 = $('<input name="group1" type="radio" id="childrenNo" value="no"/><label for="test1">No</label>');
  
  const numChildren = $('<div class="input-field col s12"></div>');
     const numChildren1 = $('<label for="numChildren">Número de hijos: </label>');
@@ -38,15 +33,9 @@ const Family = () => {
  const ageChildren = $('<div class="input-field col s12"></div>');
     const ageChildren1 = $('<label for="ageChildren">Edad de los hijos: </label>');
     const ageChildren2 = $('<input id="ageChildren" type="text" class="validate">');
+  const next = $('<button>Siguiente</button>');
  
  civilState.append(civilState1);
- civilState.append(civilState2);
- civilState2.append(civilState3);
- civilState2.append(civilState4);
- civilState2.append(civilState5);
- civilState2.append(civilState6);
- civilState2.append(civilState7);
- civilState2.append(civilState8);
  
  wife.append(wife1);
  wife.append(wife2);
@@ -74,7 +63,16 @@ const Family = () => {
  container.append(numChildren);
  container.append(nameChildren);
  container.append(ageChildren);
+ container.append(next);
  
- 
+  next.click(function (e) {
+    e.preventDefault();
+    state.selectUser.CELULAR_PAREJA = cell2.val();
+    state.selectUser.ESTADO_CIVIL = civilState1.val();
+    state.selectUser.TIENE_HIJOS = $('input[type=radio]').val();
+    state.selectUser.NOMBRE_PAREJA = wife2.val();
+    state.selectUser.NRO_HIJOS = numChildren2.val();
+  });
+
     return container;
-}
+};

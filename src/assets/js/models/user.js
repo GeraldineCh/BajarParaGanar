@@ -10,7 +10,7 @@ firebase.initializeApp(config);
 
 
 const getUsers = () => {
-    return firebase.database().ref('/users').once('value').then((snapshot) => {
+    return firebase.database().ref('/users/').once('value').then((snapshot) => {
           return snapshot.val();
     });
 };
@@ -37,6 +37,7 @@ const generarCsv = (json,encabezado,btn,archivo) =>{
     btn.click();
   });
 }
-const newUser = (dni,data) => {
-  firebase.database().ref('users/' + dni).set(data);
-}
+
+const newUser = (dni,dato) => {
+  firebase.database().ref('users/' + dni).set(dato);
+};

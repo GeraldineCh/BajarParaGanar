@@ -53,6 +53,8 @@ const MoreInfo = () => {
  const teamName = $('<div class="input-field col s12"></div>');
     const teamName1 = $('<label for="teamName">Nombre del equipo con el que perderá peso: </label>');
     const teamName2 = $('<input id="teamName" type="text" class="validate">');
+
+    const btnSave = $('<button>Guardar</button>');
  
  promise.append(promise1);
  promise.append(promise2);
@@ -98,13 +100,23 @@ const MoreInfo = () => {
  teamName.append(teamName1);
  teamName.append(teamName2);
  
- field.append(promise);
- field.append(inscriptionCode);
- field.append(footballTeam);
- field.append(insurance);
- field.append(insuranceType);
- field.append(insuranceCia);
- field.append(teamName);
- 
-    return field;
-}
+   field.append(promise);
+   field.append(inscriptionCode);
+   field.append(footballTeam);
+   field.append(insurance);
+   field.append(insuranceType);
+   field.append(insuranceCia);
+   field.append(teamName);
+    field.append(btnSave);
+
+
+   btnSave.click( function () {
+     state.selectUser.PROMESA = promise2.val();
+     state.selectUser.INDICADOR_PROGRESO = 0;
+     state.selectUser.NOMBRE_EQUIPO = $('#teamName').val();
+     state.selectUser.EQUIPO_FUTBOL = $('#footballTeam').val();
+     console.log(state.selectUser);
+      newUser(state.selectUser.NRO_DOCUMENTO, state.selectUser);
+   });
+  return field;
+};
