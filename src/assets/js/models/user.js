@@ -14,6 +14,18 @@ const getUsers = () => {
           return snapshot.val();
     });
 };
+const getUser = (dni) => {
+    return firebase.database().ref('/users/'+dni).once('value').then((snapshot) => {
+          return snapshot.val();
+    });
+};
+const getUserDni = (dni) => {
+  return new Promise((resolve,reject) => {
+    resolve(getUser(dni));
+  });
+};
+
+
 const CargarData = () => {
   return new Promise((resolve,reject) => {
     resolve(getUsers());
@@ -39,4 +51,7 @@ const generarCsv = (json,encabezado,btn,archivo) =>{
 }
 const newUser = (dni,data) => {
   firebase.database().ref('users/' + dni).set(data);
+}
+const updatePeso = (dni,peso) => {
+  firebase.database().ref('users/' + dni +"/PESOS/"+"peso").set(peso);
 }

@@ -5561,6 +5561,18 @@ const getUsers = () => {
           return snapshot.val();
     });
 };
+const getUser = (dni) => {
+    return firebase.database().ref('/users/'+dni).once('value').then((snapshot) => {
+          return snapshot.val();
+    });
+};
+const getUserDni = (dni) => {
+  return new Promise((resolve,reject) => {
+    resolve(getUser(dni));
+  });
+};
+
+
 const CargarData = () => {
   return new Promise((resolve,reject) => {
     resolve(getUsers());
@@ -5587,8 +5599,21 @@ const generarCsv = (json,encabezado,btn,archivo) =>{
 const newUser = (dni,data) => {
   firebase.database().ref('users/' + dni).set(data);
 }
+const updatePeso = (dni,peso) => {
+  firebase.database().ref('users/' + dni +"/PESOS/"+"peso").set(peso);
+}
 
 
+const ValidateLetter = (e)=>{
+  if(e.which >= 48 && e.which <= 58){
+    e.preventDefault();
+  }
+}
+const ValidateNumber = (e)=>{
+  if(e.which< 47 || e.which>58){
+    e.preventDefault();
+  }
+}
 
 'use strict';
 const User = (letters) => {
@@ -5732,11 +5757,11 @@ const Login = (update) => {
   const divPassword = $('<div class="input-field col s6">');
 
   const inputDni = $('<input placeholder="Ingrese Dni" id="loginDni" type="text" class="validate center-align">');
-  const inputPassword = $('<input placeholder="Ingrese Password" id="loginPassword" type="password" class="validate center-align">');
+  const inputPassword = $('<input placeholder="Ingrese Password" id="loginPassword" disabled type="password" class="validate center-align">');
 
   const labelDni = $('<h2 for="loginDni">DNI Number: </h2>');
   const labelPassword = $('<h2 for="loginPassword">Password :</h2>');
-
+  const error = $('<span class="red-text">Error en usuario</span>');
 
 	divDni.append(labelDni,inputDni);
   divPassword.append(labelPassword,inputPassword);
@@ -5745,14 +5770,38 @@ const Login = (update) => {
 
 	section.append(container);
 
-  // inputDni.on('click',(e) => {
-  //   state.page = 1;
-  //   update();
-  // });
-  // inputPassword.on('click',(e) => {
-  //   state.page = 1;
-  //   update();
-  // });
+  const activarCheck = _ => {
+  		if(inputDni.val().length == 8){
+        inputPassword.removeAttr('disabled');
+        inputPassword.focus();
+
+  		}
+      else
+      inputPassword.attr('disabled','false');
+  	};
+  const ValidateUser = () =>{
+    getUserDni(inputDni.val()).then((response) =>{
+      state.user = response;
+      console.log(state.user);
+      if(response != null && inputPassword.val() == '123456'){
+        state.page = 2;
+        update();
+      }else {
+        // container.append(error);
+      }
+    });
+  }
+
+  	inputDni.on({
+  		keypress: ValidateNumber,
+  		keyup: activarCheck
+  	});
+
+  	inputPassword.on({
+  		keypress:activarCheck,
+  		keyup:ValidateUser
+  	});
+
 
   return section;
 }
@@ -5867,6 +5916,45 @@ const MoreInfo = () => {
  
     return field;
 }
+'use strict';
+
+const Perfil = (update) => {
+  console.log(state.user.NRO_DOCUMENTO);
+  const section = $('<section class="perfil__bg">Perfil</section>');
+  const name = $('<h3>'+state.user.NOMBRES+'<h3>');
+  const promesa = $('<h5>"'+state.user.PROMESA+'"<h5>');
+  const rowPeso = $('<div class="perfi_peso"></div>');
+  const pesoActual = $('<h5>"'+state.user.INDICADOR_PROGRESO+'"<h5>');
+  const pesoMeta = $('<h5>"'+state.user.META_PESO+'"<h5>');
+  rowPeso.append(pesoActual,pesoMeta)
+
+  const btnUpdate = $('<button data-target="modal1" class="btn modal-trigger">Actualizar Peso</button>');
+// <button data-target="modal1" class="btn modal-trigger">Modal</button>
+
+	const container = $('<div id="welcome" class="container center"></div>');
+
+	const rowBtn = $('<div class="welcome_btn contentButton row"></div>');
+  const rowBtn1 = $('<div class="welcome_btn contentButton row"></div>');
+
+	const btnSignUp = $('<button type="button" class="btn-welcome yellow waves-effect waves-light btn-large" name="button">Sign up</button>');
+	const btnLogIn = $('<button type="button" class="btn-welcome yellow waves-effect waves-light btn-large" name="button">Log in</button>');
+  container.append(name,promesa,rowPeso,btnUpdate);
+  section.append(container);
+
+  btnUpdate.on('click',(e) => {
+    e.preventDefault();
+  // console.log(moda);
+  // moda.modal('open');
+    $('#modal1').modal();
+    $('#btnListo').on('click',(e)=>{
+      console.log($('#newPeso').val());
+      updatePeso(state.user.NRO_DOCUMENTO,$('#newPeso').val());
+    });
+  });
+
+  return section;
+}
+
 'use strict';
 var json2csv = require('json2csv');
 var fields = ['NOMBRES', 'PATERNO', 'MATERNO', 'SEXO', 'SMS_CONSENT', 'NRO_DOCUMENTO', 'CELULAR', 'EMAIL', 'PESO', 'EQUIPO_FUTBOL','TALLA','PROMESA','TIENE_HIJOS', 'NRO_HIJOS','ESTADO_CIVIL','NOMBRE_PAREJA', 'CELULAR_PAREJA','META_PESO','INDICADOR_PROGRESO','NOMBRE_EQUIPO'];
@@ -6090,19 +6178,18 @@ const render = (root) => {
   const wrapper = $('<div class="wrapper"></div>');
   switch(state.page) {
     case 0:
-      // wrapper.append(Welcome(_=>{ render(root) }));
-      wrapper.append(Login(_=>{ render(root) }));
+      wrapper.append(Welcome(_=>{ render(root) }));
     case 1:
-      wrapper.append(User(_ => render(root)));
-      // wrapper.append(StateUser());
-      // wrapper.append(Family());
-      // wrapper.append(MoreInfo());
+      wrapper.append(Login(_=>{ render(root) }));
       break;
     case 2:
-      wrapper.append(StateUser());
+      wrapper.append(Perfil(_=>{ render(root) }));
       break;
     case 3:
-      wrapper.append(Family());
+    // wrapper.append(User(_ => render(root)));
+    // wrapper.append(StateUser());
+    // wrapper.append(Family());
+    // wrapper.append(MoreInfo());
       break;
     case 4:
       wrapper.append(MoreInfo());
@@ -6118,7 +6205,8 @@ const render = (root) => {
 const state = {
   page: 0,
   data: null,
-  selectUser:{}
+  selectUser:{},
+  user: null
 };
 
 $(_ => {

@@ -5,19 +5,18 @@ const render = (root) => {
   const wrapper = $('<div class="wrapper"></div>');
   switch(state.page) {
     case 0:
-      // wrapper.append(Welcome(_=>{ render(root) }));
-      wrapper.append(Login(_=>{ render(root) }));
+      wrapper.append(Welcome(_=>{ render(root) }));
     case 1:
-      wrapper.append(User(_ => render(root)));
-      // wrapper.append(StateUser());
-      // wrapper.append(Family());
-      // wrapper.append(MoreInfo());
+      wrapper.append(Login(_=>{ render(root) }));
       break;
     case 2:
-      wrapper.append(StateUser());
+      wrapper.append(Perfil(_=>{ render(root) }));
       break;
     case 3:
-      wrapper.append(Family());
+    // wrapper.append(User(_ => render(root)));
+    // wrapper.append(StateUser());
+    // wrapper.append(Family());
+    // wrapper.append(MoreInfo());
       break;
     case 4:
       wrapper.append(MoreInfo());
@@ -33,7 +32,8 @@ const render = (root) => {
 const state = {
   page: 0,
   data: null,
-  selectUser:{}
+  selectUser:{},
+  user: null
 };
 
 $(_ => {
