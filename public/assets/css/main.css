@@ -21,8 +21,20 @@
   background-color: #56009C;
 }
 
-.blue-text {
+.bl-text {
+  color: #0CBCAA;
+}
+
+.pr-text {
   color: #56009C;
+}
+
+.yl-text {
+  color: #FBEF33;
+}
+
+.actualUser {
+  margin-top: -0.3em !important;
 }
 
 .perfil {

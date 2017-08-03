@@ -4,7 +4,8 @@ const Perfil = (update) => {
   console.log(state.user.NRO_DOCUMENTO);
   const section = $('<section class="perfil__bg"><img src="assets/img/logo-white.png" alt="" class="logo-white"></section>');
   const header = $('<div class="deep-purple lighten-1 white-text perfil">Perfil</div>');
-  const name = $('<br><h3> Hola '+state.user.NOMBRES+'<h3>');
+  const preName = $('<br><h5 class="bl-text">Hola</strong></h5>');
+  const name = $('<h2 class="bl-text actualUser"><strong>'+state.user.NOMBRES+'</strong></h2>');
   const promesa = $('<br><div class="row"><h5 class="z-depth-1 col s12 m6 offset-m3" style="padding: 20px"><i>'+state.user.PROMESA+'</i><h5></div>');
   const rowPeso = $('<div class="perfi_peso"></div>');
   const pesoActual = $('<h5>"'+state.user.INDICADOR_PROGRESO+'"<h5>');
@@ -21,7 +22,7 @@ const Perfil = (update) => {
 
   const btnSignUp = $('<button type="button" class="btn-welcome yellow waves-effect waves-light btn-large" name="button">Sign up</button>');
   const btnLogIn = $('<button type="button" class="btn-welcome yellow waves-effect waves-light btn-large" name="button">Log in</button>');
-  container.append(name,promesa,rowPeso,btnUpdate);
+  container.append(preName,name,promesa,rowPeso,btnUpdate);
   section.append(header);
   section.append(container);
 
