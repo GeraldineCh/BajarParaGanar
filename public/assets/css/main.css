@@ -91,50 +91,43 @@
   margin-top: 10px;
 }
 
-.flex-center, .welcome__bg, .login__bg,
-.carousel-item {
-  display: flex;
-  flex-direction: column-reverse;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-.welcome__bg {
-  /*
-   background-image: url(http://www.desarrollando-ideas.com/wp-content/uploads/sites/5/2016/06/iStock_51836670_XLARGE1-960x576.jpg);
-   background-repeat: no-repeat;
-   background-attachment: fixed;
-   background-size: cover;
-  */
-}
-
-.btn-welcome {
-  width: 200px;
-  opacity: 1;
-  background-color: #56009C;
-}
-
-.blue-text {
-  color: #56009C;
-}
-
-.perfil {
-  display: flex;
-  padding-left: 20px;
-  height: 10vh;
-  align-items: center;
-  justify-content: flex-end;
-  font-size: 24px;
-  padding-right: 30px;
-}
-
-.logo-white {
-  width: 200px;
-  position: absolute;
-  padding-left: 20px;
-}
-
-.pad {
-  padding: 20px;
+@media (max-width: 550px) {
+  .login .container {
+    display: block;
+  }
+  .login img {
+    margin-top: 100px;
+    margin-bottom: 20px;
+  }
+  .login__form--id, .login__form--key {
+    position: relative;
+    width: 230px;
+    margin: auto;
+  }
+  .login i {
+    font-size: 18px;
+    color: #FBEF33;
+    position: absolute;
+    bottom: 35px;
+    left: 5px;
+  }
+  .login input {
+    font-size: 13px !important;
+    border-bottom: 2px solid #0CBCAA !important;
+  }
+  .login input:focus {
+    border-bottom: 2px solid #0CBCAA !important;
+  }
+  .login__form--loginbtn {
+    background-color: #0CBCAA;
+    font-size: 15px;
+    color: #fff;
+    border: 0;
+    width: 230px;
+    margin-top: 10px;
+    padding: 10px 0;
+  }
+  .login__form--register {
+    margin-top: 10px;
+  }
 }

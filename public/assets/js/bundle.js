@@ -5705,10 +5705,9 @@ const Login = (update) => {
         header_desk_container = $('<div class="container"></div>'),
         desk_logo = $('<img src="assets/img/reto-power-white.png" alt="Reto Power Logo">'),
         desk_btn = $('<button>¡REGISTRATE!</button>'),
-        mob_logo = ('<img class="hide-on-large-only" src="assets/img/reto-power-white.png" alt="Reto Power Logo">'),
+        mob_logo = ('<img class="hide-on-large-only" src="assets/img/reto-power.png" alt="Reto Power Logo" height="60">'),
         container = $('<div class="container center"></div>'),
         phrase = $('<p class="hide-on-small-only center">Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>Nullam id ornare ex. Donec laoreet lectus ex, non accumsan nulla facilisis vitae.</p>'),
-        form = $('<form  id="login"></form>'),
         user_icon = $('<i class="fa fa-user-o"></i>'),
         key_icon = $('<i class="fa fa-key"></i>'),
         divDni = $('<div class="login__form--id input-field col s6"></div>'),
@@ -5719,15 +5718,15 @@ const Login = (update) => {
         register_p = $('<p class="login__form--register">¿Aún no te registras? <a href="#">Crea una cuenta</a></p>'),
         error = $('<span class="red-text">Error en usuario</span>');
 
-    wrap.append(header_desk, mob_logo, container);
-    header_desk.append(header_desk_container);
+    wrap.append(header_desk, container);
     header_desk_container.append(desk_logo, desk_btn);
+    header_desk.append(header_desk_container);
 
-    container.append(phrase, form);
+    container.append(phrase);
 
     divDni.append(inputDni, user_icon);
     divPassword.append(inputPassword, key_icon);
-    container.append(divDni, divPassword, register_btn, register_p);
+    container.append(mob_logo, divDni, divPassword, register_btn, register_p);
 
     const activarCheck = _ => {
         if (inputDni.val().length == 8) {
