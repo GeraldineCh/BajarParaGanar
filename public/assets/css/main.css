@@ -1,13 +1,18 @@
-.welcome__bg {
-  height: 100vh;
+.flex-center, .welcome__bg, .login__bg, .carousel-item {
   display: flex;
   flex-direction: column-reverse;
   justify-content: center;
   align-items: center;
-  background-image: url(http://www.desarrollando-ideas.com/wp-content/uploads/sites/5/2016/06/iStock_51836670_XLARGE1-960x576.jpg);
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
+  height: 100vh;
+}
+
+.welcome__bg {
+  /*
+   background-image: url(http://www.desarrollando-ideas.com/wp-content/uploads/sites/5/2016/06/iStock_51836670_XLARGE1-960x576.jpg);
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+   background-size: cover;
+  */
 }
 
 .btn-welcome {

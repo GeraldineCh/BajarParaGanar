@@ -5,20 +5,23 @@ const render = (root) => {
   const wrapper = $('<div class="wrapper"></div>');
   switch(state.page) {
     case 0:
-      // wrapper.append(Welcome(_=>{ render(root) }));
-      wrapper.append(Login(_=>{ render(root) }));
+      wrapper.append(Welcome(_=>{ render(root) }));
     case 1:
-      wrapper.append(User(_ => render(root)));
+      wrapper.append(Login(_=>{ render(root) }));
       break;
     case 2:
-      wrapper.append(StateUser());
+      wrapper.append(Perfil(_=>{ render(root) }));
       break;
     case 3:
-      wrapper.append(Family());
+      wrapper.append(Salir(_=>{ render(root) }));
+      root.append(wrapper);
+      $('.carousel').carousel('');
+      setInterval(function() {
+        $('.carousel').carousel('next');
+      }, 5000);
       break;
-
     case 4:
-      wrapper.append(MoreInfo());
+      wrapper.append(User(_ => render(root)));
       break;
     case 5:
       wrapper.append(Reporte(_=>{ render(root) }));

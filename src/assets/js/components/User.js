@@ -2,7 +2,7 @@
 const User = (letters) => {
 
   const container = $('<div></div>');
-  const form = $('<form class="carousel carousel-slider center" style="height: 90vh"><div class="carousel-fixed-item center"></div></form>');
+  const form = $('<form class="carousel carousel-slider center" style="height: 90vh"><div class="carousel-fixed-item center "></div></form>');
   const btnSave = $('<a class="btn waves-effect white grey-text darken-text-2" id="btnSave">GUARDAR</a>');
   const name = $('<div class="carousel-item" href="one"><label for="js_input_name">Nombre</label><input id="js_input_name" type="text"></div>');
   const lastName1 = $('<div class="carousel-item" href="two"><label for="js_input_lname_1">Apellido Paterno</label><input id="js_input_lname_1" type="text"></div>');
@@ -28,7 +28,7 @@ const User = (letters) => {
   form.append(email);
   form.append(Weight);
   form.append(Height);
-  form.append(Goal);//
+  form.append(Goal);
   form.append(Smoke);
   form.append(Cantidad);
   form.append(Sleep);
