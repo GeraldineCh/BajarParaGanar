@@ -55,5 +55,7 @@ const newUser = (dni,dato) => {
 };
 
 const updatePeso = (dni,peso) => {
+	console.log(dni);
   firebase.database().ref('users/' + dni +"/PESOS/"+peso).set(peso);
+	state.user.INDICADOR_PROGRESO = peso;
 };

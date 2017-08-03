@@ -7,10 +7,10 @@ const Perfil = (update) => {
   const name = $('<br><h3> Hola '+state.user.NOMBRES+'<h3>');
   const promesa = $('<br><div class="row"><h5 class="z-depth-1 col s12 m6 offset-m3" style="padding: 20px"><i>'+state.user.PROMESA+'</i><h5></div>');
   const rowPeso = $('<div class="perfi_peso"></div>');
-  const pesoActual = $('<h5>De '+state.pesoActual[state.pesoActual.length -1]+'Kg<h5>');
+  const pesoActual = $('<h5>De '+state.user.INDICADOR_PROGRESO+'Kg<h5>');
   const pesoMeta = $('<h5>a '+state.user.META_PESO+'Kg<h5>');
   rowPeso.append(pesoActual,pesoMeta);
-
+	// console.log(state.pesoActual[state.pesoActual.length -1]);
   const btnUpdate = $('<button data-target="modal1" class="btn modal-trigger">Actualizar Peso</button>');
 // <button data-target="modal1" class="btn modal-trigger">Modal</button>
   const container = $('<div id="welcome" class="container center"></div>');
@@ -35,7 +35,6 @@ const Perfil = (update) => {
       if($('#newPeso').val() != ""){
         updatePeso(state.user.NRO_DOCUMENTO,$('#newPeso').val());
        // $('#newPeso').val('');
-			 	state.pesoActual.push($('#newPeso').val());
         state.page = 3;
         update();
       }

@@ -10,8 +10,8 @@ const ItemCarousel = (img,title,href) =>{
 };
 
 const Salir = (update) => {
-  console.log(state.user);
-  const progreso = parseInt(state.pesoActual) - parseInt(state.user.META_PESO);
+  console.log(state.user.INDICADOR_PROGRESO);
+  const progreso = parseInt(state.user.INDICADOR_PROGRESO) - parseInt(state.user.META_PESO);
   const section = $('<section class="salir__bg"><img src="assets/img/logo-white.png" alt="" class="logo-white"></section>');
   const header = $('<div class="deep-purple lighten-1 white-text perfil">Salir</div><br>');
 	const container = $('<div id="salir" class="container center"></div>');
@@ -19,7 +19,6 @@ const Salir = (update) => {
 	const rowImage = $('<div class="logo"></div>');
   const divFalta = $('<div class="col s6"></div>');
   const falta = $('<h3>'+progreso+'Kg</h3>');
-	console.log(progreso);
   const p = $('<p><i>¡Persiste que podrás!</i></p>');
   const titleInfo = $('<h3>Información Útil</h3>');
 
@@ -28,17 +27,12 @@ const Salir = (update) => {
   const item2 = ItemCarousel('http://images.media-allrecipes.com/userphotos/250x250/00/82/88/828805.jpg','Las ensaladas no solo te aportan agua, también nutrientes','two');
   const item3 = ItemCarousel('https://s3-media2.fl.yelpcdn.com/bphoto/mTJBGiaJtqz16vX3o8XFyQ/ls.jpg','Siempre realizar actividad física es fundamental para una vida sana','three');
 
-carrucel.append(item1);
-carrucel.append(item2);
-carrucel.append(item3);
-
+	carrucel.append(item1);
+	carrucel.append(item2);
+	carrucel.append(item3);
 	divFalta.append(falta,p);
-  container.append(carrucel);
-
+	container.append(carrucel);
 	container.append(divFalta);
-
-
 	section.append(header,container);
-
-  return section;
+	return section;
 }

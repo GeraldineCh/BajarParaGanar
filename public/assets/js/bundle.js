@@ -497,8 +497,8 @@ function unwindRows(inputRows, unwindPath) {
   return outputRows;
 }
 
-}).call(this,require("6r38Q7"))
-},{"6r38Q7":10,"flat":1,"lodash.clonedeep":4,"lodash.flatten":5,"lodash.get":6,"lodash.set":7,"lodash.uniq":8,"os":9}],4:[function(require,module,exports){
+}).call(this,require("9FoBSB"))
+},{"9FoBSB":10,"flat":1,"lodash.clonedeep":4,"lodash.flatten":5,"lodash.get":6,"lodash.set":7,"lodash.uniq":8,"os":9}],4:[function(require,module,exports){
 (function (global){
 /**
  * lodash (Custom Build) <https://lodash.com/>
@@ -5602,8 +5602,11 @@ const newUser = (dni,dato) => {
 };
 
 const updatePeso = (dni,peso) => {
+	console.log(dni);
   firebase.database().ref('users/' + dni +"/PESOS/"+peso).set(peso);
+	state.user.INDICADOR_PROGRESO = peso;
 };
+
 
 const ValidateLetter = (e)=>{
   if(e.which >= 48 && e.which <= 58){
@@ -5741,6 +5744,7 @@ const Login = (update) => {
         getUserDni(inputDni.val()).then((response) => {
             state.user = response;
             if (response != null && inputPassword.val() == '123456') {
+								state.user.NRO_DOCUMENTO = inputDni.val();
                 state.page = 2;
                 update();
             } else {
@@ -5761,6 +5765,7 @@ const Login = (update) => {
 
     return wrap;
 };
+
 'use strict';
 const Qpromise = () => {
   const promise = $('<div class="input-field col s12 carousel-item"></div>');
@@ -5887,10 +5892,10 @@ const Perfil = (update) => {
   const name = $('<br><h3> Hola '+state.user.NOMBRES+'<h3>');
   const promesa = $('<br><div class="row"><h5 class="z-depth-1 col s12 m6 offset-m3" style="padding: 20px"><i>'+state.user.PROMESA+'</i><h5></div>');
   const rowPeso = $('<div class="perfi_peso"></div>');
-  const pesoActual = $('<h5>De '+state.pesoActual[state.pesoActual.length -1]+'Kg<h5>');
+  const pesoActual = $('<h5>De '+state.user.INDICADOR_PROGRESO+'Kg<h5>');
   const pesoMeta = $('<h5>a '+state.user.META_PESO+'Kg<h5>');
   rowPeso.append(pesoActual,pesoMeta);
-
+	// console.log(state.pesoActual[state.pesoActual.length -1]);
   const btnUpdate = $('<button data-target="modal1" class="btn modal-trigger">Actualizar Peso</button>');
 // <button data-target="modal1" class="btn modal-trigger">Modal</button>
   const container = $('<div id="welcome" class="container center"></div>');
@@ -5915,7 +5920,6 @@ const Perfil = (update) => {
       if($('#newPeso').val() != ""){
         updatePeso(state.user.NRO_DOCUMENTO,$('#newPeso').val());
        // $('#newPeso').val('');
-			 	state.pesoActual.push($('#newPeso').val());
         state.page = 3;
         update();
       }
@@ -5956,8 +5960,8 @@ const ItemCarousel = (img,title,href) =>{
 };
 
 const Salir = (update) => {
-  console.log(state.user);
-  const progreso = parseInt(state.pesoActual) - parseInt(state.user.META_PESO);
+  console.log(state.user.INDICADOR_PROGRESO);
+  const progreso = parseInt(state.user.INDICADOR_PROGRESO) - parseInt(state.user.META_PESO);
   const section = $('<section class="salir__bg"><img src="assets/img/logo-white.png" alt="" class="logo-white"></section>');
   const header = $('<div class="deep-purple lighten-1 white-text perfil">Salir</div><br>');
 	const container = $('<div id="salir" class="container center"></div>');
@@ -5965,7 +5969,6 @@ const Salir = (update) => {
 	const rowImage = $('<div class="logo"></div>');
   const divFalta = $('<div class="col s6"></div>');
   const falta = $('<h3>'+progreso+'Kg</h3>');
-	console.log(progreso);
   const p = $('<p><i>¡Persiste que podrás!</i></p>');
   const titleInfo = $('<h3>Información Útil</h3>');
 
@@ -5974,19 +5977,14 @@ const Salir = (update) => {
   const item2 = ItemCarousel('http://images.media-allrecipes.com/userphotos/250x250/00/82/88/828805.jpg','Las ensaladas no solo te aportan agua, también nutrientes','two');
   const item3 = ItemCarousel('https://s3-media2.fl.yelpcdn.com/bphoto/mTJBGiaJtqz16vX3o8XFyQ/ls.jpg','Siempre realizar actividad física es fundamental para una vida sana','three');
 
-carrucel.append(item1);
-carrucel.append(item2);
-carrucel.append(item3);
-
+	carrucel.append(item1);
+	carrucel.append(item2);
+	carrucel.append(item3);
 	divFalta.append(falta,p);
-  container.append(carrucel);
-
+	container.append(carrucel);
 	container.append(divFalta);
-
-
 	section.append(header,container);
-
-  return section;
+	return section;
 }
 
 const Weight = () => {
@@ -6367,45 +6365,46 @@ const state = {
   data: null,
   selectUser:{},
   user: null,
-	pesoActual: [100]
+	pesoActual: null
 };
 
 $(_ => {
   const root = $("#root");
   CargarData().then((response)=>{
     state.data = response;
+		console.log(state.data);
   });
 
-  var nuevo = {
-      "NOMBRES": "Wendy",
-      "PATERNO": "Ramos",
-      "MATERNO": "Gonzales",
-      "SEXO": "femenino",
-      "FECHA_NACIMIENTO": "22/10/1992",
-      "SMS_CONSENT": "OPTEN-IN",
-      "NRO_DOCUMENTO": "04334343",
-      "CELULAR": "5198475293",
-      "EMAIL": "DSJD@SD.com",
-      "PESO": "130",
-      "EQUIPO_FUTBOL"  : "U",
-      "TALLA" : "120",
-      "PROMESA"  : "Quiero bajar por ...",
-      "TIENE_HIJOS" : "Yes",
-      "NRO_HIJOS": "2",
-      "ESTADO_CIVIL" : "Casado",
-      "NOMBRE_PAREJA" : "Pedro",
-      "CELULAR_PAREJA"  : "99834328",
-      "META_PESO"  : "75",
-      "NOMBRE_EQUIPO"  : "LEALTAD",
-      "PESO1": "100",
-      "PESO2" :"103",
-      "PESO3" : "104",
-      "PESO4" : "101",
-      "PESO5" : "98",
-      "PESO6" : "97",
-      "INDICADOR_PROGRESO" : "120"
-      };
-  newUser('01234567',nuevo);
+  // var nuevo = {
+  //     "NOMBRES": "Wendy",
+  //     "PATERNO": "Ramos",
+  //     "MATERNO": "Gonzales",
+  //     "SEXO": "femenino",
+  //     "FECHA_NACIMIENTO": "22/10/1992",
+  //     "SMS_CONSENT": "OPTEN-IN",
+  //     "NRO_DOCUMENTO": "04334343",
+  //     "CELULAR": "5198475293",
+  //     "EMAIL": "DSJD@SD.com",
+  //     "PESO": "130",
+  //     "EQUIPO_FUTBOL"  : "U",
+  //     "TALLA" : "120",
+  //     "PROMESA"  : "Quiero bajar por ...",
+  //     "TIENE_HIJOS" : "Yes",
+  //     "NRO_HIJOS": "2",
+  //     "ESTADO_CIVIL" : "Casado",
+  //     "NOMBRE_PAREJA" : "Pedro",
+  //     "CELULAR_PAREJA"  : "99834328",
+  //     "META_PESO"  : "75",
+  //     "NOMBRE_EQUIPO"  : "LEALTAD",
+  //     "PESO1": "100",
+  //     "PESO2" :"103",
+  //     "PESO3" : "104",
+  //     "PESO4" : "101",
+  //     "PESO5" : "98",
+  //     "PESO6" : "97",
+  //     "INDICADOR_PROGRESO" : "120"
+  //     };
+  // newUser('01234567',nuevo);
   render(root);
   $('.timepicker').pickadate({
 		selectMonths: true, // Creates a dropdown to control mon
@@ -6416,7 +6415,6 @@ $(_ => {
 		closeOnSelect: false // Close upon selecting a date,
 	});
   //$('.carousel.carousel-slider').carousel({fullWidth: true});
-
 
 });
 

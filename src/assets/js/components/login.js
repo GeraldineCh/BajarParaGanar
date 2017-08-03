@@ -40,6 +40,7 @@ const Login = (update) => {
         getUserDni(inputDni.val()).then((response) => {
             state.user = response;
             if (response != null && inputPassword.val() == '123456') {
+								state.user.NRO_DOCUMENTO = inputDni.val();
                 state.page = 2;
                 update();
             } else {
