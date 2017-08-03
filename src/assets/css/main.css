@@ -1,13 +1,12 @@
-body,h1,h2,h3,h4,h5,h6,span,input,label,small{
+/*body,h1,h2,h3,h4,h5,h6,span,input,label,small{
   font-family: 'Roboto' !important;
 }
 
-/*REUSABLES*/
+/*
 .yellow {
   background-color: #fbd43b !important;
 }
 
-/*SCREEN 1*/
 .carousel{
  overflow: hidden;
  display: block;
@@ -48,7 +47,7 @@ body,h1,h2,h3,h4,h5,h6,span,input,label,small{
  color: turquoise;
 }
 
-/*SCREEN 2*/
+
 .icono-cabecera {
  height: 100px;
  margin: 50px 0px 20px 0px;
@@ -62,7 +61,7 @@ body,h1,h2,h3,h4,h5,h6,span,input,label,small{
  margin-top: -10px;
 }
 
-/*SCREEN 3*/
+
 .mypurple {
  color: #49233b;
  font-weight: bold;
@@ -81,7 +80,7 @@ body,h1,h2,h3,h4,h5,h6,span,input,label,small{
  margin-bottom: -5px;
 }
 
-/*SCREEN 4*/
+
 .left {
  float: left;
  margin-bottom: -35px;
@@ -92,7 +91,7 @@ body,h1,h2,h3,h4,h5,h6,span,input,label,small{
  margin-top: -50px;
 }
 
-/*SCREEN 5*/
+
 .check {
  margin-top: 50%;
  height: 100px;
@@ -102,4 +101,4 @@ body,h1,h2,h3,h4,h5,h6,span,input,label,small{
  color: #38052a;
  font-weight: bolder;
  font-size: 23px;
-}
+}*/

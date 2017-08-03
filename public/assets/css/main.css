@@ -45,7 +45,50 @@
 .login p {
   font-size: 1.8em;
   color: #333;
-  margin-top: 11%;
+}
+
+.login p:first-child {
+  margin-top: 110px;
+}
+
+.login p:last-child {
+  font-size: 0.9em;
+  margin-top: 12px;
+}
+
+.login__form--id, .login__form--key {
+  position: relative;
+  width: 300px;
+  margin: auto;
+}
+
+.login i {
+  font-size: 25px;
+  color: #FBEF33;
+  position: absolute;
+  bottom: 35px;
+  left: 5px;
+}
+
+.login input {
+  border-bottom: 2px solid #0CBCAA !important;
+}
+
+.login input:focus {
+  border-bottom: 2px solid #0CBCAA !important;
+}
+
+.login__form--loginbtn {
+  background-color: #0CBCAA;
+  font-size: 20px;
+  color: #fff;
+  border: 0;
+  width: 300px;
+  padding: 12px 0;
+}
+
+.login__form--register {
+  margin-top: 10px;
 }
 
 .flex-center, .welcome__bg, .login__bg,

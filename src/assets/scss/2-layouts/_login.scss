@@ -14,6 +14,42 @@
     p {
         font-size: 1.8em;
         color: $palette-paragraph;
-        margin-top: 11%;
+    }
+    p:first-child {
+        margin-top: 110px;
+    }
+    p:last-child {
+        font-size: 0.9em;
+        margin-top: 12px;
+    }
+    &__form--id,
+    &__form--key {
+        position: relative;
+        width: 300px;
+        margin: auto;
+    }
+    i {
+        font-size: 25px;
+        color: $palette-icons;
+        position: absolute;
+        bottom: 35px;
+        left: 5px;
+    }
+    input {
+        border-bottom: 2px solid $palette-secondary !important;
+    }
+    input:focus {
+        border-bottom: 2px solid $palette-secondary !important;
+    }
+    &__form--loginbtn {
+        background-color: $palette-secondary;
+        font-size: 20px;
+        color: #fff;
+        border: 0;
+        width: 300px;
+        padding: 12px 0;
+    }
+    &__form--register {
+        margin-top: 10px;
     }
 }
