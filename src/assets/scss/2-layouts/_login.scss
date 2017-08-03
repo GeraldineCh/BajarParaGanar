@@ -1,0 +1,15 @@
+.login {
+    &__header--desktop {
+        background-color: $palette-primary;
+        padding: 15px 0;
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        img {
+            height: 60px;
+        }
+    }
+    &__header--mobile {}
+}
