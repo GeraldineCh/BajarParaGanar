@@ -44,7 +44,7 @@ const render = (root) => {
 };
 
 const state = {
-  page: 0,
+  page: 4,
   data: null,
   selectUser:{},
   user: null

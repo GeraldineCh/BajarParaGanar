@@ -54,3 +54,25 @@
 .pad {
   padding: 20px;
 }
+
+.carousel-item {
+  margin-top: 25vh;
+  width: 200px;
+}
+
+.carousel-item > input[type="text"] {
+  width: 60vh;
+  border-bottom: 2px solid #ff3d00;
+}
+
+.carousel-item > input[type="text"]:active {
+  width: 60vh;
+  border-bottom: 2px solid #9f2800;
+}
+
+.carousel-item > label {
+  display: block;
+  padding-bottom: 60px;
+  font-size: 30px;
+  color: #ff3d00;
+}
