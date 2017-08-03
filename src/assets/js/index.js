@@ -35,5 +35,5 @@ $( _ => {
 		closeOnSelect: false // Close upon selecting a date,
 	});
 	$('.carousel.carousel-slider').carousel({fullWidth: true});
-	
+
 });
