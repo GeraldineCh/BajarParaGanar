@@ -43,6 +43,14 @@ const User = (letters) => {
 	form.append(NumChildren);
 	form.append(NameChildren);
 	form.append(AgeChildren);
+	form.append(Qpromise);
+	form.append(InscriptionCode);
+	form.append(FootballTeam);
+	form.append(Insurance);
+	form.append(InsuranceType);
+	form.append(InsuranceCia);
+	form.append(TeamName);
+
 	container.append(form);
 	footer.append(btnPrev);
 	footer.append(btnNext);
