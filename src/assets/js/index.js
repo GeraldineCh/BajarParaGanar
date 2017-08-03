@@ -40,7 +40,7 @@ const render = (root) => {
 };
 
 const state = {
-  page: 1,
+  page: 0,
   data: null,
   selectUser:{},
   user: null
