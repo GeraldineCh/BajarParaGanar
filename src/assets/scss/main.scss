@@ -38,6 +38,33 @@
  margin-top: -0.3em !important;
 }
 
+.login__header--desktop {
+background-color: #56009C;
+    padding: 15px 0;}
+
+.login__header--desktop img {
+    height: 60px;
+}
+
+.login__header--desktop button {
+    background-color: transparent;
+    color: #fff;
+    font-weight: bold;
+    border: 3px solid #fff;
+    padding: 8px 25px;
+    transition: 0.4s all;
+}
+#modal1 {
+ height: 60vh;
+ text-align: center;
+}
+
+#btnListo {
+ background-color: #FBEF33;
+ color: black;
+}
+//
+
 .perfil{
   display: flex;
   padding-left: 20px;
