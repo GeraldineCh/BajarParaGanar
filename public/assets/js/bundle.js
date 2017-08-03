@@ -88,7 +88,7 @@ const Login = (update) => {
         desk_btn = $('<button>¡REGISTRATE!</button>'),
         mob_logo = ('<img class="hide-on-large-only" src="assets/img/reto-power1.png" alt="Reto Power Logo">'),
         content = $('<div class="container"></div>'),
-        phrase = $('<p class="hide-on-small-only">Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>Nullam id ornare ex. Donec laoreet lectus ex, non accumsan nulla facilisis vitae.</p>'),
+        phrase = $('<p class="hide-on-small-only center">Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>Nullam id ornare ex. Donec laoreet lectus ex, non accumsan nulla facilisis vitae.</p>'),
         form = $('<form></form>'),
         user_icon = $('<i class="fa fa-user-o" ></i>'),
         key_icon = $('<i class="fa fa-key"></i>');

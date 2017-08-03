@@ -11,5 +11,9 @@
             height: 60px;
         }
     }
-    &__header--mobile {}
+    p {
+        font-size: 2em;
+        color: $palette-paragraph;
+        margin-top: 70px;
+    }
 }

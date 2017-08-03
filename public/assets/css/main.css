@@ -41,3 +41,9 @@
 .login__header--desktop img {
   height: 60px;
 }
+
+.login p {
+  font-size: 2em;
+  color: #333;
+  margin-top: 70px;
+}
