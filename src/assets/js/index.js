@@ -7,9 +7,9 @@ const render = (root) => {
 	switch(state.screenView) {
     case null:
       wrapper.append(User(_ => render(root)));
-			wrapper.append(StateUser());
-			wrapper.append(Family());
-			wrapper.append(MoreInfo());
+			wrapper.append(StateUser(_ => render(root)));
+			wrapper.append(Family(_ => render(root)));
+			wrapper.append(MoreInfo(_ => render(root)));
       break;
 		case "next":
 	}

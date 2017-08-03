@@ -1,99 +1,12 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-<<<<<<< HEAD
 
 
-'use strict';
-const User = (letters) => {
-
-	const container = $('<form></form>');
-	const title = $('<h1>Datos del participante</h1>');
-	const name = $('<div><label for="js_input_name">Nombre</label><input id="js_input_name" type="text"></div>');
-	const lastName1 = $('<div><label for="js_input_lname_1">Apellido 1</label><input id="js_input_lname_1" type="text"></div>');
-	const lastName2 = $('<div><label for="js_input_lname_2">Apellido 2</label><input id="js_input_lname_2" type="text"></div>');
-	const genre = $('<div><select><option value="" disabled selected>Género</option><option value="1">Femenino</option><option value="2">Masculino</option><option value="3">Otro</option></select></div>');
-	const date = $('<input type="text" class="timepicker">'); // Input calendario
-	const consSms = $('<div><input type="checkbox" id="test5"/><label for="test5">Recibir sms</label></div>');
-	const dni = $('<div><label for="js_input_dni">DNI</label><input id="js_input_dni" type="text"></div>');
-	const mobile = $('<div><label for="js_input_mobile">Celular</label><input id="js_input_mobile" type="text"></div>');
-	const email = $('<div><label for="js_input_email">Email</label><input id="js_input_email" type="email" class="validate"></div>');
-
-	container.append(title);
-	container.append(name);
-	container.append(lastName1);
-	container.append(lastName2);
-	container.append(genre);
-	container.append(date);
-	container.append(consSms);
-	container.append(dni);
-	container.append(mobile);
-	container.append(email);
-	//name.prop("validation", "letters");
-	//console.log(name.prop("validation"));
-
-	function letters(input) {
-		input.last().on('keypress', (e) => {
-			let codigoTecla = e.keyCode;
-				if((codigoTecla >= 97 && codigoTecla <= 122) ||
-					 (codigoTecla >= 65 && codigoTecla <= 90) ||
-					 (codigoTecla == 32) || (codigoTecla == 39)) {
-
-					$('#error').text("");
-					return true
-				} else {
-					$('#error').text("error");
-					return false
-				}
-		});
-	}
-	letters(name);
-	letters(lastName1);
-	letters(lastName2);
-
-	return container;
-};
-
-'use strict';
-
-const render = (root) => {
-  root.empty();
-  const wrapper = $('<div class="wrapper"></div>');
-
-	switch(state.screenView) {
-    case null:
-      wrapper.append(User(_ => render(root)));
-      break;
-		case "next":
-	}
-
-  root.append(wrapper);
-}
-
-const state = {
-	screenView: null
-};
-
-$( _ => {
-
-	const root = $('.root');
-	render(root);
-	//Funcion para input calendario
-	$('.timepicker').pickadate({
-		selectMonths: true, // Creates a dropdown to control mon
-		selectYears: 15, // Creates a dropdown of 15 years to control year,
-		today: 'Today',
-		clear: 'Clear',
-		close: 'Ok',
-		closeOnSelect: false // Close upon selecting a date,
-	});
-
-});
-=======
 const Family = () => {
-    const container = $('<div class="container"></div>');
-    const title = $('<h1 class="center-align">Familia</h1>');
-    
-    container.append(title);
- 
+  const container = $('<div class="container"></div>');
+  const title = $('<h1 class="center-align">Familia</h1>');
+
+container.append(title);
+
  const civilState = $('<div class="input-field col s12"></div>');
     const civilState1 = $('<label for="civilState">Estado civil </label>');
     const civilState2 = $('<select id="civilState"></select>');
@@ -102,33 +15,33 @@ const Family = () => {
     const civilState5 = $('<option value="2">Casado</option>');
     const civilState6 = $('<option value="3">Conviviente</option>');
     const civilState7 = $('<option value="4">Vuido</option>');
-    const civilState8 = $('<option value="5">Divorciado</option>'); 
- 
+    const civilState8 = $('<option value="5">Divorciado</option>');
+
     const wife = $('<div class="input-field col s12"></div>');
     const wife1 = $('<label for="wife">Nombre de esposa/conviviente/pareja: </label>');
     const wife2 = $('<input id="wife" type="text" class="validate">');
- 
+
     const cell = $('<div class="input-field col s12"></div>');
     const cell1 = $('<label for="wife">Celular de la pareja: </label>');
     const cell2 = $('<input id="wife" type="text" class="validate">');
- 
+
  const children = $('<div class="input-field col s12"></div>');
     const children1 = $('<label>¿Tiene hijos?</label>');
     const children2 = $('<input name="group1" type="radio" id="childrenSi"/><label for="test1">Sí</label>');
     const children3 = $('<input name="group1" type="radio" id="childrenNo"/><label for="test1">No</label>');
- 
+
  const numChildren = $('<div class="input-field col s12"></div>');
     const numChildren1 = $('<label for="numChildren">Número de hijos: </label>');
     const numChildren2 = $('<input id="numChildren" type="text" class="validate">');
- 
+
  const nameChildren = $('<div class="input-field col s12"></div>');
     const nameChildren1 = $('<label for="nameChildren">Nombre de hijos: </label>');
     const nameChildren2 = $('<input id="nameChildren" type="text" class="validate">');
- 
+
  const ageChildren = $('<div class="input-field col s12"></div>');
     const ageChildren1 = $('<label for="ageChildren">Edad de los hijos: </label>');
     const ageChildren2 = $('<input id="ageChildren" type="text" class="validate">');
- 
+
  civilState.append(civilState1);
  civilState.append(civilState2);
  civilState2.append(civilState3);
@@ -137,26 +50,26 @@ const Family = () => {
  civilState2.append(civilState6);
  civilState2.append(civilState7);
  civilState2.append(civilState8);
- 
+
  wife.append(wife1);
  wife.append(wife2);
- 
+
  cell.append(cell1);
  cell.append(cell2);
- 
+
  children.append(children1);
  children.append(children2);
  children.append(children3);
- 
+
  numChildren.append(numChildren1);
  numChildren.append(numChildren2);
- 
+
  nameChildren.append(nameChildren1);
  nameChildren.append(nameChildren2);
- 
+
  ageChildren.append(ageChildren1);
  ageChildren.append(ageChildren2);
- 
+
  container.append(civilState);
  container.append(wife);
  container.append(cell);
@@ -164,10 +77,11 @@ const Family = () => {
  container.append(numChildren);
  container.append(nameChildren);
  container.append(ageChildren);
- 
- 
+
+
     return container;
 }
+
 const MoreInfo = () => {
     const field = $('<div class="container"></div>');
     const title = $('<h1 class="center-align">Información variada</h1>');
@@ -395,7 +309,6 @@ const StateUser = () => {
  sleep2.append(sleep7);
  sleep2.append(sleep8);
  sleep2.append(sleep9);
->>>>>>> origin/html-form
 
  
  activity.append(activity1);
@@ -445,22 +358,111 @@ const StateUser = () => {
     return principal;
 }
 'use strict';
+const User = (letters) => {
+
+	const container = $('<form></form>');
+	const title = $('<h1>Datos del participante</h1>');
+	const name = $('<div><label for="js_input_name">Nombre</label><input id="js_input_name" type="text"></div>');
+	const lastName1 = $('<div><label for="js_input_lname_1">Apellido 1</label><input id="js_input_lname_1" type="text"></div>');
+	const lastName2 = $('<div><label for="js_input_lname_2">Apellido 2</label><input id="js_input_lname_2" type="text"></div>');
+	const genre = $('<div><select><option value="" disabled selected>Género</option><option value="1">Femenino</option><option value="2">Masculino</option><option value="3">Otro</option></select></div>');
+	const date = $('<input type="text" class="timepicker">'); // Input calendario
+	const consSms = $('<div><input type="checkbox" id="test5"/><label for="test5">Recibir sms</label></div>');
+	const dni = $('<div><label for="js_input_dni">DNI</label><input id="js_input_dni" type="text"></div>');
+	const mobile = $('<div><label for="js_input_mobile">Celular</label><input id="js_input_mobile" type="text"></div>');
+	const email = $('<div><label for="js_input_email">Email</label><input id="js_input_email" type="email" class="validate"></div>');
+
+	container.append(title);
+	container.append(name);
+	container.append(lastName1);
+	container.append(lastName2);
+	container.append(genre);
+	container.append(date);
+	container.append(consSms);
+	container.append(dni);
+	container.append(mobile);
+	container.append(email);
+	//name.prop("validation", "letters");
+	//console.log(name.prop("validation"));
+
+	function letters(input) {
+		input.last().on('keypress', (e) => {
+			let codigoTecla = e.keyCode;
+				if((codigoTecla >= 97 && codigoTecla <= 122) ||
+					 (codigoTecla >= 65 && codigoTecla <= 90) ||
+					 (codigoTecla == 32) || (codigoTecla == 39)) {
+
+					$('#error').text("");
+					return true
+				} else {
+					$('#error').text("error");
+					return false
+				}
+		});
+	}
+	letters(name);
+	letters(lastName1);
+	letters(lastName2);
+
+	function letters(input) {
+		input.last().on('keypress', (e) => {
+			let codigoTecla = e.keyCode;
+				if((codigoTecla >= 97 && codigoTecla <= 122) ||
+					 (codigoTecla >= 65 && codigoTecla <= 90) ||
+					 (codigoTecla == 32) || (codigoTecla == 39)) {
+
+					$('#error').text("");
+					return true
+				} else {
+					$('#error').text("error");
+					return false
+				}
+		});
+	}
+	letters(name);
+	letters(lastName1);
+	letters(lastName2);
+
+	return container;
+};
+
+'use strict';
 
 const render = (root) => {
-    root.empty();
-    const wrapper = $('<div class="wrapper"></div>');
-    wrapper.append(StateUser());
-    wrapper.append(Family());
-    wrapper.append(MoreInfo());
-    root.append(wrapper);
+  root.empty();
+  const wrapper = $('<div class="wrapper"></div>');
+
+	switch(state.screenView) {
+    case null:
+      wrapper.append(User(_ => render(root)));
+			wrapper.append(StateUser(_ => render(root)));
+			wrapper.append(Family(_ => render(root)));
+			wrapper.append(MoreInfo(_ => render(root)));
+      break;
+		case "next":
+	}
+
+  root.append(wrapper);
 }
 
 const state = {
-    user: null,
+	screenView: null
 };
 
 $( _ => {
-    const root = $('#root');
-    render(root);
+
+	const root = $('.root');
+	render(root);
+	//Funcion para input calendario
+	$('.timepicker').pickadate({
+		selectMonths: true, // Creates a dropdown to control mon
+		selectYears: 15, // Creates a dropdown of 15 years to control year,
+		today: 'Today',
+		clear: 'Clear',
+		close: 'Ok',
+		closeOnSelect: false // Close upon selecting a date,
+	});
+
 });
+
 },{}]},{},[1])

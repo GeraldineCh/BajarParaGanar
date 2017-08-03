@@ -45,5 +45,24 @@ const User = (letters) => {
 	letters(lastName1);
 	letters(lastName2);
 
+	function letters(input) {
+		input.last().on('keypress', (e) => {
+			let codigoTecla = e.keyCode;
+				if((codigoTecla >= 97 && codigoTecla <= 122) ||
+					 (codigoTecla >= 65 && codigoTecla <= 90) ||
+					 (codigoTecla == 32) || (codigoTecla == 39)) {
+
+					$('#error').text("");
+					return true
+				} else {
+					$('#error').text("error");
+					return false
+				}
+		});
+	}
+	letters(name);
+	letters(lastName1);
+	letters(lastName2);
+
 	return container;
 };
