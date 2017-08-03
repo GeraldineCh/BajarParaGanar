@@ -61,6 +61,7 @@ var myCars = {
   "PESO6" : "97",
   "INDICADOR_PROGRESO" : "120"
 };
+
 firebase.database().ref('users/' + id).set(myCars);
 
 var state = {
@@ -68,7 +69,7 @@ var state = {
   page: 0
 };
 
-  firebase.database().ref('/users/' +id).once('value').then(
+  firebase.database().ref('/users/').once('value').then(
     function(snapshot)  {
       state.data = snapshot.val();
       addConsole();
