@@ -4,7 +4,7 @@ var fields = ['NOMBRES', 'PATERNO', 'MATERNO', 'SEXO', 'SMS_CONSENT', 'NRO_DOCUM
 var fields2 = ['EMAIL','CELULAR', 'SMS_CONSENT'];
 
 const Reporte = () => {
-  const container = $('<section></section>');
+  const container = $('<section class="flex-center bg_reporte"></section>');
   const btn1 = $('<a class="waves-effect waves-light btn">Descargar BD</a><br>');
   const btn2 = $('<a class="waves-effect waves-light btn">Descargar SMS list</a>');
   var date = new Date();

@@ -1,5 +1,5 @@
 'use strict';
-const User = (letters) => {
+const User = (update,letters) => {
 
   const container = $('<div><img src="assets/img/reto-power1.png" alt="" class="logo2" width="300px" ></div>');
   const form = $('<form class="carousel carousel-slider center" style="height: 90vh"><div class="carousel-fixed-item center "></div></form>');
@@ -95,11 +95,11 @@ const User = (letters) => {
     state.selectUser.TALLA = $('#height').val();
     state.selectUser.META_PESO = $('#goal').val();
 
-    state.selectUser.CELULAR_PAREJA = $('#phoneWife').val();
+    state.selectUser.CELULAR_PAREJA = "987654567";
     state.selectUser.ESTADO_CIVIL = $('#civilState').val();
-    state.selectUser.TIENE_HIJOS = $('.hijos').val();
-    state.selectUser.NOMBRE_PAREJA = $('#nameWife').val();
-    state.selectUser.NRO_HIJOS = $('#numChildren').val();
+    state.selectUser.TIENE_HIJOS = "";
+    state.selectUser.NOMBRE_PAREJA = "";
+    state.selectUser.NRO_HIJOS = "3";
 
     state.selectUser.PROMESA = $('#promise').val();
     state.selectUser.INDICADOR_PROGRESO = 0;
@@ -108,6 +108,8 @@ const User = (letters) => {
     console.log(state.selectUser);
 
     newUser(state.selectUser.NRO_DOCUMENTO, state.selectUser);
+    state.page = 1;
+    update();
   });
 
   return container;

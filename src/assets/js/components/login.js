@@ -8,8 +8,11 @@ const Login = (update) => {
   const divDni = $('<div class="input-field col s6">');
   const divPassword = $('<div class="input-field col s6">');
 
-  const inputDni = $('<input placeholder="Ingrese Dni" id="loginDni" type="text" class="validate center-align">');
-  const inputPassword = $('<input placeholder="Ingrese Password" id="loginPassword" disabled type="password" class="validate center-align">');
+  const inputDni = $('<input placeholder="DOCUMENTO DE IDENTIDAD" id="loginDni" type="text" class="validate center-align">');
+  const inputPassword = $('<input placeholder="CONTRASEÑA" id="loginPassword" disabled type="password" class="validate center-align">');
+
+  //const inputDni = $('<input placeholder="Ingrese Dni" id="loginDni" type="text" class="validate center-align">');
+  //const inputPassword = $('<input placeholder="Ingrese Password" id="loginPassword" disabled type="password" class="validate center-align">');
 
   const labelDni = $('<h4 for="loginDni" class="blue-text">DNI Number</h4>');
   const labelPassword = $('<h4 for="loginPassword" class="blue-text">Password</h4>');

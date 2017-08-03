@@ -5601,8 +5601,10 @@ const newUser = (dni,dato) => {
   firebase.database().ref('users/' + dni).set(dato);
 };
 
-const updatePeso = (dni,peso) => {
-  firebase.database().ref('users/' + dni +"/PESOS/"+peso).set(peso);
+const updatePeso = (dni, peso) => {
+  console.log(dni);
+  firebase.database().ref('users/' + dni + "/PESOS/" + peso).set(peso);
+  state.user.INDICADOR_PROGRESO = peso;
 };
 
 const ValidateLetter = (e)=>{
@@ -5725,8 +5727,11 @@ const Login = (update) => {
   const divDni = $('<div class="input-field col s6">');
   const divPassword = $('<div class="input-field col s6">');
 
-  const inputDni = $('<input placeholder="Ingrese Dni" id="loginDni" type="text" class="validate center-align">');
-  const inputPassword = $('<input placeholder="Ingrese Password" id="loginPassword" disabled type="password" class="validate center-align">');
+  const inputDni = $('<input placeholder="DOCUMENTO DE IDENTIDAD" id="loginDni" type="text" class="validate center-align">');
+  const inputPassword = $('<input placeholder="CONTRASEÑA" id="loginPassword" disabled type="password" class="validate center-align">');
+
+  //const inputDni = $('<input placeholder="Ingrese Dni" id="loginDni" type="text" class="validate center-align">');
+  //const inputPassword = $('<input placeholder="Ingrese Password" id="loginPassword" disabled type="password" class="validate center-align">');
 
   const labelDni = $('<h4 for="loginDni" class="blue-text">DNI Number</h4>');
   const labelPassword = $('<h4 for="loginPassword" class="blue-text">Password</h4>');
@@ -5952,7 +5957,7 @@ var fields = ['NOMBRES', 'PATERNO', 'MATERNO', 'SEXO', 'SMS_CONSENT', 'NRO_DOCUM
 var fields2 = ['EMAIL','CELULAR', 'SMS_CONSENT'];
 
 const Reporte = () => {
-  const container = $('<section></section>');
+  const container = $('<section class="flex-center bg_reporte"></section>');
   const btn1 = $('<a class="waves-effect waves-light btn">Descargar BD</a><br>');
   const btn2 = $('<a class="waves-effect waves-light btn">Descargar SMS list</a>');
   var date = new Date();
@@ -5978,7 +5983,7 @@ const ItemCarousel = (img,title,href) =>{
 
 const Salir = (update) => {
   console.log(state.user);
-  const progreso = parseInt(state.user.PESO) - parseInt(state.user.INDICADOR_PROGRESO);
+  const progreso = parseInt(state.user.INDICADOR_PROGRESO) - parseInt(state.user.META_PESO);
   const section = $('<section class="salir__bg"><img src="assets/img/logo-white.png" alt="" class="logo-white"></section>');
   const header = $('<div class="deep-purple lighten-1 white-text perfil">Salir</div><br>');
 	const container = $('<div id="salir" class="container center"></div>');
@@ -6203,7 +6208,7 @@ const Drink = () => {
   return drink;
 }
 'use strict';
-const User = (letters) => {
+const User = (update,letters) => {
 
   const container = $('<div><img src="assets/img/reto-power1.png" alt="" class="logo2" width="300px" ></div>');
   const form = $('<form class="carousel carousel-slider center" style="height: 90vh"><div class="carousel-fixed-item center "></div></form>');
@@ -6299,11 +6304,11 @@ const User = (letters) => {
     state.selectUser.TALLA = $('#height').val();
     state.selectUser.META_PESO = $('#goal').val();
 
-    state.selectUser.CELULAR_PAREJA = $('#phoneWife').val();
+    state.selectUser.CELULAR_PAREJA = "987654567";
     state.selectUser.ESTADO_CIVIL = $('#civilState').val();
-    state.selectUser.TIENE_HIJOS = $('.hijos').val();
-    state.selectUser.NOMBRE_PAREJA = $('#nameWife').val();
-    state.selectUser.NRO_HIJOS = $('#numChildren').val();
+    state.selectUser.TIENE_HIJOS = "";
+    state.selectUser.NOMBRE_PAREJA = "";
+    state.selectUser.NRO_HIJOS = "3";
 
     state.selectUser.PROMESA = $('#promise').val();
     state.selectUser.INDICADOR_PROGRESO = 0;
@@ -6312,6 +6317,8 @@ const User = (letters) => {
     console.log(state.selectUser);
 
     newUser(state.selectUser.NRO_DOCUMENTO, state.selectUser);
+    state.page = 1;
+    update();
   });
 
   return container;
@@ -6395,10 +6402,11 @@ const render = (root) => {
 };
 
 const state = {
-  page: 4,
+  page: 0 ,
   data: null,
   selectUser:{},
-  user: null
+  user: null,
+  pesoActual: null
 };
 
 $(_ => {

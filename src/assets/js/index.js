@@ -44,10 +44,11 @@ const render = (root) => {
 };
 
 const state = {
-  page: 4,
+  page: 0 ,
   data: null,
   selectUser:{},
-  user: null
+  user: null,
+  pesoActual: null
 };
 
 $(_ => {
